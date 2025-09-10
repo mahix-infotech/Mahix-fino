@@ -74,7 +74,7 @@ export function Footer() {
               </div>
               <div className="flex items-center text-sm text-gray-300">
                 <Mail className="mr-2 h-4 w-4" />
-                <span>info@mahixinfotech.com</span>
+                <span>contact@mahixinfotech.com</span>
               </div>
             </div>
           </div>

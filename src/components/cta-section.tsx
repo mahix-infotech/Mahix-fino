@@ -30,11 +30,11 @@ export function CTASection() {
                 <span className="text-lg">+1 (234) 567-8900</span>
               </a>
               <a 
-                href="mailto:info@mahixinfotech.com" 
+                href="mailto:contact@mahixinfotech.com" 
                 className="flex items-center text-white hover:text-blue-100 transition-colors"
               >
                 <Mail className="mr-2 h-5 w-5" />
-                <span className="text-lg">info@mahixinfotech.com</span>
+                <span className="text-lg">contact@mahixinfotech.com</span>
               </a>
             </div>
           </div>
