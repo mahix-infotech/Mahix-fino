@@ -23,11 +23,11 @@ export function CTASection() {
             </Button>
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8">
               <a 
-                href="tel:+1234567890" 
+                href="tel:+918608610760" 
                 className="flex items-center text-white hover:text-blue-100 transition-colors"
               >
                 <Phone className="mr-2 h-5 w-5" />
-                <span className="text-lg">+1 (234) 567-8900</span>
+                <span className="text-lg">+91 8608610760</span>
               </a>
               <a 
                 href="mailto:contact@mahixinfotech.com" 

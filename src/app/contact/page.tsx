@@ -105,7 +105,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900">Phone</h3>
-                        <p className="text-gray-600">+1 (234) 567-8900</p>
+                        <p className="text-gray-600">+91 8608610760</p>
                         <p className="text-sm text-gray-500">Mon-Fri 9am-6pm EST</p>
                       </div>
                     </div>
