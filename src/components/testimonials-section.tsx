@@ -4,45 +4,45 @@ import { Star } from "lucide-react"
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
+    name: "Priya Krishnamurthy",
     role: "CEO, TechStart Inc.",
     content: "Mahix InfoTech transformed our business with their exceptional web development services. The team delivered beyond our expectations and helped us achieve a 300% increase in online conversions.",
-    avatar: "/avatars/sarah.jpg",
+    avatar: "/avatars/priya.jpg",
     rating: 5
   },
   {
-    name: "Michael Chen",
+    name: "Arjun Ramachandran",
     role: "CTO, DataFlow Solutions",
     content: "Their AI and ML expertise helped us automate our data processing pipeline, saving us 40 hours per week. The team is professional, knowledgeable, and delivers on time.",
-    avatar: "/avatars/michael.jpg", 
+    avatar: "/avatars/arjun.jpg", 
     rating: 5
   },
   {
-    name: "Emily Rodriguez",
+    name: "Kavitha Subramanian",
     role: "Marketing Director, GrowthCorp",
     content: "The mobile app they developed for us has been a game-changer. User engagement increased by 250% and our app store ratings are consistently 4.8+. Highly recommended!",
-    avatar: "/avatars/emily.jpg",
+    avatar: "/avatars/kavitha.jpg",
     rating: 5
   },
   {
-    name: "David Thompson",
+    name: "Rajesh Murugan",
     role: "Founder, CloudVenture",
     content: "Mahix InfoTech's cloud migration services were seamless. They moved our entire infrastructure to AWS with zero downtime and reduced our hosting costs by 60%.",
-    avatar: "/avatars/david.jpg",
+    avatar: "/avatars/rajesh.jpg",
     rating: 5
   },
   {
-    name: "Lisa Wang",
+    name: "Deepika Natarajan",
     role: "VP Marketing, EcomPlus",
     content: "Their SEO and digital marketing strategies helped us rank #1 for our target keywords. Our organic traffic increased by 400% in just 6 months.",
-    avatar: "/avatars/lisa.jpg",
+    avatar: "/avatars/deepika.jpg",
     rating: 5
   },
   {
-    name: "James Wilson",
+    name: "Karthik Venkatesh",
     role: "Operations Manager, LogiTech",
     content: "The custom software solution they built streamlined our operations completely. What used to take days now takes hours. Exceptional work and ongoing support.",
-    avatar: "/avatars/james.jpg",
+    avatar: "/avatars/karthik.jpg",
     rating: 5
   }
 ]
