@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   description: "Leading software development company specializing in web development, mobile apps, AI/ML solutions, cloud services, and SEO optimization.",
   keywords: "software development, web development, mobile apps, AI, ML, cloud services, SEO, digital transformation",
   authors: [{ name: "Mahix InfoTech" }],
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   openGraph: {
     title: "Mahix InfoTech - Software Development & Digital Solutions",
     description: "Leading software development company specializing in web development, mobile apps, AI/ML solutions, cloud services, and SEO optimization.",

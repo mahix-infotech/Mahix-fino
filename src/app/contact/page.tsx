@@ -127,8 +127,8 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900">Office</h3>
-                        <p className="text-gray-600">123 Tech Street<br />Digital City, DC 12345</p>
-                        <p className="text-sm text-gray-500">United States</p>
+                        <p className="text-gray-600">45 Avinashi Road<br />Coimbatore, Tamil Nadu 641018</p>
+                        <p className="text-sm text-gray-500">India</p>
                       </div>
                     </div>
                     
