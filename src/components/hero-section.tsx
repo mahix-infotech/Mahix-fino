@@ -33,36 +33,39 @@ export function HeroSection() {
         </div>
 
         {/* Service Icons */}
-        <div className="mt-24 grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5 px-4">
-          <div className="flex flex-col items-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-              <Code className="h-8 w-8" />
+        <div className="mt-24">
+          <h2 className="sr-only">Our Services</h2>
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5 px-4">
+            <div className="flex flex-col items-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                <Code className="h-8 w-8" />
+              </div>
+              <h3 className="mt-4 text-sm font-semibold text-gray-900">Web Development</h3>
             </div>
-            <h3 className="mt-4 text-sm font-semibold text-gray-900">Web Development</h3>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-600">
-              <Smartphone className="h-8 w-8" />
+            <div className="flex flex-col items-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-600">
+                <Smartphone className="h-8 w-8" />
+              </div>
+              <h3 className="mt-4 text-sm font-semibold text-gray-900">Mobile Apps</h3>
             </div>
-            <h3 className="mt-4 text-sm font-semibold text-gray-900">Mobile Apps</h3>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 text-purple-600">
-              <Brain className="h-8 w-8" />
+            <div className="flex flex-col items-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-100 text-purple-600">
+                <Brain className="h-8 w-8" />
+              </div>
+              <h3 className="mt-4 text-sm font-semibold text-gray-900">AI & ML</h3>
             </div>
-            <h3 className="mt-4 text-sm font-semibold text-gray-900">AI & ML</h3>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-orange-600">
-              <Cloud className="h-8 w-8" />
+            <div className="flex flex-col items-center">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-orange-600">
+                <Cloud className="h-8 w-8" />
+              </div>
+              <h3 className="mt-4 text-sm font-semibold text-gray-900">Cloud Services</h3>
             </div>
-            <h3 className="mt-4 text-sm font-semibold text-gray-900">Cloud Services</h3>
-          </div>
-          <div className="flex flex-col items-center sm:col-span-3 lg:col-span-1">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-100 text-red-600">
-              <TrendingUp className="h-8 w-8" />
+            <div className="flex flex-col items-center sm:col-span-3 lg:col-span-1">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-100 text-red-600">
+                <TrendingUp className="h-8 w-8" />
+              </div>
+              <h3 className="mt-4 text-sm font-semibold text-gray-900">SEO & Marketing</h3>
             </div>
-            <h3 className="mt-4 text-sm font-semibold text-gray-900">SEO & Marketing</h3>
           </div>
         </div>
       </div>

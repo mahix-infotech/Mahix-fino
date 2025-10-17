@@ -81,7 +81,7 @@ export function Footer() {
           
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 lg:col-span-3">
             <div>
-              <h3 className="text-sm font-semibold text-white">Services</h3>
+              <h2 className="text-sm font-semibold text-white">Services</h2>
               <ul role="list" className="mt-4 space-y-3">
                 {navigation.services.map((item) => (
                   <li key={item.name}>
@@ -94,7 +94,7 @@ export function Footer() {
             </div>
             
             <div>
-              <h3 className="text-sm font-semibold text-white">Company</h3>
+              <h2 className="text-sm font-semibold text-white">Company</h2>
               <ul role="list" className="mt-4 space-y-3">
                 {navigation.company.map((item) => (
                   <li key={item.name}>
@@ -107,7 +107,7 @@ export function Footer() {
             </div>
             
             <div>
-              <h3 className="text-sm font-semibold text-white">Support</h3>
+              <h2 className="text-sm font-semibold text-white">Support</h2>
               <ul role="list" className="mt-4 space-y-3">
                 {navigation.support.map((item) => (
                   <li key={item.name}>
