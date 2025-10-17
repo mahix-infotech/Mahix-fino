@@ -176,6 +176,35 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
+
+        {/* Map Section */}
+        <section className="py-16 bg-gray-50">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Find Us Here
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
+                Visit our office in the heart of Gandhipuram, Coimbatore
+              </p>
+            </div>
+            
+            <div className="mx-auto max-w-4xl">
+              <div className="overflow-hidden rounded-lg shadow-lg">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2307471131285!2d76.9667856!3d11.021306599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859d0b523d755%3A0x8eaf6f7105b0d0b4!2sMahixinfotech!5e0!3m2!1sen!2sin!4v1760683209544!5m2!1sen!2sin" 
+                  width="100%" 
+                  height="400" 
+                  style={{border: 0}} 
+                  allowFullScreen={true}
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
