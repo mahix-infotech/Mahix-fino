@@ -5,6 +5,13 @@ import { Cloud, CheckCircle, Server, Shield, Zap, Globe } from "lucide-react"
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Cloud Services - AWS, Azure & DevOps Solutions | Mahix InfoTech",
+  description: "Professional cloud migration and DevOps services in Coimbatore. We provide AWS, Azure, and Google Cloud solutions, including cloud migration, CI/CD pipelines, and serverless architecture.",
+  keywords: "cloud services, cloud migration, AWS services, Azure cloud, DevOps, CI/CD, serverless architecture, Docker, Kubernetes, Coimbatore cloud solutions",
+}
 
 const features = [
   {

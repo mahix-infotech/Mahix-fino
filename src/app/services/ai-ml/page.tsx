@@ -5,6 +5,13 @@ import { Brain, CheckCircle, Bot, BarChart3, Eye, MessageSquare } from "lucide-r
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "AI & Machine Learning Solutions - Custom AI Development | Mahix InfoTech",
+  description: "Advanced AI and machine learning solutions in Coimbatore. We develop custom AI models, chatbots, predictive analytics, and computer vision systems using Python, TensorFlow, and PyTorch.",
+  keywords: "AI development, machine learning, artificial intelligence, chatbots, predictive analytics, computer vision, NLP, Python AI, TensorFlow, Coimbatore AI services",
+}
 
 const features = [
   {

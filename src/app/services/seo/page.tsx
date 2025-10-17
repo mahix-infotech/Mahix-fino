@@ -4,6 +4,13 @@ import { Badge } from "@/components/ui/badge"
 import { CheckCircle, TrendingUp, Search, BarChart3, Target, Zap } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+    title: "SEO & Digital Marketing Services - Mahix InfoTech",
+    description: "Boost your online visibility with our expert SEO and digital marketing services in Coimbatore. We offer technical SEO, keyword research, content optimization, and link building to improve your search rankings.",
+    keywords: "SEO services, digital marketing, search engine optimization, keyword research, content optimization, link building, Coimbatore SEO, Tamil Nadu",
+}
 
 export default function SEOPage() {
     return (

@@ -7,6 +7,13 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Phone, Mail, MapPin, Clock } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Contact Us - Get in Touch with Mahix InfoTech | Coimbatore",
+  description: "Contact Mahix InfoTech for your software development needs. Located in Gandhipuram, Coimbatore. Call +91 8608610760 or email contact@mahixinfotech.com for web development, mobile apps, and AI solutions.",
+  keywords: "contact Mahix InfoTech, software development company Coimbatore, Gandhipuram office, web development contact, mobile app development inquiry",
+}
 
 export default function ContactPage() {
   return (

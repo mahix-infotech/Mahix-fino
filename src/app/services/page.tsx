@@ -3,6 +3,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Code, Smartphone, Brain, Cloud, TrendingUp, Database, ArrowRight, CheckCircle } from "lucide-react"
 import Link from "next/link"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Our Services - Web Development, Mobile Apps, AI & Cloud Solutions | Mahix InfoTech",
+  description: "Comprehensive digital services in Coimbatore including web development, mobile app development, AI/ML solutions, cloud services, and SEO. Transform your business with our expert technology solutions.",
+  keywords: "digital services, software development services, web development, mobile apps, AI solutions, cloud services, SEO services, Coimbatore technology company",
+}
 
 const services = [
   {
@@ -142,7 +149,7 @@ export default function ServicesPage() {
                     <div className="flex gap-3 pt-4">
                       <Button asChild className="flex-1">
                         <Link href={`/services/${service.id}`}>
-                          Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                          View {service.title} Details <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                       </Button>
                       <Button variant="outline" asChild>

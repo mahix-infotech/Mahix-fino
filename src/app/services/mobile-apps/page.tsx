@@ -5,6 +5,13 @@ import { Smartphone, CheckCircle, ArrowRight, Apple, Play, Zap, Users } from "lu
 import Link from "next/link"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Mobile App Development - iOS & Android Apps | Mahix InfoTech",
+  description: "Expert mobile app development services in Coimbatore. We build native iOS, Android, and cross-platform apps using React Native and Flutter. Transform your business with custom mobile solutions.",
+  keywords: "mobile app development, iOS app development, Android app development, React Native, Flutter, cross-platform apps, Coimbatore mobile apps",
+}
 
 const features = [
   {

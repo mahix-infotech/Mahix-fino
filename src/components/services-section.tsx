@@ -94,7 +94,7 @@ export function ServicesSection() {
                     ))}
                   </ul>
                   <Button variant="outline" className="mt-6 w-full" asChild>
-                    <Link href="/contact">Learn More</Link>
+                    <Link href="/contact">Get Quote for {service.title}</Link>
                   </Button>
                 </CardContent>
               </Card>
