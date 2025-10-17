@@ -4,21 +4,7 @@ import { useEffect } from "react"
 
 export function LoadingOptimizer() {
   useEffect(() => {
-    // Preload critical resources
-    const preloadLinks = [
-      "/_next/static/css/app/layout.css",
-      "/_next/static/css/app/globals.css"
-    ]
-
-    preloadLinks.forEach(href => {
-      const link = document.createElement("link")
-      link.rel = "preload"
-      link.as = "style"
-      link.href = href
-      document.head.appendChild(link)
-    })
-
-    // Optimize images loading
+    // Optimize images loading with intersection observer
     const images = document.querySelectorAll("img[loading='lazy']")
     if ("IntersectionObserver" in window) {
       const imageObserver = new IntersectionObserver((entries) => {
@@ -29,10 +15,22 @@ export function LoadingOptimizer() {
             imageObserver.unobserve(img)
           }
         })
+      }, {
+        rootMargin: "50px"
       })
 
       images.forEach(img => imageObserver.observe(img))
     }
+
+    // Preload critical CSS files dynamically
+    const existingStylesheets = Array.from(document.querySelectorAll('link[rel="stylesheet"]'))
+    existingStylesheets.forEach(stylesheet => {
+      const link = stylesheet as HTMLLinkElement
+      if (link.href && link.href.includes('_next/static')) {
+        // Add high priority to critical CSS
+        link.setAttribute('fetchpriority', 'high')
+      }
+    })
   }, [])
 
   return null
