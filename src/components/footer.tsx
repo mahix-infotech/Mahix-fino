@@ -55,25 +55,25 @@ export function Footer() {
         Footer
       </h2>
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-4">
-          <div className="lg:col-span-1">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-5">
+          <div className="lg:col-span-2">
             <div className="mb-4">
               <Logo size="lg" className="[&_span]:text-white [&_div]:from-white [&_div]:to-gray-300" />
             </div>
-            <p className="mt-4 text-sm text-gray-300">
+            <p className="mt-4 text-sm text-gray-300 max-w-md">
               Transforming businesses through innovative digital solutions. We specialize in web development, mobile apps, AI/ML, cloud services, and digital marketing.
             </p>
             <div className="mt-6 space-y-3">
-              <div className="flex items-center text-sm text-gray-300">
-                <MapPin className="mr-2 h-4 w-4" />
-                <span>161-E, 6th St Ext, 100 feet road, Gandhipuram, Coimbatore, Tamil Nadu 641012</span>
+              <div className="flex items-start text-sm text-gray-300">
+                <MapPin className="mr-2 h-4 w-4 mt-0.5 flex-shrink-0" />
+                <span>161-E, 6th St Ext, 100 feet road,<br />Gandhipuram, Coimbatore,<br />Tamil Nadu 641012</span>
               </div>
               <div className="flex items-center text-sm text-gray-300">
-                <Phone className="mr-2 h-4 w-4" />
+                <Phone className="mr-2 h-4 w-4 flex-shrink-0" />
                 <span>+91 8608610760</span>
               </div>
               <div className="flex items-center text-sm text-gray-300">
-                <Mail className="mr-2 h-4 w-4" />
+                <Mail className="mr-2 h-4 w-4 flex-shrink-0" />
                 <span>contact@mahixinfotech.com</span>
               </div>
             </div>
