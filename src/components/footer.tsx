@@ -27,22 +27,22 @@ const navigation = {
   social: [
     {
       name: "Facebook",
-      href: "#",
+      href: "https://facebook.com/mahixinfotech",
       icon: Facebook,
     },
     {
       name: "Twitter", 
-      href: "#",
+      href: "https://twitter.com/mahixinfotech",
       icon: Twitter,
     },
     {
       name: "LinkedIn",
-      href: "#",
+      href: "https://linkedin.com/company/mahixinfotech",
       icon: Linkedin,
     },
     {
       name: "Instagram",
-      href: "#",
+      href: "https://instagram.com/mahixinfotech",
       icon: Instagram,
     },
   ],
