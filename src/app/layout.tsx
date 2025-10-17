@@ -2,8 +2,14 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LoadingOptimizer } from "@/components/loading-optimizer";
+import { PerformanceMonitor } from "@/components/performance-monitor";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -45,8 +51,14 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="preload" href="/_next/static/chunks/4e20891f2fd03463.css" as="style" />
+        <link rel="preload" href="/_next/static/chunks/368fe3e84feafab7.css" as="style" />
       </head>
       <body className={`${inter.className} antialiased`}>
+        <LoadingOptimizer />
+        <PerformanceMonitor />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
