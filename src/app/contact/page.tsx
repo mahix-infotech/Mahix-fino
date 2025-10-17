@@ -127,7 +127,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900">Office</h3>
-                        <p className="text-gray-600">45 Avinashi Road<br />Coimbatore, Tamil Nadu 641018</p>
+                        <p className="text-gray-600">161-E, 6th St Ext, 100 feet road<br />Gandhipuram, Coimbatore, Tamil Nadu 641012</p>
                         <p className="text-sm text-gray-500">India</p>
                       </div>
                     </div>

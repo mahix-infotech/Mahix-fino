@@ -66,7 +66,7 @@ export function Footer() {
             <div className="mt-6 space-y-3">
               <div className="flex items-center text-sm text-gray-300">
                 <MapPin className="mr-2 h-4 w-4" />
-                <span>45 Avinashi Road, Coimbatore, Tamil Nadu 641018</span>
+                <span>161-E, 6th St Ext, 100 feet road, Gandhipuram, Coimbatore, Tamil Nadu 641012</span>
               </div>
               <div className="flex items-center text-sm text-gray-300">
                 <Phone className="mr-2 h-4 w-4" />
