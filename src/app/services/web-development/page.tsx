@@ -9,8 +9,8 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Web Development Services - Custom Websites & Web Apps | Mahix InfoTech",
-  description: "Professional web development services in Coimbatore. We create custom websites, e-commerce solutions, and web applications using React, Next.js, and modern technologies. Get responsive, fast, and secure websites.",
-  keywords: "web development, custom websites, e-commerce development, web applications, React development, Next.js, responsive design, Coimbatore web development",
+  description: "Professional web development services in Dindigul. We create custom websites, e-commerce solutions, and web applications using React, Next.js, and modern technologies. Get responsive, fast, and secure websites.",
+  keywords: "web development, custom websites, e-commerce development, web applications, React development, Next.js, responsive design, Dindigul web development",
 }
 
 const features = [

@@ -9,8 +9,8 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Cloud Services - AWS, Azure & DevOps Solutions | Mahix InfoTech",
-  description: "Professional cloud migration and DevOps services in Coimbatore. We provide AWS, Azure, and Google Cloud solutions, including cloud migration, CI/CD pipelines, and serverless architecture.",
-  keywords: "cloud services, cloud migration, AWS services, Azure cloud, DevOps, CI/CD, serverless architecture, Docker, Kubernetes, Coimbatore cloud solutions",
+  description: "Professional cloud migration and DevOps services in Dindigul. We provide AWS, Azure, and Google Cloud solutions, including cloud migration, CI/CD pipelines, and serverless architecture.",
+  keywords: "cloud services, cloud migration, AWS services, Azure cloud, DevOps, CI/CD, serverless architecture, Docker, Kubernetes, Dindigul cloud solutions",
 }
 
 const features = [

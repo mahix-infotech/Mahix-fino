@@ -9,8 +9,8 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "AI & Machine Learning Solutions - Custom AI Development | Mahix InfoTech",
-  description: "Advanced AI and machine learning solutions in Coimbatore. We develop custom AI models, chatbots, predictive analytics, and computer vision systems using Python, TensorFlow, and PyTorch.",
-  keywords: "AI development, machine learning, artificial intelligence, chatbots, predictive analytics, computer vision, NLP, Python AI, TensorFlow, Coimbatore AI services",
+  description: "Advanced AI and machine learning solutions in Dindigul. We develop custom AI models, chatbots, predictive analytics, and computer vision systems using Python, TensorFlow, and PyTorch.",
+  keywords: "AI development, machine learning, artificial intelligence, chatbots, predictive analytics, computer vision, NLP, Python AI, TensorFlow, Dindigul AI services",
 }
 
 const features = [

@@ -18,8 +18,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "Mahix InfoTech - Software Development & Digital Solutions",
-  description: "Leading software development company in Coimbatore specializing in web development, mobile apps, AI/ML solutions, cloud services, and SEO optimization. Transform your business with innovative digital solutions.",
-  keywords: "software development, web development, mobile apps, AI, ML, cloud services, SEO, digital transformation, Coimbatore, Tamil Nadu, India",
+  description: "Leading software development company in Dindigul specializing in web development, mobile apps, AI/ML solutions, cloud services, and SEO optimization. Transform your business with innovative digital solutions.",
+  keywords: "software development, web development, mobile apps, AI, ML, cloud services, SEO, digital transformation, Dindigul, Tamil Nadu, India",
   authors: [{ name: "Mahix InfoTech" }],
   robots: "index, follow",
   icons: {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Mahix InfoTech - Software Development & Digital Solutions",
-    description: "Leading software development company in Coimbatore specializing in web development, mobile apps, AI/ML solutions, cloud services, and SEO optimization.",
+    description: "Leading software development company in Dindigul specializing in web development, mobile apps, AI/ML solutions, cloud services, and SEO optimization.",
     type: "website",
     locale: "en_US",
     siteName: "Mahix InfoTech",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Mahix InfoTech - Software Development & Digital Solutions",
-    description: "Leading software development company in Coimbatore specializing in web development, mobile apps, AI/ML solutions, cloud services, and SEO optimization.",
+    description: "Leading software development company in Dindigul specializing in web development, mobile apps, AI/ML solutions, cloud services, and SEO optimization.",
   },
 };
 

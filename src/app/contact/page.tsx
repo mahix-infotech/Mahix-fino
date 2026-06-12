@@ -10,9 +10,9 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Contact Us - Get in Touch with Mahix InfoTech | Coimbatore",
-  description: "Contact Mahix InfoTech for your software development needs. Located in Gandhipuram, Coimbatore. Call +91 8608610760 or email contact@mahixinfotech.com for web development, mobile apps, and AI solutions.",
-  keywords: "contact Mahix InfoTech, software development company Coimbatore, Gandhipuram office, web development contact, mobile app development inquiry",
+  title: "Contact Us - Get in Touch with Mahix InfoTech | Dindigul",
+  description: "Contact Mahix InfoTech for your software development needs. Located in Dindigul, Tamil Nadu. Call +91 8608610760 or email contact@mahixinfotech.com for web development, mobile apps, and AI solutions.",
+  keywords: "contact Mahix InfoTech, software development company Dindigul, Dindigul office, web development contact, mobile app development inquiry",
 }
 
 export default function ContactPage() {
@@ -134,7 +134,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900">Office</h3>
-                        <p className="text-gray-600">161-E, 6th St Ext, 100 feet road<br />Gandhipuram, Coimbatore, Tamil Nadu 641012</p>
+                        <p className="text-gray-600">89/4, Scheme Road, Krishna Raja Harini Illam,<br />Near Head Post Office Road, Dindigul, Tamil Nadu 624001</p>
                         <p className="text-sm text-gray-500">India</p>
                       </div>
                     </div>
@@ -192,14 +192,14 @@ export default function ContactPage() {
                 Find Us Here
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-                Visit our office in the heart of Gandhipuram, Coimbatore
+                Visit our office in Dindigul, Tamil Nadu
               </p>
             </div>
             
             <div className="mx-auto max-w-4xl">
               <div className="overflow-hidden rounded-lg shadow-lg">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.2307471131285!2d76.9667856!3d11.021306599999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859d0b523d755%3A0x8eaf6f7105b0d0b4!2sMahixinfotech!5e0!3m2!1sen!2sin!4v1760683209544!5m2!1sen!2sin" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.574!2d77.9695!3d10.3624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c58db3e6c12d%3A0x4b7a2f3e5b8d3c5e!2sDindigul%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1760683209544!5m2!1sen!2sin" 
                   width="100%" 
                   height="400" 
                   style={{border: 0}} 

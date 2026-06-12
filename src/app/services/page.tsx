@@ -7,8 +7,8 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Our Services - Web Development, Mobile Apps, AI & Cloud Solutions | Mahix InfoTech",
-  description: "Comprehensive digital services in Coimbatore including web development, mobile app development, AI/ML solutions, cloud services, and SEO. Transform your business with our expert technology solutions.",
-  keywords: "digital services, software development services, web development, mobile apps, AI solutions, cloud services, SEO services, Coimbatore technology company",
+  description: "Comprehensive digital services in Dindigul including web development, mobile app development, AI/ML solutions, cloud services, and SEO. Transform your business with our expert technology solutions.",
+  keywords: "digital services, software development services, web development, mobile apps, AI solutions, cloud services, SEO services, Dindigul technology company",
 }
 
 const services = [

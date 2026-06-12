@@ -50,7 +50,7 @@ const navigation = {
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900" aria-labelledby="footer-heading">
+    <footer className="bg-black" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -66,7 +66,7 @@ export function Footer() {
             <div className="mt-6 space-y-3">
               <div className="flex items-start text-sm text-gray-300">
                 <MapPin className="mr-2 h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>161-E, 6th St Ext, 100 feet road,<br />Gandhipuram, Coimbatore,<br />Tamil Nadu 641012</span>
+                <span>89/4, Scheme Road,<br />Krishna Raja Harini Illam, Near Head Post Office Road,<br />Dindigul, Tamil Nadu 624001</span>
               </div>
               <div className="flex items-center text-sm text-gray-300">
                 <Phone className="mr-2 h-4 w-4 flex-shrink-0" />
