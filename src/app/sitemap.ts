@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { locationsList } from '@/lib/seo-data'
+import { locationsList, seoServicesList } from '@/lib/seo-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mahixinfotech.com'
@@ -28,7 +28,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/services/meta-ads',
   ]
 
-  const localRoutes = locationsList.map((loc) => `/seo/${loc.slug}`)
+  const localRoutes: string[] = []
+  locationsList.forEach((loc) => {
+    // 1. Generic page
+    localRoutes.push(`/seo/${loc.slug}`)
+    
+    // 2. Service pages
+    seoServicesList.forEach((svc) => {
+      localRoutes.push(`/seo/${svc.prefix}${loc.slug}`)
+    })
+  })
+
   const allRoutes = [...baseRoutes, ...localRoutes]
 
   return allRoutes.map((route) => ({

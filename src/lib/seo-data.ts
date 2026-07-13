@@ -156,12 +156,12 @@ export const rawKeywords = [
   "Web Designer Near Me in [Location]",
   "Digital Marketing Services Near Me in [Location]",
   "Software Development Agency in [Location]",
-  "Web Development Company in [Location]",
-  "Mobile App Development Company in [Location]",
+  "Web Development Agency in [Location]",
+  "Mobile App Development Agency in [Location]",
   "Shopify Developer in [Location]",
   "WordPress Developer in [Location]",
   "Next.js Web Developer in [Location]",
-  "Custom Software Development Company in [Location]"
+  "Custom Software Development Agency in [Location]"
 ]
 
 // Get keywords formatted for a specific location
@@ -169,4 +169,43 @@ export function getKeywordsForLocation(locationName: string): string[] {
   return rawKeywords.map(keyword => 
     keyword.replace(/\[Location\]/g, locationName)
   )
+}
+
+export interface ParsedSeoSlug {
+  serviceType: 'generic' | 'web-development' | 'mobile-app-development' | 'seo-services'
+  serviceTitle: string
+  location: LocationItem
+}
+
+export const seoServicesList = [
+  { prefix: 'web-development-in-', type: 'web-development' as const, title: 'Web Development Services' },
+  { prefix: 'mobile-app-development-in-', type: 'mobile-app-development' as const, title: 'Mobile App Development' },
+  { prefix: 'seo-services-in-', type: 'seo-services' as const, title: 'SEO Agency' },
+]
+
+export function parseSeoSlug(slug: string): ParsedSeoSlug | null {
+  for (const svc of seoServicesList) {
+    if (slug.startsWith(svc.prefix)) {
+      const locSlug = slug.slice(svc.prefix.length)
+      const loc = locationsList.find((l) => l.slug === locSlug)
+      if (loc) {
+        return {
+          serviceType: svc.type,
+          serviceTitle: svc.title,
+          location: loc,
+        }
+      }
+    }
+  }
+
+  const loc = locationsList.find((l) => l.slug === slug)
+  if (loc) {
+    return {
+      serviceType: 'generic',
+      serviceTitle: 'Software Development Agency',
+      location: loc,
+    }
+  }
+
+  return null
 }

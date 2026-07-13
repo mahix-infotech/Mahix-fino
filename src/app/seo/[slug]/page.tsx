@@ -8,62 +8,130 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
-import { locationsList, getKeywordsForLocation, rawKeywords } from "@/lib/seo-data"
+import { locationsList, getKeywordsForLocation, rawKeywords, parseSeoSlug, seoServicesList } from "@/lib/seo-data"
 
 interface PageProps {
   params: Promise<{
-    location: string
+    slug: string
   }>
 }
 
-// Generate metadata for each location dynamically
+// Generate metadata for each local service page dynamically (no "company" wording)
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { location: slug } = await params
-  const matched = locationsList.find((loc) => loc.slug === slug)
+  const { slug } = await params
+  const parsed = parseSeoSlug(slug)
 
-  if (!matched) {
+  if (!parsed) {
     return {
       title: "Not Found",
     }
   }
 
-  const name = matched.name
+  const name = parsed.location.name
   const keywords = getKeywordsForLocation(name)
 
+  let title = `${name} Software Development & SEO Agency | Mahix InfoTech`
+  let description = `Leading software development agency in ${name}, Chennai. We specialize in custom web development, mobile apps, SEO, UI/UX design, and digital marketing services in ${name}. Contact us for a free quote.`
+
+  if (parsed.serviceType === "web-development") {
+    title = `Web Development Services in ${name}, Chennai | Mahix InfoTech`
+    description = `Premium web development agency in ${name}, Chennai. We design responsive, fast, and SEO-optimized web apps, Next.js portals, and custom e-commerce solutions in ${name}.`
+  } else if (parsed.serviceType === "mobile-app-development") {
+    title = `Mobile App Development in ${name}, Chennai | Mahix InfoTech`
+    description = `Professional mobile app developers in ${name}, Chennai. We engineer cross-platform Android and iOS apps using Flutter and React Native in ${name}.`
+  } else if (parsed.serviceType === "seo-services") {
+    title = `SEO Services & Local Search Optimization in ${name} | Mahix InfoTech`
+    description = `Top SEO agency in ${name}, Chennai. Increase search traffic with professional local SEO audits, Google Ads PPC management, and page speed optimization in ${name}.`
+  }
+
   return {
-    title: `${name} Website Development & SEO Services | Mahix InfoTech`,
-    description: `Leading software development company in ${name}, Chennai. We specialize in custom web development, mobile apps, SEO, UI/UX design, and digital marketing services in ${name}. Contact us for a free quote.`,
-    keywords: keywords.slice(0, 15).join(", "),
+    title,
+    description,
+    keywords: keywords.slice(0, 20).join(", "),
     alternates: {
       canonical: `https://mahixinfotech.com/seo/${slug}`,
     },
     openGraph: {
-      title: `Website Development & Digital Solutions in ${name}, Chennai`,
-      description: `Transform your business in ${name} with high-performing custom software, responsive website designs, and performance-focused SEO audits.`,
+      title,
+      description,
       url: `https://mahixinfotech.com/seo/${slug}`,
       type: "website",
     },
   }
 }
 
-// Generate static routes for all Chennai locations at build time
+// Generate static routes for all Chennai locations and their respective services at build time (696 pages)
 export async function generateStaticParams() {
-  return locationsList.map((loc) => ({
-    location: loc.slug,
-  }))
+  const params: { slug: string }[] = []
+  
+  locationsList.forEach((loc) => {
+    // 1. Generic page
+    params.push({ slug: loc.slug })
+    
+    // 2. Service pages
+    seoServicesList.forEach((svc) => {
+      params.push({ slug: `${svc.prefix}${loc.slug}` })
+    })
+  })
+  
+  return params
 }
 
 export default async function LocationPage({ params }: PageProps) {
-  const { location: slug } = await params
-  const matched = locationsList.find((loc) => loc.slug === slug)
+  const { slug } = await params
+  const parsed = parseSeoSlug(slug)
 
-  if (!matched) {
+  if (!parsed) {
     notFound()
   }
 
-  const name = matched.name
-  const category = matched.category
+  const name = parsed.location.name
+  const category = parsed.location.category
   const localKeywords = getKeywordsForLocation(name)
+  const serviceType = parsed.serviceType
+
+  // Set up service-specific titles and hero text (fully customized, no "company" wording)
+  let heroTitle = (
+    <>
+      Software Development & Digital Marketing Services in{" "}
+      <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+        {name}
+      </span>
+    </>
+  )
+  let heroDesc = `Mahix InfoTech delivers high-end web design, native mobile apps, and technical SEO services in ${name}, Chennai. We help local enterprises scale with robust software architectures.`
+
+  if (serviceType === "web-development") {
+    heroTitle = (
+      <>
+        Web Development & E-Commerce Solutions in{" "}
+        <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+          {name}
+        </span>
+      </>
+    )
+    heroDesc = `Custom web developers in ${name}, Chennai. We build high-speed Next.js web applications, Shopify storefronts, WordPress layouts, and secure database integrations.`
+  } else if (serviceType === "mobile-app-development") {
+    heroTitle = (
+      <>
+        Mobile App Development (Flutter & React Native) in{" "}
+        <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+          {name}
+        </span>
+      </>
+    )
+    heroDesc = `Professional mobile app developers in ${name}, Chennai. We build beautiful, high-performing iOS and Android apps with secure cloud backends on AWS.`
+  } else if (serviceType === "seo-services") {
+    heroTitle = (
+      <>
+        Technical SEO & Local Search Optimization in{" "}
+        <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+          {name}
+        </span>
+      </>
+    )
+    heroDesc = `Grow your organic search traffic in ${name}, Chennai. We provide SEO audits, on-page optimization, backlink building, and PPC campaign management.`
+  }
 
   // Sub-services list specifically designed for pSEO
   const services = [
@@ -119,14 +187,11 @@ export default async function LocationPage({ params }: PageProps) {
               </span>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
-                Website Development & Digital Marketing Services in{" "}
-                <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
-                  {name}
-                </span>
+                {heroTitle}
               </h1>
               
               <p className="mt-6 text-base sm:text-lg lg:text-xl text-slate-300 leading-relaxed max-w-2xl">
-                Mahix InfoTech delivers high-end web design, native mobile apps, and technical SEO services in {name}, Chennai. We help local enterprises scale with robust software architectures.
+                {heroDesc}
               </p>
               
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
@@ -234,7 +299,7 @@ export default async function LocationPage({ params }: PageProps) {
               </h2>
               
               <p className="mt-4 text-slate-100 max-w-xl mx-auto text-sm sm:text-base leading-relaxed relative z-10">
-                Get a custom website design, mobile application blueprint, or professional SEO audit. Our consultants respond within 24 hours.
+                Get a custom web layouts blueprint, mobile application blueprint, or professional SEO audit. Our consultants respond within 24 hours.
               </p>
 
               {/* Value checks */}
