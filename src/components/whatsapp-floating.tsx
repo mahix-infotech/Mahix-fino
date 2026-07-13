@@ -88,7 +88,7 @@ export function WhatsAppFloating() {
   const handleClick = () => {
     if (hasDragged) return
     window.open(
-      "https://wa.me/919688896510?text=Hi%20Mahix%20InfoTech%2C%20I%20would%20like%20to%20make%20an%20enquiry%20about%20your%20services.",
+      "https://wa.me/918608610760?text=Hi%20Mahix%20InfoTech%2C%20I%20would%20like%20to%20make%20an%20enquiry%20about%20your%20services.",
       "_blank",
       "noopener,noreferrer"
     )
@@ -102,7 +102,7 @@ export function WhatsAppFloating() {
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
       onClick={handleClick}
-      className="fixed z-50 flex items-center justify-center group"
+      className="fixed z-40 flex items-center justify-center group"
       style={{
         left: pos.x,
         top: pos.y,

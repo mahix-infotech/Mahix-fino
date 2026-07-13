@@ -16,6 +16,10 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mahixinfotech.com"),
+  verification: {
+    google: "YM98mPeXBkrbaWLwmdskAAY9TKs46JLVNaq474AgaOE",
+  },
   title: "Mahix InfoTech - Software Development & Digital Solutions",
   description: "Leading software development company in Dindigul specializing in web development, mobile apps, AI/ML solutions, cloud services, and SEO optimization. Transform your business with innovative digital solutions.",
   keywords: "software development, web development, mobile apps, AI, ML, cloud services, SEO, digital transformation, Dindigul, Tamil Nadu, India",

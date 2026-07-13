@@ -194,11 +194,11 @@ export function CTASection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="mailto:contact@mahixinfotech.com"
+                href="mailto:hr@mahixinfotech.com"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-slate-900 text-white text-sm font-semibold hover:bg-slate-700 hover:scale-105 transition-all duration-300 w-fit"
               >
                 <Mail className="h-4 w-4" />
-                contact@mahixinfotech.com
+                hr@mahixinfotech.com
               </a>
               <a
                 href="tel:+918608610760"

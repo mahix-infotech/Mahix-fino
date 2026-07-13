@@ -73,7 +73,7 @@ export function Navigation() {
   ]
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-black/[0.05] dark:border-white/[0.08] bg-background/95 transition-colors duration-200">
+    <header className="fixed top-0 left-0 right-0 z-40 w-full border-b border-black/[0.05] dark:border-white/[0.08] bg-background/95 transition-colors duration-200">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8 relative">
         
         {/* Logo Section */}
@@ -128,7 +128,7 @@ export function Navigation() {
         {/* Desktop Mega-Menu Dropdown */}
         <div 
           className={cn(
-            "absolute left-4 right-4 lg:left-8 lg:right-8 top-full bg-background border border-black/[0.05] dark:border-white/[0.08] p-8 rounded-none shadow-xl transition-all duration-200 origin-top z-50",
+            "hidden md:block absolute left-4 right-4 lg:left-8 lg:right-8 top-full bg-background border border-black/[0.05] dark:border-white/[0.08] p-8 rounded-none shadow-xl transition-all duration-200 origin-top z-40",
             servicesOpen ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
           )}
           onMouseEnter={() => setServicesOpen(true)}

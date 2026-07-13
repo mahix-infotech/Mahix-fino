@@ -201,4 +201,9 @@
 .marquee-track:hover .animate-marquee-left {
   animation-play-state: paused;
 }
+
+/* ─── Radix UI Mobile Menu Pointer-Events Stuck Fix ──────────────────────── */
+body[style*="pointer-events: none"] {
+  pointer-events: auto !important;
+}
 

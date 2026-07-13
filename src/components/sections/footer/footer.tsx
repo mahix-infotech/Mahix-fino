@@ -147,9 +147,9 @@ export function Footer() {
                   <span>+91 8608610760</span>
                 </a>
                 <span className="hidden md:inline text-zinc-800">|</span>
-                <a href="mailto:contact@mahixinfotech.com" className="flex items-center hover:text-white transition-colors whitespace-nowrap">
+                <a href="mailto:hr@mahixinfotech.com" className="flex items-center hover:text-white transition-colors whitespace-nowrap">
                   <Mail className="mr-2 h-4 w-4 text-emerald-500 flex-shrink-0" />
-                  <span>contact@mahixinfotech.com</span>
+                  <span>hr@mahixinfotech.com</span>
                 </a>
               </div>
             </div>
