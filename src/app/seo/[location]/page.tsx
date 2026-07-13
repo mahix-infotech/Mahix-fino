@@ -35,12 +35,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: `Leading software development company in ${name}, Chennai. We specialize in custom web development, mobile apps, SEO, UI/UX design, and digital marketing services in ${name}. Contact us for a free quote.`,
     keywords: keywords.slice(0, 15).join(", "),
     alternates: {
-      canonical: `https://mahixinfotech.com/chennai/${slug}`,
+      canonical: `https://mahixinfotech.com/seo/${slug}`,
     },
     openGraph: {
       title: `Website Development & Digital Solutions in ${name}, Chennai`,
       description: `Transform your business in ${name} with high-performing custom software, responsive website designs, and performance-focused SEO audits.`,
-      url: `https://mahixinfotech.com/chennai/${slug}`,
+      url: `https://mahixinfotech.com/seo/${slug}`,
       type: "website",
     },
   }

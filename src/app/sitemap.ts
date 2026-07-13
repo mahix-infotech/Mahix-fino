@@ -28,13 +28,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/services/meta-ads',
   ]
 
-  const localRoutes = locationsList.map((loc) => `/chennai/${loc.slug}`)
+  const localRoutes = locationsList.map((loc) => `/seo/${loc.slug}`)
   const allRoutes = [...baseRoutes, ...localRoutes]
 
   return allRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString().split('T')[0],
     changeFrequency: route === '' ? 'daily' : 'weekly',
-    priority: route === '' ? 1.0 : route.startsWith('/services/') ? 0.8 : route.startsWith('/chennai/') ? 0.7 : 0.6,
+    priority: route === '' ? 1.0 : route.startsWith('/services/') ? 0.8 : route.startsWith('/seo/') ? 0.7 : 0.6,
   }))
 }
