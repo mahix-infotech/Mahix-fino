@@ -1,183 +1,106 @@
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
+import { Navigation } from "@/components/sections/navigation/navigation"
+import { Footer } from "@/components/sections/footer/footer"
+import { PortfolioGrid } from "@/components/pages/portfolio/portfolio-grid"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Calendar, Users, TrendingUp } from "lucide-react"
 import Link from "next/link"
+import { ArrowRight, FolderKanban } from "lucide-react"
+import type { Metadata } from "next"
 
-const projects = [
-  {
-    title: "ShopFlow E-Commerce Platform",
-    description: "A comprehensive e-commerce solution for a retail chain with 50+ stores. Features include real-time inventory sync, multi-store management, advanced analytics, and mobile-responsive design.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop&crop=center",
-    tags: ["Next.js", "React", "Node.js", "PostgreSQL", "Stripe", "AWS"],
-    category: "Web Development",
-    duration: "6 months",
-    teamSize: "8 developers",
-    impact: "300% increase in online sales"
-  },
-  {
-    title: "MediCare Pro Mobile App",
-    description: "Healthcare management app serving 10,000+ patients across 25 clinics. Includes telemedicine, appointment booking, prescription management, and health records.",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop&crop=center",
-    tags: ["React Native", "Firebase", "Node.js", "WebRTC", "HIPAA Compliant"],
-    category: "Mobile App",
-    duration: "8 months",
-    teamSize: "6 developers",
-    impact: "40% reduction in wait times"
-  },
-  {
-    title: "DataInsight AI Analytics",
-    description: "Machine learning platform for financial services analyzing market trends and customer behavior. Processes 1M+ transactions daily with real-time insights and predictive modeling.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&crop=center",
-    tags: ["Python", "TensorFlow", "React", "D3.js", "AWS", "Apache Kafka"],
-    category: "AI & ML",
-    duration: "10 months",
-    teamSize: "12 specialists",
-    impact: "25% improvement in predictions"
-  },
-  {
-    title: "CloudScale Infrastructure",
-    description: "Enterprise cloud migration for a Fortune 500 company. Migrated 200+ applications to AWS with zero downtime, implementing microservices architecture and DevOps practices.",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop&crop=center",
-    tags: ["AWS", "Docker", "Kubernetes", "Terraform", "Jenkins", "Microservices"],
-    category: "Cloud Services",
-    duration: "12 months",
-    teamSize: "15 engineers",
-    impact: "60% cost reduction"
-  },
-  {
-    title: "RestaurantOS Management Suite",
-    description: "Complete restaurant management ecosystem for a 30-location chain. Includes POS system, inventory management, staff scheduling, and customer loyalty program with mobile ordering.",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop&crop=center",
-    tags: ["Vue.js", "Laravel", "MySQL", "Square API", "PWA"],
-    category: "Web Development",
-    duration: "7 months",
-    teamSize: "10 developers",
-    impact: "35% increase in efficiency"
-  },
-  {
-    title: "FitTracker Pro Wellness App",
-    description: "Comprehensive fitness and wellness platform with 100K+ active users. Features workout tracking, nutrition planning, social challenges, and integration with 15+ wearable devices.",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&crop=center",
-    tags: ["Flutter", "Firebase", "HealthKit", "Google Fit", "Machine Learning"],
-    category: "Mobile App",
-    duration: "9 months",
-    teamSize: "8 developers",
-    impact: "4.8★ app store rating"
-  }
-]
-
-const categories = ["All", "Web Development", "Mobile App", "AI & ML", "Cloud Services"]
+export const metadata: Metadata = {
+  title: "Our Portfolio - Case Studies & Project Showcases | Mahix InfoTech",
+  description: "Explore our recent projects and see how we've helped businesses transform their digital presence with innovative software engineering and custom applications.",
+  keywords: "portfolio Mahix InfoTech, custom software showcase, client case studies, web mobile solutions portfolio",
+}
 
 export default function PortfolioPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navigation />
-      <main>
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                Our Portfolio
-              </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-                Explore our recent projects and see how we've helped businesses transform their digital presence with innovative solutions.
-              </p>
+      <main className="flex-grow">
+        
+        {/* ── Hero Section ─────────────────────────── */}
+        <section
+          className="relative overflow-hidden bg-cover bg-center py-28 sm:py-40 flex flex-col items-center justify-center text-center text-white"
+          style={{
+            backgroundImage: `linear-gradient(to bottom, rgba(90,10,10,0.93), rgba(10,20,60,0.97)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1600')`
+          }}
+        >
+          {/* Grid overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+
+          {/* Glow orbs */}
+          <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-red-800/20 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-900/20 rounded-full blur-[120px] pointer-events-none" />
+
+          <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 z-10 flex flex-col items-center">
+            {/* Icon badge */}
+            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-red-900/30 border border-red-700/40 text-red-300 mb-8">
+              <FolderKanban className="h-8 w-8" />
             </div>
+
+            {/* Eyebrow */}
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-red-400 mb-5">
+              Case Studies & Highlights
+            </span>
+
+            <h1 className="text-5xl font-black tracking-tight sm:text-7xl max-w-4xl leading-[1.05] mb-6">
+              Our{" "}
+              <span className="bg-gradient-to-r from-red-400 via-red-300 to-blue-300 bg-clip-text text-transparent">
+                Portfolio
+              </span>
+            </h1>
+
+            <p className="mx-auto max-w-2xl text-lg text-white/70 leading-relaxed">
+              Discover how we build high-performance products, scale infrastructure, and deliver real business value to companies across the globe.
+            </p>
           </div>
         </section>
 
-        {/* Portfolio Grid */}
-        <section className="py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            {/* Filter Buttons */}
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {categories.map((category) => (
-                <Button
-                  key={category}
-                  variant={category === "All" ? "default" : "outline"}
-                  className="rounded-full"
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
+        {/* ── Portfolio Grid ───────────────────────── */}
+        <PortfolioGrid />
 
-            {/* Projects Grid */}
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {projects.map((project) => (
-                <Card key={project.title} className="overflow-hidden transition-all hover:shadow-lg group">
-                  <div 
-                    className="aspect-video relative overflow-hidden bg-cover bg-center transition-transform group-hover:scale-105"
-                    style={{ backgroundImage: `url(${project.image})` }}
-                  >
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+        {/* ── CTA Section ───────────────────────────── */}
+        <section className="py-24 bg-slate-50 border-t border-slate-100">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-900 via-red-800 to-blue-900 p-1 shadow-2xl">
+              <div className="rounded-[22px] bg-gradient-to-br from-red-900/95 to-blue-900/95 p-12 md:p-16 text-white relative overflow-hidden">
+                <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/5 pointer-events-none" />
+                <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-white/5 pointer-events-none" />
+
+                <div className="relative text-center">
+                  <h3 className="text-3xl md:text-4xl font-black leading-tight mb-4">
+                    Have a project in mind?
+                  </h3>
+                  <p className="text-white/70 max-w-xl mx-auto leading-relaxed text-base md:text-lg mb-10">
+                    Let's collaborate to build something remarkable. Get in touch with our team for a free consultation and project roadmap analysis.
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button
+                      asChild
+                      size="lg"
+                      className="rounded-xl bg-white text-red-900 hover:bg-slate-100 font-bold shadow-lg px-8 transition-all duration-300 hover:scale-105"
+                    >
+                      <Link href="/contact" className="flex items-center gap-2">
+                        Start Your Project
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      size="lg"
+                      variant="outline"
+                      className="rounded-xl border-white/20 bg-white/10 text-white hover:bg-white/20 font-semibold px-8 transition-all duration-300 hover:scale-105"
+                    >
+                      <Link href="/about">About Us</Link>
+                    </Button>
                   </div>
-                  <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
-                      <Badge variant="secondary">{project.category}</Badge>
-                    </div>
-                    <CardTitle className="text-xl">{project.title}</CardTitle>
-                    <CardDescription className="text-sm leading-relaxed">
-                      {project.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    {/* Project Stats */}
-                    <div className="grid grid-cols-3 gap-2 text-xs text-gray-600">
-                      <div className="flex items-center space-x-1">
-                        <Calendar className="h-3 w-3" />
-                        <span>{project.duration}</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <Users className="h-3 w-3" />
-                        <span>{project.teamSize}</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <TrendingUp className="h-3 w-3" />
-                        <span className="text-green-600 font-medium">{project.impact}</span>
-                      </div>
-                    </div>
-                    
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-1">
-                      {project.tags.map((tag) => (
-                        <Badge key={tag} variant="outline" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="bg-gray-50 py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Ready to Start Your Project?
-              </h2>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-                Let's discuss your ideas and create something amazing together. Get in touch for a free consultation.
-              </p>
-              <div className="mt-10 flex items-center justify-center gap-x-6">
-                <Button asChild size="lg">
-                  <Link href="/contact">Start Your Project</Link>
-                </Button>
-                <Button variant="outline" asChild size="lg">
-                  <Link href="/about">Learn More About Us</Link>
-                </Button>
+                </div>
               </div>
             </div>
           </div>
         </section>
+
       </main>
       <Footer />
     </div>

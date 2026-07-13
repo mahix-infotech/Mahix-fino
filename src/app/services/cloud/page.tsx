@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Cloud, CheckCircle, Server, Shield, Zap, Globe } from "lucide-react"
+import { Cloud, CheckCircle, Server, Shield, Zap, Globe, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
+import { Navigation } from "@/components/sections/navigation/navigation"
+import { Footer } from "@/components/sections/footer/footer"
+import { TechStackGrid } from "@/components/sections/tech-stack/tech-stack-grid"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -17,40 +18,54 @@ const features = [
   {
     icon: Server,
     title: "Infrastructure Management",
-    description: "Complete cloud infrastructure setup and management"
+    description: "Complete cloud infrastructure setup and management",
+    borderColor: "border-t-blue-500",
+    hoverColor: "hover:border-blue-500/30"
   },
   {
     icon: Shield,
     title: "Security & Compliance",
-    description: "Enterprise-grade security and compliance standards"
+    description: "Enterprise-grade security and compliance standards",
+    borderColor: "border-t-emerald-500",
+    hoverColor: "hover:border-emerald-500/30"
   },
   {
     icon: Zap,
     title: "Auto Scaling",
-    description: "Automatic scaling based on demand and traffic"
+    description: "Automatic scaling based on demand and traffic",
+    borderColor: "border-t-purple-500",
+    hoverColor: "hover:border-purple-500/30"
   },
   {
     icon: Globe,
     title: "Global Deployment",
-    description: "Deploy applications across multiple regions worldwide"
+    description: "Deploy applications across multiple regions worldwide",
+    borderColor: "border-t-orange-500",
+    hoverColor: "hover:border-orange-500/30"
   }
 ]
 
-const services = [
+const servicesList = [
   {
     title: "Cloud Migration",
-    description: "Seamlessly migrate your existing infrastructure to the cloud",
-    features: ["Migration Strategy", "Data Transfer", "Application Modernization", "Performance Optimization"]
+    description: "Seamlessly migrate your existing infrastructure to the cloud with zero-downtime workflows.",
+    features: ["Migration Strategy", "Data Transfer", "Application Modernization", "Performance Optimization"],
+    borderColor: "border-t-blue-500",
+    hoverColor: "hover:border-blue-500/30"
   },
   {
     title: "DevOps & CI/CD",
-    description: "Automated deployment pipelines and continuous integration",
-    features: ["Pipeline Setup", "Automated Testing", "Deployment Automation", "Monitoring & Alerts"]
+    description: "Automated deployment pipelines and continuous integration for rapid product release.",
+    features: ["Pipeline Setup", "Automated Testing", "Deployment Automation", "Monitoring & Alerts"],
+    borderColor: "border-t-emerald-500",
+    hoverColor: "hover:border-emerald-500/30"
   },
   {
     title: "Serverless Architecture",
-    description: "Build scalable applications with serverless technologies",
-    features: ["Function Development", "API Gateway Setup", "Event-driven Architecture", "Cost Optimization"]
+    description: "Build scalable applications with serverless technologies to reduce running hosting costs.",
+    features: ["Function Development", "API Gateway Setup", "Event-driven Architecture", "Cost Optimization"],
+    borderColor: "border-t-purple-500",
+    hoverColor: "hover:border-purple-500/30"
   }
 ]
 
@@ -100,244 +115,244 @@ const benefits = [
   }
 ]
 
+const relatedServices = [
+  {
+    title: "AI & ML",
+    description: "Deploy neural networks and predictive analytics directly to your applications.",
+    href: "/services/ai-ml",
+    borderColor: "border-t-blue-500",
+    hoverColor: "hover:border-blue-500/30"
+  },
+  {
+    title: "Custom Software",
+    description: "Scale business logic with tailored software development and microservices.",
+    href: "/services/custom-software",
+    borderColor: "border-t-emerald-500",
+    hoverColor: "hover:border-emerald-500/30"
+  },
+  {
+    title: "IT Consulting",
+    description: "Obtain audit guidelines for code bases and operational processes.",
+    href: "/services/it-consulting",
+    borderColor: "border-t-purple-500",
+    hoverColor: "hover:border-purple-500/30"
+  }
+]
+
 export default function CloudServicesPage() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-background">
       <Navigation />
-      <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="py-20 sm:py-32 bg-gradient-to-r from-orange-600 to-orange-800">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-white">
-            <div className="inline-flex h-16 w-16 items-center justify-center rounded-lg bg-white/10 backdrop-blur-sm mb-6">
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section 
+          className="relative overflow-hidden bg-cover bg-center py-24 sm:py-36 flex flex-col items-center justify-center text-center text-white"
+          style={{ 
+            backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.88), rgba(9, 9, 11, 0.96)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600')` 
+          }}
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 pointer-events-none" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-10 flex flex-col items-center">
+            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-400 border border-blue-500/25 mb-6">
               <Cloud className="h-8 w-8" />
             </div>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-              Cloud Services
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl max-w-3xl leading-[1.12]">
+              Cloud{" "}
+              <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+                Services
+              </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-orange-100">
-              Migrate, deploy, and manage your applications in the cloud with our comprehensive cloud services and DevOps expertise
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300 leading-relaxed">
+              Migrate, deploy, and manage your applications in the cloud with our comprehensive cloud services and DevOps expertise.
             </p>
             <div className="mt-8 flex justify-center gap-4">
-              <Button size="lg" variant="secondary" asChild>
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl border-none shadow-lg px-8 hover:scale-105 transition-all duration-300" asChild>
                 <Link href="/contact">Get Started</Link>
               </Button>
-              <Button size="lg" variant="secondary" asChild>
+              <Button size="lg" variant="outline" className="border-white/10 bg-white/5 text-white hover:bg-white/10 rounded-xl px-8 hover:scale-105 transition-all duration-300" asChild>
                 <Link href="/portfolio">View Projects</Link>
               </Button>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Features Section */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Cloud Service Capabilities
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-              Complete cloud solutions for modern businesses
-            </p>
+        {/* Features Section - Corporate Gray Background */}
+        <section className="py-20 bg-slate-50 dark:bg-slate-900/20 border-b border-black/[0.05] dark:border-white/[0.08]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
+                Cloud Service Capabilities
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+                Complete cloud solutions for modern businesses.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {features.map((feature) => {
+                const Icon = feature.icon
+                return (
+                  <Card key={feature.title} className={`border-t-4 ${feature.borderColor} border-x border-b border-black/[0.05] dark:border-white/[0.08] bg-background/70 backdrop-blur-md shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl ${feature.hoverColor}`}>
+                    <CardHeader className="text-center">
+                      <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 mx-auto mb-4">
+                        <Icon className="h-6 w-6" />
+                      </div>
+                      <CardTitle className="text-lg font-bold">{feature.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="text-center">
+                      <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                    </CardContent>
+                  </Card>
+                )
+              })}
+            </div>
           </div>
-          
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature) => {
-              const Icon = feature.icon
-              return (
-                <Card key={feature.title} className="text-center">
+        </section>
+
+        {/* Services Section - White Background */}
+        <section className="py-20 bg-background">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
+                DevOps & Architecture Solutions
+              </h2>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+              {servicesList.map((service) => (
+                <Card key={service.title} className={`border-t-4 ${service.borderColor} border-x border-b border-black/[0.05] dark:border-white/[0.08] bg-background flex flex-col justify-between shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl ${service.hoverColor}`}>
                   <CardHeader>
-                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 text-orange-600 mx-auto">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <CardTitle className="text-xl">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
+                    <CardDescription className="text-sm text-muted-foreground leading-relaxed mt-2">
+                      {service.description}
+                    </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">{feature.description}</p>
+                  <CardContent className="space-y-6">
+                    <ul className="space-y-2.5">
+                      {service.features.map((feature) => (
+                        <li key={feature} className="flex items-center text-sm text-muted-foreground">
+                          <CheckCircle className="mr-2 h-4 w-4 text-green-500 flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="w-full rounded-xl py-5" asChild>
+                      <Link href="/contact">Get Quote</Link>
+                    </Button>
                   </CardContent>
                 </Card>
-              )
-            })}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Services Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Cloud Services
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-            {services.map((service) => (
-              <Card key={service.title} className="relative">
-                <CardHeader>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                  <CardDescription className="text-base">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-sm text-gray-600">
-                        <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full" asChild>
-                    <Link href="/contact">Get Quote</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Cloud Providers Section */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Cloud Platforms We Work With
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-              Expertise across all major cloud platforms
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-            {cloudProviders.map((provider) => (
-              <Card key={provider.name} className="text-center">
-                <CardHeader>
-                  <div className="inline-flex h-16 w-16 items-center justify-center rounded-lg bg-gray-100 text-gray-600 mx-auto mb-4 text-xl font-bold">
-                    {provider.logo}
-                  </div>
-                  <CardTitle className="text-xl">{provider.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap justify-center gap-2">
+        {/* Cloud Providers Section - Corporate Gray Background */}
+        <section className="py-20 bg-slate-50 dark:bg-slate-900/20 border-y border-black/[0.05] dark:border-white/[0.08]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
+                Cloud Platforms We Work With
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+                Expertise across all major cloud platforms.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+              {cloudProviders.map((provider) => (
+                <Card key={provider.name} className="border border-black/[0.05] dark:border-white/[0.08] bg-background hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <CardHeader className="text-center">
+                    <div className="inline-flex h-16 w-16 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 mx-auto mb-4 text-xl font-bold border border-blue-500/10">
+                      {provider.logo}
+                    </div>
+                    <CardTitle className="text-lg font-bold">{provider.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex flex-wrap justify-center gap-2">
                     {provider.services.map((service) => (
-                      <Badge key={service} variant="outline" className="text-xs">
+                      <Badge key={service} variant="outline" className="text-xs rounded-full px-2.5 py-0.5">
                         {service}
                       </Badge>
                     ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Cloud Benefits
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-              Measurable improvements for your business
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {benefits.map((benefit) => (
-              <Card key={benefit.title} className="text-center">
-                <CardHeader>
-                  <div className="text-4xl font-bold text-orange-600 mb-2">
-                    {benefit.percentage}
-                  </div>
-                  <CardTitle className="text-xl">{benefit.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{benefit.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technologies Section */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              DevOps Technologies
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-              Modern tools for cloud infrastructure and deployment
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-            {technologies.map((tech) => (
-              <Card key={tech} className="p-4 text-center hover:shadow-md transition-shadow">
-                <CardContent className="p-0">
-                  <p className="text-sm font-medium text-gray-700">{tech}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Cloud Migration Process
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              { step: "1", title: "Assessment", description: "Evaluate current infrastructure and requirements" },
-              { step: "2", title: "Planning", description: "Create detailed migration strategy and timeline" },
-              { step: "3", title: "Migration", description: "Execute migration with minimal downtime" },
-              { step: "4", title: "Optimization", description: "Optimize performance and costs post-migration" }
-            ].map((phase) => (
-              <div key={phase.step} className="text-center">
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-orange-600 text-white font-bold text-lg mb-4">
-                  {phase.step}
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{phase.title}</h3>
-                <p className="text-gray-600">{phase.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-orange-600">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-white">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Ready to Move to the Cloud?
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-orange-100">
-              Let's discuss your cloud migration strategy and optimize your infrastructure
-            </p>
-            <div className="mt-8">
-              <Button size="lg" variant="secondary" asChild>
-                <Link href="/contact">Start Cloud Migration</Link>
-              </Button>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Benefits Section - White Background */}
+        <section className="py-20 bg-background border-b border-black/[0.05] dark:border-white/[0.08]">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
+                Cloud Benefits
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+                Measurable improvements for your business operations.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {benefits.map((benefit) => (
+                <Card key={benefit.title} className="border border-black/[0.05] dark:border-white/[0.08] bg-slate-50 dark:bg-slate-900/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <CardHeader className="text-center">
+                    <div className="text-4xl font-extrabold text-blue-600 dark:text-blue-400 mb-2">
+                      {benefit.percentage}
+                    </div>
+                    <CardTitle className="text-lg font-bold">{benefit.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-sm text-muted-foreground leading-relaxed">{benefit.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <TechStackGrid
+          technologies={technologies}
+          title="DevOps Technologies"
+          subtitle="Modern tools for cloud infrastructure and continuous deployment."
+        />
+
+        {/* Related Services Section - White Background */}
+        <section className="py-20 bg-background">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
+                Related Services
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+                Explore complementary solutions for unified digital infrastructure.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {relatedServices.map((service) => (
+                <Card key={service.title} className={`border-t-4 ${service.borderColor} border-x border-b border-black/[0.05] dark:border-white/[0.08] bg-background/50 flex flex-col justify-between shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl ${service.hoverColor}`}>
+                  <CardHeader>
+                    <CardTitle className="text-lg font-bold">{service.title}</CardTitle>
+                    <CardDescription className="text-sm text-muted-foreground mt-2 leading-relaxed">
+                      {service.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <Link 
+                      href={service.href} 
+                      className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 hover:text-blue-700 hover:underline gap-1 group"
+                    >
+                      Learn More
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
     </div>
-    <Footer />
-    </>
   )
 }

@@ -1,152 +1,109 @@
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Users, Target, Award, Lightbulb } from "lucide-react"
-import Link from "next/link"
+import { Navigation } from "@/components/sections/navigation/navigation"
+import { Footer } from "@/components/sections/footer/footer"
+import { AboutTimeline } from "@/components/pages/about/about-timeline"
+import type { Metadata } from "next"
 
-const values = [
-  {
-    icon: Target,
-    title: "Mission-Driven",
-    description: "We're committed to helping businesses succeed through innovative technology solutions that drive real results."
-  },
-  {
-    icon: Users,
-    title: "Client-Focused",
-    description: "Our clients' success is our success. We build long-term partnerships based on trust, transparency, and exceptional service."
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation First",
-    description: "We stay ahead of technology trends to deliver cutting-edge solutions that give our clients a competitive advantage."
-  },
-  {
-    icon: Award,
-    title: "Quality Excellence",
-    description: "We maintain the highest standards in everything we do, from code quality to project delivery and ongoing support."
-  }
-]
+export const metadata: Metadata = {
+  title: "About Us - Mahix InfoTech | Software Development Company",
+  description: "Learn about Mahix InfoTech, our story, core values, and our mission to transform businesses through cutting-edge web development, mobile apps, and AI/ML solutions.",
+  keywords: "about Mahix InfoTech, software development company story, company values, digital transformation mission",
+}
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#f8fafc] text-slate-800">
       <Navigation />
+      
       <main>
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                About Mahix InfoTech
-              </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-                We're a passionate team of developers, designers, and digital strategists dedicated to transforming businesses through innovative technology solutions.
-              </p>
-            </div>
+        {/* ══ 1. About Page Hero Section ══════════════════════════════════════ */}
+        <section 
+          className="relative overflow-hidden bg-cover bg-center py-28 lg:py-36 flex flex-col items-center justify-center text-center text-white"
+          style={{ 
+            backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.82), rgba(9, 9, 11, 0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1600')` 
+          }}
+        >
+          {/* Subtle grid pattern overlay for texture */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 pointer-events-none" />
+
+          <div className="relative mx-auto max-w-4xl px-6 sm:px-10 flex flex-col items-center z-10">
+            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              About Mahix InfoTech
+            </h1>
+            <p className="mx-auto mt-4 max-w-xl text-base sm:text-lg text-slate-300 leading-relaxed">
+              We design, build, and scale digital engineering solutions that drive long-term business value.
+            </p>
           </div>
         </section>
 
-        {/* Story Section */}
-        <section className="py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
-              <div>
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                  Our Story
-                </h2>
-                <p className="mt-6 text-lg leading-8 text-gray-600">
-                  Founded in 2019, Mahix InfoTech began with a simple mission: to help businesses leverage technology to achieve their goals. What started as a small team of passionate developers has grown into a full-service digital solutions company.
-                </p>
-                <p className="mt-6 text-lg leading-8 text-gray-600">
-                  Today, we serve clients across 15+ countries, from innovative startups to established enterprises. Our diverse team brings together expertise in web development, mobile applications, artificial intelligence, cloud computing, and digital marketing.
-                </p>
-                <p className="mt-6 text-lg leading-8 text-gray-600">
-                  We believe that great technology should be accessible to businesses of all sizes. That's why we focus on delivering high-quality, scalable solutions that grow with our clients' needs.
+        {/* ══ 2. Story / Content Alternating Rows ════════════════════════════ */}
+        <section className="py-12 pb-24">
+          <div className="mx-auto max-w-[1100px] px-6 sm:px-10 flex flex-col gap-24">
+            
+            {/* Row 1: About (Text Left, Image Right) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+              <div className="flex flex-col gap-4">
+                <div className="border-l-4 border-blue-600 pl-4">
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-900">About</h2>
+                </div>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  Mahix InfoTech is a digital engineering platform built on technical excellence and customer success. We bring together developers, cloud architects, designers, and consultants to deliver robust software solutions. We specialize in custom software, cloud migration, AI/ML systems, and performance SEO. Our commitment is to translate complex business goals into simple, high-performing digital environments.
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-6">
-                <Card>
-                  <CardContent className="p-6 text-center">
-                    <div className="text-3xl font-bold text-blue-600">50+</div>
-                    <div className="text-sm font-semibold text-gray-900">Happy Clients</div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardContent className="p-6 text-center">
-                    <div className="text-3xl font-bold text-green-600">100+</div>
-                    <div className="text-sm font-semibold text-gray-900">Projects Delivered</div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardContent className="p-6 text-center">
-                    <div className="text-3xl font-bold text-purple-600">15+</div>
-                    <div className="text-sm font-semibold text-gray-900">Countries Served</div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardContent className="p-6 text-center">
-                    <div className="text-3xl font-bold text-orange-600">5+</div>
-                    <div className="text-sm font-semibold text-gray-900">Years Experience</div>
-                  </CardContent>
-                </Card>
+              <div className="rounded-2xl overflow-hidden shadow-md border border-slate-100">
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800&h=500"
+                  alt="Team Collaboration"
+                  className="w-full h-64 object-cover"
+                />
               </div>
             </div>
+
+            {/* Row 2: Vision (Image Left, Text Right) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center md:flex-row-reverse">
+              <div className="rounded-2xl overflow-hidden shadow-md border border-slate-100 order-2 md:order-1">
+                <img
+                  src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800&h=500"
+                  alt="Future Technology Nodes Network"
+                  className="w-full h-64 object-cover"
+                />
+              </div>
+              <div className="flex flex-col gap-4 order-1 md:order-2">
+                <div className="border-l-4 border-blue-600 pl-4">
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-900">Vision</h2>
+                </div>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  To build a globally recognized tech ecosystems where businesses effortlessly scale, automate, and leverage modern digital architectures. We envision a future where high-grade software engineering is accessible to growing enterprises, empowering them to drive innovation, resilience, and collaborative success in their markets.
+                </p>
+              </div>
+            </div>
+
+            {/* Row 3: Mission (Text Left, Image Right) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+              <div className="flex flex-col gap-4">
+                <div className="border-l-4 border-blue-600 pl-4">
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-900">Mission</h2>
+                </div>
+                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                  To provide top-tier software engineering, cloud optimization, and digital growth services tailored to unique business models. We strive to guide brands back to operational simplicity, helping them deploy secure, scalable products that build trust with customers, stakeholders, and long-term partners.
+                </p>
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-md border border-slate-100">
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=500"
+                  alt="Business Growth Analytics"
+                  className="w-full h-64 object-cover"
+                />
+              </div>
+            </div>
+
           </div>
         </section>
 
-        {/* Values Section */}
-        <section className="bg-gray-50 py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Our Values
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-                These core values guide everything we do and shape how we work with our clients and each other.
-              </p>
-            </div>
-            <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {values.map((value) => {
-                const Icon = value.icon
-                return (
-                  <Card key={value.title}>
-                    <CardContent className="p-6 text-center">
-                      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
-                        <Icon className="h-6 w-6" />
-                      </div>
-                      <h3 className="mt-4 text-lg font-semibold text-gray-900">{value.title}</h3>
-                      <p className="mt-2 text-sm text-gray-600">{value.description}</p>
-                    </CardContent>
-                  </Card>
-                )
-              })}
-            </div>
-          </div>
-        </section>
+        {/* ══ 3. Our Story Timeline ══════════════════════════════════════════ */}
+        <AboutTimeline />
 
-        {/* CTA Section */}
-        <section className="py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Ready to Work Together?
-              </h2>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-                Let's discuss your project and see how we can help you achieve your digital transformation goals.
-              </p>
-              <div className="mt-10 flex items-center justify-center gap-x-6">
-                <Button asChild size="lg">
-                  <Link href="/contact">Get Started</Link>
-                </Button>
-                <Button variant="outline" asChild size="lg">
-                  <Link href="/portfolio">View Our Work</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
+
       <Footer />
     </div>
   )

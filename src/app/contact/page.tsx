@@ -1,12 +1,8 @@
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Phone, Mail, MapPin, Clock } from "lucide-react"
+import { Navigation } from "@/components/sections/navigation/navigation"
+import { Footer } from "@/components/sections/footer/footer"
+import { ContactForm } from "@/components/pages/contact/contact-form"
+import { ContactInfo } from "@/components/pages/contact/contact-info"
+import { MessageCircle } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -17,201 +13,128 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navigation />
-      <main>
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                Get In Touch
-              </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-                Ready to start your next project? Let's discuss how we can help transform your business with our digital solutions.
-              </p>
+      <main className="flex-grow">
+
+        {/* ── Hero ─────────────────────────────────── */}
+        <section
+          className="relative overflow-hidden bg-cover bg-center py-28 sm:py-40 flex flex-col items-center justify-center text-center text-white"
+          style={{
+            backgroundImage: `linear-gradient(to bottom, rgba(90,10,10,0.93), rgba(10,20,60,0.97)), url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=1600')`
+          }}
+        >
+          {/* Grid overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+
+          {/* Glow orbs */}
+          <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-red-800/20 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blue-900/20 rounded-full blur-[120px] pointer-events-none" />
+
+          <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 z-10 flex flex-col items-center">
+            {/* Icon badge */}
+            <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-red-900/30 border border-red-700/40 text-red-300 mb-8">
+              <MessageCircle className="h-8 w-8" />
+            </div>
+
+            {/* Eyebrow */}
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-red-400 mb-5">
+              Let's work together
+            </span>
+
+            <h1 className="text-5xl font-black tracking-tight sm:text-7xl max-w-4xl leading-[1.05] mb-6">
+              Get in{" "}
+              <span className="bg-gradient-to-r from-red-400 via-red-300 to-blue-300 bg-clip-text text-transparent">
+                Touch
+              </span>
+            </h1>
+
+            <p className="mx-auto max-w-2xl text-lg text-white/70 leading-relaxed">
+              Ready to start your next project? Let's discuss how we can help transform your business with innovative digital solutions — we typically reply within 24 hours.
+            </p>
+
+            {/* Trust pills */}
+            <div className="flex flex-wrap justify-center gap-3 mt-10">
+              {["⚡ Under 24hr Reply", "✅ 98% Success Rate", "🌍 Global Clients", "⭐ 4.9/5 Rating"].map((item) => (
+                <span key={item} className="px-4 py-2 rounded-full bg-white/10 border border-white/15 text-sm font-semibold text-white/80 backdrop-blur-sm">
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Contact Form & Info */}
-        <section className="py-20">
+        {/* ── Contact Body ─────────────────────────── */}
+        <section className="py-24 bg-slate-50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
-              {/* Contact Form */}
-              <div>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Send us a message</CardTitle>
-                    <CardDescription>
-                      Fill out the form below and we'll get back to you within 24 hours.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                      <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name</Label>
-                        <Input id="firstName" placeholder="John" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name</Label>
-                        <Input id="lastName" placeholder="Doe" />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="john@example.com" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Company</Label>
-                      <Input id="company" placeholder="Your Company Name" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="service">Service Interested In</Label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a service" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="web-development">Web Development</SelectItem>
-                          <SelectItem value="mobile-apps">Mobile Apps</SelectItem>
-                          <SelectItem value="ai-ml">AI & ML Solutions</SelectItem>
-                          <SelectItem value="cloud">Cloud Services</SelectItem>
-                          <SelectItem value="seo">SEO & Digital Marketing</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea 
-                        id="message" 
-                        placeholder="Tell us about your project requirements..."
-                        className="min-h-[120px]"
-                      />
-                    </div>
-                    <Button className="w-full" size="lg">
-                      Send Message
-                    </Button>
-                  </CardContent>
-                </Card>
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-5">
+
+              {/* Form — wider column */}
+              <div className="lg:col-span-3">
+                <ContactForm />
               </div>
 
-              {/* Contact Information */}
-              <div className="space-y-8">
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
-                  <div className="space-y-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
-                        <Phone className="h-6 w-6" />
+              {/* Info — narrower column */}
+              <div className="lg:col-span-2">
+                <ContactInfo />
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* ── Map / CTA Banner ─────────────────────── */}
+        <section className="py-24 bg-white border-t border-slate-100">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-900 via-red-800 to-blue-900 p-1 shadow-2xl">
+              <div className="rounded-[22px] bg-gradient-to-br from-red-900/95 to-blue-900/95 p-12 md:p-16 text-white relative overflow-hidden">
+                <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/5 pointer-events-none" />
+                <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-white/5 pointer-events-none" />
+
+                <div className="relative grid md:grid-cols-2 gap-10 items-center">
+                  <div>
+                    <span className="text-xs font-bold uppercase tracking-widest text-red-300 mb-3 block">Our Office</span>
+                    <h2 className="text-3xl md:text-4xl font-black mb-4 leading-tight">Visit us in Dindigul</h2>
+                    <p className="text-white/70 leading-relaxed text-base">
+                      89/4, Scheme Road, Krishna Raja Harini Illam,<br />
+                      Near Head Post Office Road, Dindigul,<br />
+                      Tamil Nadu — 624001, India
+                    </p>
+                    <div className="mt-8 space-y-3">
+                      <div className="flex items-center gap-3 text-white/80 text-sm">
+                        <span className="text-red-300">📞</span>
+                        <span>+91 8608610760</span>
                       </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Phone</h3>
-                        <p className="text-gray-600">+91 8608610760</p>
-                        <p className="text-sm text-gray-500">Mon-Fri 9am-6pm EST</p>
+                      <div className="flex items-center gap-3 text-white/80 text-sm">
+                        <span className="text-red-300">✉</span>
+                        <span>contact@mahixinfotech.com</span>
                       </div>
-                    </div>
-                    
-                    <div className="flex items-start space-x-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 text-green-600">
-                        <Mail className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Email</h3>
-                        <p className="text-gray-600">contact@mahixinfotech.com</p>
-                        <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start space-x-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
-                        <MapPin className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Office</h3>
-                        <p className="text-gray-600">89/4, Scheme Road, Krishna Raja Harini Illam,<br />Near Head Post Office Road, Dindigul, Tamil Nadu 624001</p>
-                        <p className="text-sm text-gray-500">India</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start space-x-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 text-orange-600">
-                        <Clock className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-gray-900">Business Hours</h3>
-                        <p className="text-gray-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                        <p className="text-gray-600">Saturday: 10:00 AM - 4:00 PM</p>
-                        <p className="text-gray-600">Sunday: Closed</p>
+                      <div className="flex items-center gap-3 text-white/80 text-sm">
+                        <span className="text-red-300">🕐</span>
+                        <span>Mon–Fri: 9am – 6pm &nbsp;|&nbsp; Sat: 10am – 4pm</span>
                       </div>
                     </div>
                   </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      { label: "Response Time", value: "< 24 hrs" },
+                      { label: "Project Success", value: "98%" },
+                      { label: "Client Rating", value: "4.9 / 5" },
+                      { label: "Years Active", value: "5+" },
+                    ].map((stat) => (
+                      <div key={stat.label} className="rounded-2xl bg-white/10 border border-white/15 p-6 text-center backdrop-blur-sm">
+                        <div className="text-3xl font-black text-white mb-1">{stat.value}</div>
+                        <div className="text-xs text-white/60 font-semibold uppercase tracking-wider">{stat.label}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-
-                {/* Quick Stats */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Why Choose Mahix InfoTech?</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Response Time</span>
-                        <span className="font-semibold">{"< 24 hours"}</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Project Success Rate</span>
-                        <span className="font-semibold">98%</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Client Satisfaction</span>
-                        <span className="font-semibold">4.9/5</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-gray-600">Years in Business</span>
-                        <span className="font-semibold">5+</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Map Section */}
-        <section className="py-16 bg-gray-50">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Find Us Here
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-600">
-                Visit our office in Dindigul, Tamil Nadu
-              </p>
-            </div>
-            
-            <div className="mx-auto max-w-4xl">
-              <div className="overflow-hidden rounded-lg shadow-lg">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.574!2d77.9695!3d10.3624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c58db3e6c12d%3A0x4b7a2f3e5b8d3c5e!2sDindigul%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1760683209544!5m2!1sen!2sin" 
-                  width="100%" 
-                  height="400" 
-                  style={{border: 0}} 
-                  allowFullScreen={true}
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </div>

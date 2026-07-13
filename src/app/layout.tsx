@@ -2,8 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { LoadingOptimizer } from "@/components/loading-optimizer";
-import { PerformanceMonitor } from "@/components/performance-monitor";
+import { WhatsAppFloating } from "@/components/whatsapp-floating";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -54,9 +53,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
       </head>
-      <body className={`${inter.className} antialiased`}>
-        <LoadingOptimizer />
-        <PerformanceMonitor />
+      <body className={`${inter.className} antialiased`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -64,8 +61,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <WhatsAppFloating />
         </ThemeProvider>
       </body>
     </html>
   );
 }
+
