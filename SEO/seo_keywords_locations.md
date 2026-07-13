@@ -256,3 +256,10 @@ These are the 50 search terms configured for our local landing pages. On the liv
 48. Mobile App Developer Near Me in **[Location]**
 49. Web Designer Near Me in **[Location]**
 50. Digital Marketing Services Near Me in **[Location]**
+51. Software Development Agency in **[Location]**
+52. Web Development Company in **[Location]**
+53. Mobile App Development Company in **[Location]**
+54. Shopify Developer in **[Location]**
+55. WordPress Developer in **[Location]**
+56. Next.js Web Developer in **[Location]**
+57. Custom Software Development Company in **[Location]**

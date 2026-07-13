@@ -154,7 +154,14 @@ export const rawKeywords = [
   "SEO Expert Near Me in [Location]",
   "Mobile App Developer Near Me in [Location]",
   "Web Designer Near Me in [Location]",
-  "Digital Marketing Services Near Me in [Location]"
+  "Digital Marketing Services Near Me in [Location]",
+  "Software Development Agency in [Location]",
+  "Web Development Company in [Location]",
+  "Mobile App Development Company in [Location]",
+  "Shopify Developer in [Location]",
+  "WordPress Developer in [Location]",
+  "Next.js Web Developer in [Location]",
+  "Custom Software Development Company in [Location]"
 ]
 
 // Get keywords formatted for a specific location
