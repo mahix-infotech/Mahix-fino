@@ -8,6 +8,8 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
+import { ServicesSection } from "@/components/sections/services/services-section"
+import { KeywordCloud } from "@/components/pages/seo/keyword-cloud"
 import { locationsList, getKeywordsForLocation, rawKeywords, parseSeoSlug, seoServicesList } from "@/lib/seo-data"
 
 interface PageProps {
@@ -262,31 +264,11 @@ export default async function LocationPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* ─── Programmatic SEO Tag Cloud Section (Natural Keyword Integration) ── */}
-        <section className="py-20 bg-slate-50 border-y border-slate-100">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl mx-auto text-center mb-12">
-              <h2 className="text-2xl font-black text-slate-900 sm:text-3xl">
-                SEO Search Intent & Capabilities in {name}
-              </h2>
-              <p className="mt-3 text-slate-500 text-xs sm:text-sm leading-relaxed">
-                We design and optimize software setups to match exact user queries, search criteria, and Google local listings. Below are the key SEO optimization themes we target:
-              </p>
-            </div>
+        {/* ─── Our Services Carousel ────────────────────────────────────── */}
+        <ServicesSection />
 
-            <div className="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto">
-              {localKeywords.map((keyword, index) => (
-                <Badge
-                  key={index}
-                  variant="secondary"
-                  className="bg-white border border-slate-200/60 text-slate-600 text-xs font-semibold px-3 py-1.5 rounded-full shadow-xs hover:border-blue-400 hover:bg-blue-50/20 transition-all select-none"
-                >
-                  {keyword}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* ─── Collapsible SEO Keyword Cloud ────────────────────────────── */}
+        <KeywordCloud locationName={name} keywords={localKeywords} />
 
         {/* ─── Localized Call To Action Section ────────────────────────────── */}
         <section className="py-20 bg-white">
