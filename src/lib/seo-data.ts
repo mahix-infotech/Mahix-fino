@@ -4,8 +4,9 @@ export interface LocationItem {
   category: string
 }
 
-// Cleaned list of categories and their raw locations
+// Cleaned list of categories and their raw locations for both Chennai and Dindigul
 export const regionsRaw: Record<string, string[]> = {
+  // ── Chennai Regions ──
   "North Chennai": [
     "Tondiarpet", "Washermanpet", "Royapuram", "Tiruvottiyur", "Manali", 
     "Madhavaram", "Perambur", "Vyasarpadi", "Korukkupet", "Ennore", 
@@ -65,12 +66,63 @@ export const regionsRaw: Record<string, string[]> = {
     "Manapakkam", "Polichalur", "Urapakkam", "Guduvanchery", "Maraimalai Nagar", 
     "Mahindra World City"
   ],
+
+  // ── Dindigul Regions ──
+  "Dindigul City Core": [
+    "Dindigul", "Clock Tower", "Junction", "Old Bus Stand", "New Bus Stand",
+    "Collectorate", "Gandhi Nagar", "Nehru Nagar", "Sivasakthi Nagar",
+    "Maharaja Nagar", "Mullai Nagar", "Kanaka Nagar", "Nagal Nagar",
+    "Thirunagar", "Alagapuri", "LMS Junction", "Palani Road", "Kodaikanal Road"
+  ],
+  "Dindigul City Neighbourhoods": [
+    "Begampur", "Chinnalapatti", "Thadikombu", "Reddiarchatram",
+    "Pappakovil", "Thamaraikulam", "Kallimadai", "Kumbalapatti",
+    "Usampatti", "Vakkampatti", "Mullipadi", "Keelakuyilkudi",
+    "Melakuyilkudi", "Thottipalayam", "Ayyalur", "Thottanuthu",
+    "Neikarapatti", "Sakkimangalam", "Keelamangalam", "Kamarajar Nagar",
+    "Ambedkar Nagar", "Thiruvalluvar Nagar", "Pappampalayam",
+    "Kudalnagar", "Anna Nagar Dindigul"
+  ],
+  "Dindigul District Major Towns": [
+    "Palani", "Kodaikanal", "Oddanchatram", "Vedasandur", "Natham",
+    "Nilakottai", "Batlagundu", "Vadamadurai", "Athoor", "Gujiliamparai",
+    "Vembarpatti", "Ayakudi", "Ayyampatti", "Shanarpatti"
+  ],
+  "Palani Taluk Areas": [
+    "Palani Hill", "Palani Temple Road", "Thirupuvanam", "Pattiveeranpatti",
+    "Ammainaickanur", "Ayyampalayam", "Balasamudram", "Keeranur",
+    "Govindaperi", "Sempatti"
+  ],
+  "Kodaikanal & Hill Areas": [
+    "Kodaikanal Lake", "Kodaikanal Town", "Pillar Rocks", "Berijam",
+    "Poomparai", "Sirumalai", "Pallangi", "Mannavanur"
+  ],
+  "Industrial & Commercial Zones (Dindigul)": [
+    "SIDCO Industrial Estate Dindigul", "Dindigul Fort Area",
+    "Palam", "Dindigul Railway Station", "Dindigul Lock Factory Area",
+    "Textiles Hub Dindigul", "MSME Hub Dindigul"
+  ],
+  "Growing Suburbs & Small Towns (Dindigul)": [
+    "Ambathurai", "Gopalpatti", "Sellur", "Periavadipatti", "Ookadu",
+    "Kuttiampatti", "Nagalnaickenpatti", "Mettupatti", "Viruveedu",
+    "Thoppampatti", "Keelapatti", "Krishnankoil", "Annamalainagar",
+    "Seelapadi", "Ramanathapuram Dindigul", "Palanichettipatti",
+    "Eriodu", "Sitharevu", "Kanthampatti", "Thenkarai",
+    "Valayapatti", "Poolankulam", "Orikkai", "Ayikudy"
+  ],
+
+  // ── Combined High-Value Clusters ──
   "High-Value SEO Clusters": [
+    // Chennai
     "Velachery", "Anna Nagar", "Adyar", "T. Nagar", "Nungambakkam", "Porur", 
     "Guindy", "Tambaram", "Pallavaram", "Chromepet", "Sholinganallur", 
     "Perungudi", "Medavakkam", "Pallikaranai", "Thoraipakkam", "Karapakkam", 
     "Navalur", "Siruseri", "Ambattur", "Mogappair", "KK Nagar", "Ashok Nagar", 
-    "Kodambakkam", "Mylapore", "Besant Nagar", "Thiruvanmiyur", "ECR", "OMR", "Kilpauk"
+    "Kodambakkam", "Mylapore", "Besant Nagar", "Thiruvanmiyur", "ECR", "OMR", "Kilpauk",
+    // Dindigul
+    "Dindigul", "Palani", "Kodaikanal", "Batlagundu", "Oddanchatram",
+    "Natham", "Nilakottai", "Vedasandur", "Chinnalapatti", "Athoor",
+    "Thadikombu", "Vadamadurai", "Gujiliamparai", "Reddiarchatram"
   ]
 }
 
@@ -103,7 +155,7 @@ Object.entries(regionsRaw).forEach(([category, names]) => {
 
 export const locationsList: LocationItem[] = Array.from(uniqueMap.values())
 
-// Cleaned list of 50 local SEO keywords (with [Location] placeholder for replacement)
+// Cleaned list of local SEO keywords (with [Location] placeholder for replacement)
 export const rawKeywords = [
   "Website Development in [Location]",
   "Website Design in [Location]",
