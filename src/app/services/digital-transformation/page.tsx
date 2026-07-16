@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+﻿import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Sparkles, ArrowRight, Layers, Workflow, Server, Lightbulb, CheckCircle2, ArrowUpRight } from "lucide-react"
@@ -7,6 +7,7 @@ import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
 import { TechStackGrid } from "@/components/sections/tech-stack/tech-stack-grid"
 import type { Metadata } from "next"
+import { PricingSection } from "@/components/sections/pricing/pricing-section"
 
 export const metadata: Metadata = {
   title: "Digital Transformation Strategy & Systems | Mahix InfoTech",
@@ -74,30 +75,54 @@ const technologies = [
   "React & Next.js", "Zapier Webhooks", "OAuth 2.0 Security", "Elasticsearch Nodes", "Kafka Pipelines", "GitLab CI"
 ]
 
-const relatedServices = [
+const digitalTransformPricing = [
   {
-    title: "IT Consulting",
-    description: "Obtain audit guidelines for code bases and operational processes.",
-    href: "/services/it-consulting",
-    borderColor: "border-t-blue-500",
-    hoverColor: "hover:border-blue-500/30"
+    name: "Assessment",
+    price: "â‚¹14,999",
+    period: "/project",
+    tagline: "Understand where you are and chart the path forward.",
+    features: [
+      "Digital maturity audit",
+      "Process bottleneck analysis",
+      "Technology gap assessment",
+      "Transformation roadmap",
+      "Executive presentation",
+    ],
+    cta: "Book Assessment",
   },
   {
-    title: "CRM Solutions",
-    description: "Deploy and optimize HubSpot and Salesforce configurations to capture leads.",
-    href: "/services/crm-solutions",
-    borderColor: "border-t-emerald-500",
-    hoverColor: "hover:border-emerald-500/30"
+    name: "Transform",
+    price: "â‚¹99,999",
+    period: "/project",
+    tagline: "Execute your digital transformation across key areas.",
+    features: [
+      "Process digitization (up to 5 workflows)",
+      "Cloud migration support",
+      "Custom software / automation",
+      "Staff training & change management",
+      "KPI & metrics dashboard",
+      "3 months consulting support",
+    ],
+    highlighted: true,
+    gradient: "from-amber-500 to-orange-600",
+    cta: "Most Popular",
   },
   {
-    title: "AI & ML",
-    description: "Deploy neural networks and predictive analytics directly to your applications.",
-    href: "/services/ai-ml",
-    borderColor: "border-t-purple-500",
-    hoverColor: "hover:border-purple-500/30"
-  }
+    name: "Enterprise",
+    price: "â‚¹2,99,999+",
+    period: "/project",
+    tagline: "Full enterprise digital transformation program.",
+    features: [
+      "End-to-end transformation strategy",
+      "Multi-department rollout",
+      "ERP / CRM modernization",
+      "AI & automation integration",
+      "Executive coaching",
+      "Dedicated transformation lead",
+    ],
+    cta: "Contact Us",
+  },
 ]
-
 export default function DigitalTransformationPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -213,41 +238,13 @@ export default function DigitalTransformationPage() {
           subtitle="We select programming languages and server components suited for scaling."
         />
 
-        {/* Related Services Section - White Background */}
-        <section className="py-20 bg-background">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
-                Related Services
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Explore complementary solutions to scale your systems.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedServices.map((service) => (
-                <Card key={service.title} className={`border-t-4 ${service.borderColor} border-x border-b border-black/[0.05] dark:border-white/[0.08] bg-background/50 flex flex-col justify-between shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl ${service.hoverColor}`}>
-                  <CardHeader>
-                    <CardTitle className="text-lg font-bold">{service.title}</CardTitle>
-                    <CardDescription className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                      {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <Link 
-                      href={service.href} 
-                      className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 hover:text-blue-700 hover:underline gap-1 group"
-                    >
-                      Learn More
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        
+        {/* Transparent Pricing */}
+        <PricingSection
+          plans={digitalTransformPricing}
+          title="Plans & Packages"
+          subtitle="Straightforward pricing built for your goals. No lock-ins, no surprises."
+        />
       </main>
       <Footer />
     </div>

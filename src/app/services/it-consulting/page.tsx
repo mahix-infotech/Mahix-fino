@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+﻿import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { HelpCircle, ArrowRight, ShieldAlert, Cpu, CheckCircle2, ArrowUpRight } from "lucide-react"
@@ -7,6 +7,7 @@ import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
 import { TechStackGrid } from "@/components/sections/tech-stack/tech-stack-grid"
 import type { Metadata } from "next"
+import { PricingSection } from "@/components/sections/pricing/pricing-section"
 
 export const metadata: Metadata = {
   title: "IT Consulting & Technology Audits | Mahix InfoTech",
@@ -74,30 +75,54 @@ const technologies = [
   "GitLab CI", "Jira & Confluence", "TypeScript Audits", "SQL Diagnostics", "Docker Containers", "Kubernetes"
 ]
 
-const relatedServices = [
+const itConsultingPricing = [
   {
-    title: "CRM Solutions",
-    description: "Deploy and optimize HubSpot and Salesforce configurations to capture leads.",
-    href: "/services/crm-solutions",
-    borderColor: "border-t-blue-500",
-    hoverColor: "hover:border-blue-500/30"
+    name: "Advisory",
+    price: "â‚¹4,999",
+    period: "/hour",
+    tagline: "Expert guidance on technology decisions and architecture.",
+    features: [
+      "1-on-1 strategy sessions",
+      "Tech stack recommendations",
+      "Architecture review",
+      "Vendor evaluation support",
+      "Written summary report",
+    ],
+    cta: "Book Session",
   },
   {
-    title: "Digital Transformation",
-    description: "Modernize legacy systems and digitize workflows for absolute speed.",
-    href: "/services/digital-transformation",
-    borderColor: "border-t-emerald-500",
-    hoverColor: "hover:border-emerald-500/30"
+    name: "Monthly Retainer",
+    price: "â‚¹29,999",
+    period: "/month",
+    tagline: "Dedicated IT consulting partner for your business.",
+    features: [
+      "Up to 10 hours/month",
+      "Technology roadmap planning",
+      "Code & architecture reviews",
+      "Hiring & team setup guidance",
+      "Security best practices",
+      "Monthly strategy report",
+    ],
+    highlighted: true,
+    gradient: "from-slate-600 to-slate-800",
+    cta: "Most Popular",
   },
   {
-    title: "Custom Software",
-    description: "Scale business logic with tailored software development and microservices.",
-    href: "/services/custom-software",
-    borderColor: "border-t-purple-500",
-    hoverColor: "hover:border-purple-500/30"
-  }
+    name: "Project Consulting",
+    price: "â‚¹74,999+",
+    period: "/project",
+    tagline: "Embedded consulting for a specific project or initiative.",
+    features: [
+      "Full project lifecycle support",
+      "Agile delivery oversight",
+      "Vendor & contractor management",
+      "Risk & QA management",
+      "Stakeholder reporting",
+      "Dedicated IT consultant",
+    ],
+    cta: "Contact Us",
+  },
 ]
-
 export default function ITConsultingPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -213,41 +238,13 @@ export default function ITConsultingPage() {
           subtitle="We use industry standards to test and run diagnostic assessments on your stack."
         />
 
-        {/* Related Services Section - White Background */}
-        <section className="py-20 bg-background">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
-                Related Services
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Explore complementary solutions to optimize your systems.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedServices.map((service) => (
-                <Card key={service.title} className={`border-t-4 ${service.borderColor} border-x border-b border-black/[0.05] dark:border-white/[0.08] bg-background/50 flex flex-col justify-between shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl ${service.hoverColor}`}>
-                  <CardHeader>
-                    <CardTitle className="text-lg font-bold">{service.title}</CardTitle>
-                    <CardDescription className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                      {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <Link 
-                      href={service.href} 
-                      className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 hover:text-blue-700 hover:underline gap-1 group"
-                    >
-                      Learn More
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        
+        {/* Transparent Pricing */}
+        <PricingSection
+          plans={itConsultingPricing}
+          title="Plans & Packages"
+          subtitle="Straightforward pricing built for your goals. No lock-ins, no surprises."
+        />
       </main>
       <Footer />
     </div>

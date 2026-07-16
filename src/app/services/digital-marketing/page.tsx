@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+﻿import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Megaphone, CheckCircle, ArrowRight, Share2, BarChart3, Target, ArrowUpRight } from "lucide-react"
@@ -7,6 +7,7 @@ import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
 import { TechStackGrid } from "@/components/sections/tech-stack/tech-stack-grid"
 import type { Metadata } from "next"
+import { PricingSection } from "@/components/sections/pricing/pricing-section"
 
 export const metadata: Metadata = {
   title: "Digital Marketing Services | Mahix InfoTech",
@@ -74,30 +75,56 @@ const technologies = [
   "Google Analytics 4", "Hotjar Maps", "Semrush Tools", "Canva / Figma", "WordPress CMS", "ActiveCampaign"
 ]
 
-const relatedServices = [
+const digitalMarketingPricing = [
   {
-    title: "SEO Optimization",
-    description: "Accelerate your search presence and drive high-intent organic sales traffic.",
-    href: "/services/seo",
-    borderColor: "border-t-blue-500",
-    hoverColor: "hover:border-blue-500/30"
+    name: "Starter",
+    price: "â‚¹9,999",
+    period: "/month",
+    tagline: "Build your online presence with a solid digital foundation.",
+    features: [
+      "Social media management (2 platforms)",
+      "8 posts/month",
+      "Basic ad setup (â‚¹5K ad budget)",
+      "Monthly performance report",
+      "Brand graphic templates",
+    ],
+    cta: "Get Started",
   },
   {
-    title: "Google Ads",
-    description: "Launch Pay-Per-Click campaigns designed to capture immediate transactional traffic.",
-    href: "/services/google-ads",
-    borderColor: "border-t-emerald-500",
-    hoverColor: "hover:border-emerald-500/30"
+    name: "Professional",
+    price: "â‚¹24,999",
+    period: "/month",
+    tagline: "Full digital marketing to grow leads and brand authority.",
+    features: [
+      "4 social media platforms",
+      "20 posts/month",
+      "Meta + Google Ads management",
+      "Email marketing campaign",
+      "SEO content (2 blogs)",
+      "Conversion tracking setup",
+      "Bi-weekly strategy calls",
+    ],
+    highlighted: true,
+    gradient: "from-pink-500 to-rose-600",
+    cta: "Most Popular",
   },
   {
-    title: "Meta Ads",
-    description: "Run retargeting and creative campaigns on Facebook and Instagram feed displays.",
-    href: "/services/meta-ads",
-    borderColor: "border-t-purple-500",
-    hoverColor: "hover:border-purple-500/30"
-  }
+    name: "Enterprise",
+    price: "â‚¹54,999+",
+    period: "/month",
+    tagline: "360Â° digital marketing with dedicated team & strategy.",
+    features: [
+      "All platforms managed",
+      "40+ posts/month",
+      "Full ad funnel management",
+      "Influencer marketing",
+      "Video content production",
+      "Monthly strategy workshop",
+      "Dedicated account manager",
+    ],
+    cta: "Contact Us",
+  },
 ]
-
 export default function DigitalMarketingPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -213,41 +240,13 @@ export default function DigitalMarketingPage() {
           subtitle="We integrate conversion metrics and reporting directly to your custom data dashboards."
         />
 
-        {/* Related Services Section - White Background */}
-        <section className="py-20 bg-background">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
-                Related Services
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Explore complementary solutions to increase brand visibility.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedServices.map((service) => (
-                <Card key={service.title} className={`border-t-4 ${service.borderColor} border-x border-b border-black/[0.05] dark:border-white/[0.08] bg-background/50 flex flex-col justify-between shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl ${service.hoverColor}`}>
-                  <CardHeader>
-                    <CardTitle className="text-lg font-bold">{service.title}</CardTitle>
-                    <CardDescription className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                      {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <Link 
-                      href={service.href} 
-                      className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 hover:text-blue-700 hover:underline gap-1 group"
-                    >
-                      Learn More
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        
+        {/* Transparent Pricing */}
+        <PricingSection
+          plans={digitalMarketingPricing}
+          title="Plans & Packages"
+          subtitle="Straightforward pricing built for your goals. No lock-ins, no surprises."
+        />
       </main>
       <Footer />
     </div>

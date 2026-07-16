@@ -1,15 +1,9 @@
 "use client"
 
 import * as React from "react"
-import dynamic from "next/dynamic"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
-
-const Ballpit = dynamic(() => import("./ballpit"), {
-  ssr: false,
-  loading: () => null,
-})
 
 const slides = [
   {
@@ -49,8 +43,10 @@ const slides = [
 
 export function HeroSection() {
   const [activeSlide, setActiveSlide] = React.useState(0)
-  const [isMobile, setIsMobile] = React.useState(false)
-  const [loadSimulation, setLoadSimulation] = React.useState(false)
+  const [activeVideo, setActiveVideo] = React.useState(0)
+  
+  const videoRef0 = React.useRef<HTMLVideoElement>(null)
+  const videoRef1 = React.useRef<HTMLVideoElement>(null)
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -59,37 +55,29 @@ export function HeroSection() {
     return () => clearInterval(timer)
   }, [])
 
-  React.useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768)
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
-  }, [])
-
-  React.useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
-
-    const win = window as Window & {
-      requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number
-      cancelIdleCallback?: (handle: number) => void
-    }
-
-    let timeoutId: ReturnType<typeof setTimeout> | undefined
-    let idleId: number | undefined
-
-    timeoutId = setTimeout(() => {
-      if (win.requestIdleCallback) {
-        idleId = win.requestIdleCallback(() => setLoadSimulation(true), { timeout: 1200 })
-      } else {
-        setLoadSimulation(true)
-      }
-    }, 700)
-
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId)
-      if (idleId && win.cancelIdleCallback) win.cancelIdleCallback(idleId)
+  const handleEnded0 = React.useCallback(() => {
+    setActiveVideo(1)
+    if (videoRef1.current) {
+      videoRef1.current.currentTime = 0
+      videoRef1.current.play().catch(() => {})
     }
   }, [])
+
+  const handleEnded1 = React.useCallback(() => {
+    setActiveVideo(0)
+    if (videoRef0.current) {
+      videoRef0.current.currentTime = 0
+      videoRef0.current.play().catch(() => {})
+    }
+  }, [])
+
+  React.useEffect(() => {
+    if (activeVideo === 0 && videoRef0.current) {
+      videoRef0.current.play().catch(() => {})
+    } else if (activeVideo === 1 && videoRef1.current) {
+      videoRef1.current.play().catch(() => {})
+    }
+  }, [activeVideo])
 
   return (
     <section className="relative overflow-hidden py-24 sm:py-32 md:py-40 lg:py-48 flex flex-col items-center justify-center min-h-screen bg-slate-950 text-white w-full">
@@ -102,10 +90,6 @@ export function HeroSection() {
           0% { opacity: 0; transform: translateY(20px); }
           100% { opacity: 1; transform: translateY(0); }
         }
-        @keyframes heroDrift {
-          0%, 100% { transform: translate3d(-2%, -1%, 0) scale(1); }
-          50% { transform: translate3d(2%, 1%, 0) scale(1.03); }
-        }
         .animate-hero-slide-left {
           opacity: 0;
           animation: slideInFromLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -115,17 +99,7 @@ export function HeroSection() {
         }
         .delay-100 { animation-delay: 100ms; }
         .delay-200 { animation-delay: 200ms; }
-        .hero-lightweight-bg {
-          background:
-            radial-gradient(circle at 18% 24%, rgba(161, 26, 26, 0.42), transparent 30%),
-            radial-gradient(circle at 76% 20%, rgba(37, 99, 235, 0.24), transparent 28%),
-            radial-gradient(circle at 64% 78%, rgba(99, 102, 241, 0.22), transparent 32%),
-            linear-gradient(135deg, #020617 0%, #0f172a 48%, #111827 100%);
-          animation: heroDrift 18s ease-in-out infinite;
-          will-change: transform;
-        }
         @media (prefers-reduced-motion: reduce) {
-          .hero-lightweight-bg,
           .animate-hero-slide-left,
           .animate-text-scroll {
             animation: none;
@@ -134,29 +108,33 @@ export function HeroSection() {
         }
       `}</style>
 
-      <div className="hero-lightweight-bg absolute -inset-8 z-0 overflow-hidden select-none" />
+      {/* Background Videos with cross-fade */}
+      <div className="absolute inset-0 z-0 bg-slate-950 overflow-hidden select-none">
+        <video
+          ref={videoRef0}
+          src="/videos/2127-155244168_medium.mp4"
+          autoPlay
+          muted
+          playsInline
+          onEnded={handleEnded0}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            activeVideo === 0 ? "opacity-35" : "opacity-0"
+          }`}
+        />
+        <video
+          ref={videoRef1}
+          src="/videos/18437-292228569_medium.mp4"
+          muted
+          playsInline
+          onEnded={handleEnded1}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            activeVideo === 1 ? "opacity-35" : "opacity-0"
+          }`}
+        />
+        {/* Dark overlay to ensure text contrast */}
+        <div className="absolute inset-0 bg-slate-950/60 z-[1]" />
+      </div>
 
-      {loadSimulation && (
-        <div className="absolute inset-0 z-[1] h-full w-full overflow-hidden select-none opacity-90">
-          <Ballpit
-            className="h-full w-full"
-            count={isMobile ? 45 : 100}
-            gravity={0.01}
-            friction={0.9975}
-            wallBounce={0.95}
-            followCursor={true}
-            fps={isMobile ? 24 : 30}
-            maxPixelRatio={isMobile ? 0.75 : 1}
-            minSize={isMobile ? 0.22 : 0.45}
-            maxSize={isMobile ? 0.42 : 0.9}
-            cursorInfluence={isMobile ? 0.035 : 0.055}
-            cursorRadius={isMobile ? 6 : 9}
-            colors={[0xff1f1f, 0xff3b3b, 0xffffff, 0xf8fafc, 0xb91c1c, 0xffffff]}
-          />
-        </div>
-      )}
-
-      <div className="absolute inset-0 z-10 bg-slate-950/25 pointer-events-none" />
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-10" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full z-20">

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+﻿import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ShoppingBag, ArrowRight, Settings, ShieldCheck, Zap, ArrowUpRight, CheckCircle } from "lucide-react"
@@ -7,6 +7,7 @@ import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
 import { TechStackGrid } from "@/components/sections/tech-stack/tech-stack-grid"
 import type { Metadata } from "next"
+import { PricingSection } from "@/components/sections/pricing/pricing-section"
 
 export const metadata: Metadata = {
   title: "Shopify Store Design & Development | Mahix InfoTech",
@@ -74,30 +75,57 @@ const technologies = [
   "Tailwind CSS", "JavaScript", "HTML5/CSS3", "Stripe API", "Klaviyo", "Recharge API"
 ]
 
-const relatedServices = [
+const shopifyPricing = [
   {
-    title: "E-commerce Development",
-    description: "Engineered online storefronts optimized for conversion rate and orders.",
-    href: "/services/e-commerce-development",
-    borderColor: "border-t-blue-500",
-    hoverColor: "hover:border-blue-500/30"
+    name: "Basic Setup",
+    price: "â‚¹12,999",
+    period: "/project",
+    tagline: "Get your Shopify store live with a premium theme.",
+    features: [
+      "Shopify Basic store setup",
+      "Premium theme customization",
+      "Up to 50 products upload",
+      "Payment gateway setup",
+      "Basic SEO & meta tags",
+      "1 month free support",
+    ],
+    cta: "Get Started",
   },
   {
-    title: "SEO Optimization",
-    description: "Accelerate your search presence and drive high-intent organic sales traffic.",
-    href: "/services/seo",
-    borderColor: "border-t-emerald-500",
-    hoverColor: "hover:border-emerald-500/30"
+    name: "Custom Store",
+    price: "â‚¹34,999",
+    period: "/project",
+    tagline: "Fully custom Shopify store designed for conversions.",
+    features: [
+      "Custom Liquid theme build",
+      "Unlimited products",
+      "Shopify apps integration",
+      "Upsell & cross-sell setup",
+      "Abandoned cart recovery",
+      "Speed optimization",
+      "3 months free support",
+    ],
+    highlighted: true,
+    gradient: "from-green-500 to-emerald-600",
+    cta: "Most Popular",
   },
   {
-    title: "Google Ads",
-    description: "Capture transactional searches right when customers are looking to buy.",
-    href: "/services/google-ads",
-    borderColor: "border-t-purple-500",
-    hoverColor: "hover:border-purple-500/30"
-  }
+    name: "Shopify Plus",
+    price: "â‚¹89,999+",
+    period: "/project",
+    tagline: "Enterprise Shopify Plus with custom checkout & integrations.",
+    features: [
+      "Shopify Plus build",
+      "Custom checkout experience",
+      "ERP / 3PL integration",
+      "Multi-currency & multi-lang",
+      "B2B wholesale portal",
+      "Headless commerce option",
+      "Dedicated Shopify developer",
+    ],
+    cta: "Contact Us",
+  },
 ]
-
 export default function ShopifyDevelopmentPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -213,41 +241,13 @@ export default function ShopifyDevelopmentPage() {
           subtitle="We work with standard Shopify APIs and frameworks for stable headless or custom setups."
         />
 
-        {/* Related Services Section - White Background */}
-        <section className="py-20 bg-background">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
-                Related Services
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Explore complementary solutions to increase e-commerce performance.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedServices.map((service) => (
-                <Card key={service.title} className={`border-t-4 ${service.borderColor} border-x border-b border-black/[0.05] dark:border-white/[0.08] bg-background/50 flex flex-col justify-between shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl ${service.hoverColor}`}>
-                  <CardHeader>
-                    <CardTitle className="text-lg font-bold">{service.title}</CardTitle>
-                    <CardDescription className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                      {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <Link 
-                      href={service.href} 
-                      className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 hover:text-blue-700 hover:underline gap-1 group"
-                    >
-                      Learn More
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        
+        {/* Transparent Pricing */}
+        <PricingSection
+          plans={shopifyPricing}
+          title="Plans & Packages"
+          subtitle="Straightforward pricing built for your goals. No lock-ins, no surprises."
+        />
       </main>
       <Footer />
     </div>
