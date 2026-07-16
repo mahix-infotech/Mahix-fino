@@ -14,11 +14,11 @@ const ctaCards = {
   card1Image: null as string | null,   // e.g. "/cta-transform.jpg"
   card2Image: null as string | null,   // e.g. "/cta-stats.jpg"
   card3Image: null as string | null,   // e.g. "/cta-services.jpg"
-  card4Image: null as string | null,   // e.g. "/cta-contact.jpg"
+  card4Image: "/images/Startyour1.png" as string | null,   // e.g. "/cta-contact.jpg"
 }
 
 /** Reusable full-bleed image layer — sits behind all card content */
-function CardBgImage({ src, overlay }: { src: string; overlay: string }) {
+function CardBgImage({ src, overlay, position = "object-center" }: { src: string; overlay: string; position?: string }) {
   return (
     <>
       <Image
@@ -26,7 +26,7 @@ function CardBgImage({ src, overlay }: { src: string; overlay: string }) {
         alt=""
         fill
         sizes="100vw"
-        className="object-cover object-center"
+        className={`object-cover ${position}`}
         draggable={false}
         priority={false}
       />
@@ -173,36 +173,37 @@ export function CTASection() {
         </ScrollStackItem>
 
         {/* ── Card 4 — Contact ── */}
-        <ScrollStackItem itemClassName="bg-white border border-slate-100 flex flex-col justify-center gap-5 overflow-hidden">
+        <ScrollStackItem itemClassName="bg-slate-950 border border-slate-800 text-white flex flex-col justify-center gap-5 overflow-hidden">
           {ctaCards.card4Image && (
             <CardBgImage
               src={ctaCards.card4Image}
-              overlay="rgba(255,255,255,0.88)"
+              overlay="transparent"
+              position="object-top"
             />
           )}
           <div className="relative z-10 flex flex-col gap-5">
             <div className="flex items-center gap-2">
-              <BarChart3 className="h-5 w-5 text-blue-600" />
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Get in Touch</span>
+              <BarChart3 className="h-5 w-5 text-blue-400" />
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-200">Get in Touch</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-snug">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
               Start your project today.
             </h3>
-            <p className="text-slate-500 text-sm leading-relaxed max-w-md">
+            <p className="text-slate-300 text-sm leading-relaxed max-w-md">
               Reach out through any channel — our team responds within 24 hours and we&apos;ll
               schedule a free consultation to understand your goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
                 href="mailto:hr@mahixinfotech.com"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-slate-900 text-white text-sm font-semibold hover:bg-slate-700 hover:scale-105 transition-all duration-300 w-fit"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white text-slate-900 text-sm font-semibold hover:bg-slate-100 hover:scale-105 transition-all duration-300 w-fit"
               >
                 <Mail className="h-4 w-4" />
                 hr@mahixinfotech.com
               </a>
               <a
                 href="tel:+918608610760"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-slate-200 text-slate-700 text-sm font-semibold hover:bg-slate-50 hover:scale-105 transition-all duration-300 w-fit"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 text-white text-sm font-semibold hover:bg-white/10 hover:scale-105 transition-all duration-300 w-fit"
               >
                 <Phone className="h-4 w-4" />
                 +91 8608610760

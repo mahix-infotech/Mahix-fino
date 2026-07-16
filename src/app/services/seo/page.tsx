@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+﻿import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { CheckCircle, TrendingUp, Search, Target, Zap, ArrowUpRight } from "lucide-react"
@@ -7,6 +7,7 @@ import { Footer } from "@/components/sections/footer/footer"
 import { TechStackGrid } from "@/components/sections/tech-stack/tech-stack-grid"
 import Link from "next/link"
 import type { Metadata } from "next"
+import { PricingSection } from "@/components/sections/pricing/pricing-section"
 
 export const metadata: Metadata = {
   title: "SEO & Digital Marketing Services - Mahix InfoTech",
@@ -74,30 +75,58 @@ const technologies = [
   "Schema.org", "PageSpeed Insights", "Looker Studio", "RankMath", "Yoast SEO", "Google Business Profile"
 ]
 
-const relatedServices = [
+const seoPricing = [
   {
-    title: "Digital Marketing",
-    description: "Deploy social media funnels, email marketing, and lead acquisition pipelines.",
-    href: "/services/digital-marketing",
-    borderColor: "border-t-blue-500",
-    hoverColor: "hover:border-blue-500/30"
+    name: "Local SEO",
+    price: "â‚¹7,999",
+    period: "/month",
+    tagline: "Dominate local search results in your city.",
+    features: [
+      "Google Business Profile optimization",
+      "10 target keywords",
+      "On-page SEO (up to 10 pages)",
+      "Local citation building",
+      "Monthly rank report",
+      "Competitor analysis",
+    ],
+    cta: "Start Local SEO",
   },
   {
-    title: "Google Ads",
-    description: "Launch Pay-Per-Click campaigns designed to capture immediate transactional traffic.",
-    href: "/services/google-ads",
-    borderColor: "border-t-emerald-500",
-    hoverColor: "hover:border-emerald-500/30"
+    name: "Growth SEO",
+    price: "â‚¹17,999",
+    period: "/month",
+    tagline: "Aggressive SEO to scale organic traffic nationally.",
+    features: [
+      "30 target keywords",
+      "Full technical SEO audit",
+      "On-page + Off-page SEO",
+      "8 high-DA backlinks/month",
+      "Content creation (4 blogs)",
+      "Schema markup",
+      "Weekly rank tracking",
+      "Dedicated SEO manager",
+    ],
+    highlighted: true,
+    gradient: "from-violet-500 to-purple-600",
+    cta: "Most Popular",
   },
   {
-    title: "Meta Ads",
-    description: "Run retargeting and creative campaigns on Facebook and Instagram feed displays.",
-    href: "/services/meta-ads",
-    borderColor: "border-t-purple-500",
-    hoverColor: "hover:border-purple-500/30"
-  }
+    name: "Enterprise SEO",
+    price: "â‚¹34,999+",
+    period: "/month",
+    tagline: "Full-scale SEO for large websites and enterprises.",
+    features: [
+      "Unlimited keywords",
+      "E-E-A-T content strategy",
+      "20+ backlinks/month",
+      "Core Web Vitals optimization",
+      "International SEO",
+      "8 blogs/month",
+      "Priority support",
+    ],
+    cta: "Contact Us",
+  },
 ]
-
 export default function SEOPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -231,41 +260,13 @@ export default function SEOPage() {
           subtitle="We use top diagnostic search nodes to report accurate trends."
         />
 
-        {/* Related Services Section - White Background */}
-        <section className="py-20 bg-background">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
-                Related Services
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Explore complementary solutions to increase brand visibility.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedServices.map((service) => (
-                <Card key={service.title} className={`border-t-4 ${service.borderColor} border-x border-b border-black/[0.05] dark:border-white/[0.08] bg-background/50 flex flex-col justify-between shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl ${service.hoverColor}`}>
-                  <CardHeader>
-                    <CardTitle className="text-lg font-bold">{service.title}</CardTitle>
-                    <CardDescription className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                      {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <Link 
-                      href={service.href} 
-                      className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 hover:text-blue-700 hover:underline gap-1 group"
-                    >
-                      Learn More
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        
+        {/* Transparent Pricing */}
+        <PricingSection
+          plans={seoPricing}
+          title="Plans & Packages"
+          subtitle="Straightforward pricing built for your goals. No lock-ins, no surprises."
+        />
       </main>
       <Footer />
     </div>

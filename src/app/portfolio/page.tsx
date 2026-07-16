@@ -1,7 +1,6 @@
 import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
 import { PortfolioGrid } from "@/components/pages/portfolio/portfolio-grid"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight, FolderKanban } from "lucide-react"
 import type { Metadata } from "next"
@@ -60,46 +59,46 @@ export default function PortfolioPage() {
         <PortfolioGrid />
 
         {/* ── CTA Section ───────────────────────────── */}
-        <section className="py-24 bg-slate-50 border-t border-slate-100">
+        <section className="py-24 bg-white border-t border-slate-100">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-900 via-red-800 to-blue-900 p-1 shadow-2xl">
-              <div className="rounded-[22px] bg-gradient-to-br from-red-900/95 to-blue-900/95 p-12 md:p-16 text-white relative overflow-hidden">
-                <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-white/5 pointer-events-none" />
-                <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-white/5 pointer-events-none" />
-
-                <div className="relative text-center">
-                  <h3 className="text-3xl md:text-4xl font-black leading-tight mb-4">
-                    Have a project in mind?
-                  </h3>
-                  <p className="text-white/70 max-w-xl mx-auto leading-relaxed text-base md:text-lg mb-10">
-                    Let's collaborate to build something remarkable. Get in touch with our team for a free consultation and project roadmap analysis.
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button
-                      asChild
-                      size="lg"
-                      className="rounded-xl bg-white text-red-900 hover:bg-slate-100 font-bold shadow-lg px-8 transition-all duration-300 hover:scale-105"
-                    >
-                      <Link href="/contact" className="flex items-center gap-2">
-                        Start Your Project
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <Button
-                      asChild
-                      size="lg"
-                      variant="outline"
-                      className="rounded-xl border-white/20 bg-white/10 text-white hover:bg-white/20 font-semibold px-8 transition-all duration-300 hover:scale-105"
-                    >
-                      <Link href="/about">About Us</Link>
-                    </Button>
-                  </div>
+            <div className="relative overflow-hidden rounded-3xl border border-slate-100 bg-slate-50 p-12 md:p-16 text-center shadow-sm">
+              {/* Subtle glow orbs */}
+              <div className="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-blue-100/60 blur-[80px] pointer-events-none" />
+              <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-violet-100/40 blur-[60px] pointer-events-none" />
+              <div className="relative">
+                <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-slate-200 bg-white text-xs font-bold uppercase tracking-widest text-slate-500 mb-6 shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  Let&apos;s Collaborate
+                </span>
+                <h3 className="text-3xl md:text-4xl font-black leading-tight mb-4 text-slate-900">
+                  Have a{" "}
+                  <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
+                    project in mind?
+                  </span>
+                </h3>
+                <p className="text-slate-500 max-w-xl mx-auto leading-relaxed text-base mb-10">
+                  Let&apos;s build something remarkable together. Get in touch for a free consultation and project roadmap.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-slate-900 text-white font-bold text-sm hover:bg-slate-700 hover:scale-105 transition-all duration-300 shadow-lg"
+                  >
+                    Start Your Project
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-slate-200 bg-white text-slate-700 font-bold text-sm hover:bg-slate-50 hover:scale-105 transition-all duration-300"
+                  >
+                    About Us
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
 
       </main>
       <Footer />

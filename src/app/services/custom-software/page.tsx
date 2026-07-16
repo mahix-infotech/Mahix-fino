@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+﻿import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Cpu, CheckCircle, ArrowRight, ShieldCheck, Database, Layers, ArrowUpRight } from "lucide-react"
@@ -7,6 +7,7 @@ import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
 import { TechStackGrid } from "@/components/sections/tech-stack/tech-stack-grid"
 import type { Metadata } from "next"
+import { PricingSection } from "@/components/sections/pricing/pricing-section"
 
 export const metadata: Metadata = {
   title: "Custom Software Development | Mahix InfoTech",
@@ -74,30 +75,58 @@ const technologies = [
   "GraphQL", "Docker", "Kubernetes", "AWS Lambda", "Redis", "FastAPI"
 ]
 
-const relatedServices = [
+const customSoftwarePricing = [
   {
-    title: "Web Development",
-    description: "Deploy responsive web pages and Next.js applications that rank.",
-    href: "/services/web-development",
-    borderColor: "border-t-blue-500",
-    hoverColor: "hover:border-blue-500/30"
+    name: "Small Project",
+    price: "â‚¹49,999",
+    period: "/project",
+    tagline: "Focused automation or utility tool for your team.",
+    features: [
+      "Requirement analysis",
+      "Up to 10 core features",
+      "Web or desktop app",
+      "Basic user management",
+      "Testing & QA",
+      "2 months free support",
+    ],
+    cta: "Start Project",
   },
   {
-    title: "Cloud Services",
-    description: "Host database pipelines and deploy virtual machines securely on AWS.",
-    href: "/services/cloud",
-    borderColor: "border-t-emerald-500",
-    hoverColor: "hover:border-emerald-500/30"
+    name: "Business Software",
+    price: "â‚¹1,49,999",
+    period: "/project",
+    tagline: "Scalable custom solution for your business operations.",
+    features: [
+      "Full requirements discovery",
+      "Custom UI/UX design",
+      "Unlimited core features",
+      "Third-party integrations",
+      "Role-based access",
+      "Reporting & analytics",
+      "4 months free support",
+      "Source code delivery",
+    ],
+    highlighted: true,
+    gradient: "from-blue-600 to-violet-600",
+    cta: "Most Popular",
   },
   {
-    title: "AI & ML",
-    description: "Deploy neural networks and predictive analytics directly to your applications.",
-    href: "/services/ai-ml",
-    borderColor: "border-t-purple-500",
-    hoverColor: "hover:border-purple-500/30"
-  }
+    name: "Enterprise Software",
+    price: "â‚¹3,99,999+",
+    period: "/project",
+    tagline: "Mission-critical enterprise software built for scale.",
+    features: [
+      "Enterprise architecture design",
+      "Microservices / SOA",
+      "Legacy system integration",
+      "High-availability deployment",
+      "Security & compliance audit",
+      "Dedicated development team",
+      "6 months free support",
+    ],
+    cta: "Contact Us",
+  },
 ]
-
 export default function CustomSoftwarePage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -213,41 +242,13 @@ export default function CustomSoftwarePage() {
           subtitle="We select programming paradigms and database frameworks optimized for speed, reliability, and security."
         />
 
-        {/* Related Services Section - White Background */}
-        <section className="py-20 bg-background">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
-                Related Services
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Explore complementary solutions to increase e-commerce performance.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedServices.map((service) => (
-                <Card key={service.title} className={`border-t-4 ${service.borderColor} border-x border-b border-black/[0.05] dark:border-white/[0.08] bg-background/50 flex flex-col justify-between shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl ${service.hoverColor}`}>
-                  <CardHeader>
-                    <CardTitle className="text-lg font-bold">{service.title}</CardTitle>
-                    <CardDescription className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                      {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <Link 
-                      href={service.href} 
-                      className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 hover:text-blue-700 hover:underline gap-1 group"
-                    >
-                      Learn More
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        
+        {/* Transparent Pricing */}
+        <PricingSection
+          plans={customSoftwarePricing}
+          title="Plans & Packages"
+          subtitle="Straightforward pricing built for your goals. No lock-ins, no surprises."
+        />
       </main>
       <Footer />
     </div>

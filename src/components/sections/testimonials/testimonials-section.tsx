@@ -10,7 +10,7 @@ const testimonials = [
     content: "Mahix InfoTech transformed our business with their exceptional web development services. The team delivered beyond our expectations and helped us achieve a 300% increase in online conversions.",
     rating: "4.9",
     date: "29 Aug, 2026",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150"
+    avatar: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&q=80&w=150&h=150"
   },
   {
     name: "Arjun Ramachandran",
@@ -18,7 +18,7 @@ const testimonials = [
     content: "Their AI and ML expertise helped us automate our data processing pipeline, saving us 40 hours per week. The team is professional, knowledgeable, and delivers on time.",
     rating: "4.9",
     date: "14 Sep, 2026",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150"
+    avatar: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&q=80&w=150&h=150"
   },
   {
     name: "Kavitha Subramanian",
@@ -26,7 +26,7 @@ const testimonials = [
     content: "The mobile app they developed for us has been a game-changer. User engagement increased by 250% and our app store ratings are consistently 4.8+. Highly recommended!",
     rating: "4.8",
     date: "05 Oct, 2026",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150"
+    avatar: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&q=80&w=150&h=150"
   },
   {
     name: "Rajesh Murugan",
@@ -34,7 +34,7 @@ const testimonials = [
     content: "Mahix InfoTech's cloud migration services were seamless. They moved our entire infrastructure to AWS with zero downtime and reduced our hosting costs by 60%.",
     rating: "4.9",
     date: "20 Oct, 2026",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150"
+    avatar: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&fit=crop&q=80&w=150&h=150"
   },
   {
     name: "Deepika Natarajan",
@@ -42,7 +42,7 @@ const testimonials = [
     content: "Their SEO and digital marketing strategies helped us rank #1 for our target keywords. Our organic traffic increased by 400% in just 6 months.",
     rating: "4.9",
     date: "03 Nov, 2026",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150"
+    avatar: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&q=80&w=150&h=150"
   },
   {
     name: "Karthik Venkatesh",
@@ -50,7 +50,7 @@ const testimonials = [
     content: "The custom software solution they built streamlined our operations completely. What used to take days now takes hours. Exceptional work and ongoing support.",
     rating: "5.0",
     date: "18 Nov, 2026",
-    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150&h=150"
+    avatar: "https://images.unsplash.com/photo-1605462863863-10d9e47e15ee?auto=format&fit=crop&q=80&w=150&h=150"
   }
 ]
 

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+﻿import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Share2, Zap, Target, ArrowRight, CheckCircle, BarChart3, ArrowUpRight } from "lucide-react"
@@ -7,6 +7,7 @@ import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
 import { TechStackGrid } from "@/components/sections/tech-stack/tech-stack-grid"
 import type { Metadata } from "next"
+import { PricingSection } from "@/components/sections/pricing/pricing-section"
 
 export const metadata: Metadata = {
   title: "Meta Ads Campaigns - Facebook & Instagram Marketing | Mahix InfoTech",
@@ -74,30 +75,56 @@ const technologies = [
   "Canva / Photoshop", "Meta Business Suite", "Zapier Integration", "GA4 Analytics", "Video Creative Testing"
 ]
 
-const relatedServices = [
+const metaAdsPricing = [
   {
-    title: "Google Ads",
-    description: "Launch Pay-Per-Click campaigns designed to capture immediate transactional traffic.",
-    href: "/services/google-ads",
-    borderColor: "border-t-blue-500",
-    hoverColor: "hover:border-blue-500/30"
+    name: "Starter",
+    price: "â‚¹7,999",
+    period: "/month",
+    tagline: "Run targeted Facebook & Instagram ads to grow your brand.",
+    features: [
+      "Campaign setup (2 campaigns)",
+      "Up to â‚¹15K monthly ad budget",
+      "Custom audience targeting",
+      "5 ad creatives designed",
+      "Conversion pixel setup",
+      "Monthly report",
+    ],
+    cta: "Start Ads",
   },
   {
-    title: "Digital Marketing",
-    description: "Deploy social media funnels, email marketing, and lead acquisition pipelines.",
-    href: "/services/digital-marketing",
-    borderColor: "border-t-emerald-500",
-    hoverColor: "hover:border-emerald-500/30"
+    name: "Scale",
+    price: "â‚¹17,999",
+    period: "/month",
+    tagline: "Multi-campaign strategy to maximize ROAS and leads.",
+    features: [
+      "Up to 5 ad campaigns",
+      "Up to â‚¹75K monthly ad budget",
+      "Lookalike & retargeting audiences",
+      "15 creatives/month",
+      "A/B split testing",
+      "WhatsApp lead integration",
+      "Bi-weekly optimization calls",
+    ],
+    highlighted: true,
+    gradient: "from-fuchsia-500 to-pink-600",
+    cta: "Most Popular",
   },
   {
-    title: "SEO Optimization",
-    description: "Accelerate your search presence and drive high-intent organic sales traffic.",
-    href: "/services/seo",
-    borderColor: "border-t-purple-500",
-    hoverColor: "hover:border-purple-500/30"
-  }
+    name: "Enterprise",
+    price: "â‚¹34,999+",
+    period: "/month",
+    tagline: "High-volume Meta advertising for serious growth.",
+    features: [
+      "Unlimited campaigns",
+      "Unlimited ad budget managed",
+      "Full funnel strategy (TOFU-BOFU)",
+      "Video ad production",
+      "Catalogue & dynamic ads",
+      "Dedicated Meta strategist",
+    ],
+    cta: "Contact Us",
+  },
 ]
-
 export default function MetaAdsPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -213,41 +240,13 @@ export default function MetaAdsPage() {
           subtitle="We integrate conversion tracking and reporting directly to your custom data dashboards."
         />
 
-        {/* Related Services Section - White Background */}
-        <section className="py-20 bg-background">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-extrabold text-foreground sm:text-4xl">
-                Related Services
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Explore complementary paid media channels for unified growth.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {relatedServices.map((service) => (
-                <Card key={service.title} className={`border-t-4 ${service.borderColor} border-x border-b border-black/[0.05] dark:border-white/[0.08] bg-background/50 flex flex-col justify-between shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-2xl ${service.hoverColor}`}>
-                  <CardHeader>
-                    <CardTitle className="text-lg font-bold">{service.title}</CardTitle>
-                    <CardDescription className="text-sm text-muted-foreground mt-2 leading-relaxed">
-                      {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <Link 
-                      href={service.href} 
-                      className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 hover:text-blue-700 hover:underline gap-1 group"
-                    >
-                      Learn More
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        
+        {/* Transparent Pricing */}
+        <PricingSection
+          plans={metaAdsPricing}
+          title="Plans & Packages"
+          subtitle="Straightforward pricing built for your goals. No lock-ins, no surprises."
+        />
       </main>
       <Footer />
     </div>
