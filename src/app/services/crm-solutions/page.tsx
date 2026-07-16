@@ -1,4 +1,4 @@
-﻿import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Users, Shield, ArrowRight, Zap, CheckCircle2, BarChart2, ArrowUpRight } from "lucide-react"
@@ -172,7 +172,6 @@ export default function CRMSolutionsPage() {
               </h2>
               <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
                 We handle API data syncing, trigger integrations, contact imports, and user training sessions.
-import { PricingSection } from "@/components/sections/pricing/pricing-section"
               </p>
             </div>
 
