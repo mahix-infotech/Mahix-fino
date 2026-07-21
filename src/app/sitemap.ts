@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   })
 
-  const allRoutes = [...baseRoutes, ...localRoutes]
+  const allRoutes = Array.from(new Set([...baseRoutes, ...localRoutes]))
 
   return allRoutes.map((route) => ({
     url: `${baseUrl}${route}`,

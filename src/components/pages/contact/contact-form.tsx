@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { CheckCircle2, AlertCircle, Send, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { sendInquiryEmails, isEmailJSConfigured } from "@/lib/email-service"
 
 const services = [
   { value: "web-development", label: "Web Development" },
@@ -38,6 +39,8 @@ export function ContactForm() {
 
   const [status, setStatus] = React.useState<"idle" | "submitting" | "success" | "error">("idle")
   const [errors, setErrors] = React.useState<Record<string, string>>({})
+  const [errorMessage, setErrorMessage] = React.useState<string>("")
+  const [submittedEmail, setSubmittedEmail] = React.useState<string>("")
 
   const validate = () => {
     const newErrors: Record<string, string> = {}
@@ -57,11 +60,20 @@ export function ContactForm() {
     e.preventDefault()
     if (!validate()) return
     setStatus("submitting")
+    setErrorMessage("")
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1600))
-      setStatus("success")
-      setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "", service: "", message: "" })
-    } catch {
+      const result = await sendInquiryEmails(formData)
+      if (result.success) {
+        setSubmittedEmail(formData.email)
+        setStatus("success")
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", company: "", service: "", message: "" })
+      } else {
+        setErrorMessage(result.message)
+        setStatus("error")
+      }
+    } catch (err: any) {
+      setErrorMessage(err?.message || "An unexpected error occurred while sending your message.")
       setStatus("error")
     }
   }
@@ -76,17 +88,20 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-3xl border-2 border-green-200 bg-green-50 p-12 text-center flex flex-col items-center justify-center min-h-[500px] animate-in fade-in zoom-in duration-300">
+      <div className="rounded-3xl border-2 border-green-200 bg-green-50/80 p-8 sm:p-12 text-center flex flex-col items-center justify-center min-h-[500px] animate-in fade-in zoom-in duration-300">
         <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-green-100 border-4 border-green-200 mb-6">
           <CheckCircle2 className="h-10 w-10 text-green-600" />
         </div>
-        <h3 className="text-2xl font-black text-slate-900">Message Sent!</h3>
-        <p className="text-slate-500 mt-3 max-w-sm leading-relaxed text-sm">
-          Thank you for reaching out to Mahix InfoTech. We have received your message and will respond within <strong>24 hours</strong>.
+        <h3 className="text-2xl font-black text-slate-900">Enquiry Received!</h3>
+        <p className="text-slate-600 mt-3 max-w-md leading-relaxed text-sm">
+          Thank you for reaching out to <strong>Mahix InfoTech</strong>. We have received your request and dispatched an automated confirmation email{submittedEmail ? ` to ${submittedEmail}` : ""}.
+        </p>
+        <p className="text-slate-500 mt-2 text-xs font-medium">
+          Our team will contact you directly within <strong className="text-red-900">24 hours</strong>.
         </p>
         <Button
           onClick={() => setStatus("idle")}
-          className="mt-8 rounded-xl bg-red-900 hover:bg-red-800 text-white px-8"
+          className="mt-8 rounded-xl bg-red-900 hover:bg-red-800 text-white px-8 font-bold"
         >
           Send Another Message
         </Button>
@@ -236,7 +251,7 @@ export function ContactForm() {
         {status === "error" && (
           <div className="flex items-center gap-3 p-4 rounded-xl bg-red-50 text-red-700 text-sm border border-red-200">
             <AlertCircle className="h-5 w-5 flex-shrink-0" />
-            <span>An unexpected error occurred. Please try again or email us directly.</span>
+            <span>{errorMessage || "An unexpected error occurred. Please try again or email us directly at mahixinfotech@gmail.com."}</span>
           </div>
         )}
 

@@ -48,12 +48,14 @@ export const regionsRaw: Record<string, string[]> = {
   ],
   "ECR (East Coast Road)": [
     "Thiruvanmiyur", "Kottivakkam", "Palavakkam", "Neelankarai", "Injambakkam", 
-    "Akkarai", "Uthandi", "Kanathur", "Panaiyur", "Muttukadu", "Kovalam"
+    "Akkarai", "Uthandi", "Kanathur", "Panaiyur", "Muttukadu", "Kovalam",
+    "Mamallapuram", "Mahabalipuram", "Kalpakkam", "Nemmeli", "Thiruporur", "Cheyyur"
   ],
   "Industrial Areas": [
     "Ambattur Industrial Estate", "Guindy Industrial Estate", "SIDCO Industrial Estate", 
     "Manali Industrial Area", "Ennore Industrial Area", "Padi Industrial Estate", 
-    "Oragadam", "Sriperumbudur", "Irungattukottai"
+    "Oragadam", "Sriperumbudur", "Irungattukottai", "Sunguvarchatram",
+    "Vallam Vadagal", "Kakkalur Industrial Estate", "Oragadam Industrial Corridor"
   ],
   "IT & Business Hubs": [
     "Tidel Park", "DLF IT Park", "Olympia Tech Park", "RMZ Millenia", "Guindy", 
@@ -64,7 +66,8 @@ export const regionsRaw: Record<string, string[]> = {
     "Avadi", "Pattabiram", "Thirumullaivoyal", "Poonamallee", "Chembarambakkam", 
     "Mangadu", "Kundrathur", "Kovur", "Gerugambakkam", "Mugalivakkam", 
     "Manapakkam", "Polichalur", "Urapakkam", "Guduvanchery", "Maraimalai Nagar", 
-    "Mahindra World City"
+    "Mahindra World City", "Sevvapet", "Veppampattu", "Thiruvallur Town",
+    "Kanchipuram Town", "Wallajahbad", "Thiruthani"
   ],
 
   // ── Dindigul Regions ──
@@ -100,7 +103,15 @@ export const regionsRaw: Record<string, string[]> = {
   "Industrial & Commercial Zones (Dindigul)": [
     "SIDCO Industrial Estate Dindigul", "Dindigul Fort Area",
     "Palam", "Dindigul Railway Station", "Dindigul Lock Factory Area",
-    "Textiles Hub Dindigul", "MSME Hub Dindigul"
+    "Textiles Hub Dindigul", "MSME Hub Dindigul",
+    "Dindigul Leather Tannery Zone", "Dindigul Textile Mills Cluster",
+    "Oddanchatram Wholesale Agro Hub", "Dindigul Bypass Junction",
+    "Dindigul Brass & Lock Works Cluster"
+  ],
+  "Educational & College Tech Zones (Dindigul)": [
+    "Gandhigram Tech Zone", "Muthanampatti PSNA Campus",
+    "SSM Tech Zone Dindigul", "Mavoor Road Anna Univ Campus",
+    "Christian College Zone Oddanchatram", "GTN Arts College Area"
   ],
   "Growing Suburbs & Small Towns (Dindigul)": [
     "Ambathurai", "Gopalpatti", "Sellur", "Periavadipatti", "Ookadu",
@@ -108,7 +119,10 @@ export const regionsRaw: Record<string, string[]> = {
     "Thoppampatti", "Keelapatti", "Krishnankoil", "Annamalainagar",
     "Seelapadi", "Ramanathapuram Dindigul", "Palanichettipatti",
     "Eriodu", "Sitharevu", "Kanthampatti", "Thenkarai",
-    "Valayapatti", "Poolankulam", "Orikkai", "Ayikudy"
+    "Valayapatti", "Poolankulam", "Orikkai", "Ayikudy",
+    "Kallimanthayam", "Chatrapatti", "Markampatti", "Virupachi", "Ambilikai",
+    "Sevugampatti", "Mattaparai", "Silukuvarpatti", "Sendurai",
+    "R.Vellodu", "Palayam", "Karikali", "Shenbaganur", "Perumal Malai"
   ],
 
   // ── Combined High-Value Clusters ──
@@ -155,18 +169,23 @@ Object.entries(regionsRaw).forEach(([category, names]) => {
 
 export const locationsList: LocationItem[] = Array.from(uniqueMap.values())
 
-// Cleaned list of local SEO keywords (with [Location] placeholder for replacement)
-export const rawKeywords = [
+// Cleaned list of local SEO keywords (deduplicated automatically)
+export const rawKeywords: string[] = Array.from(new Set([
+  "Software Development Company in [Location]",
+  "Web Development Company in [Location]",
   "Website Development in [Location]",
   "Website Design in [Location]",
   "Website Development Near Me",
   "Website Design Near Me",
   "Mobile App Development in [Location]",
+  "Mobile App Development Company in [Location]",
   "Mobile App Development Near Me",
   "Android App Development in [Location]",
   "iOS App Development in [Location]",
   "Flutter App Development in [Location]",
   "React Native App Development in [Location]",
+  "Full Stack Software Developers in [Location]",
+  "Enterprise Software Development in [Location]",
   "Web Application Development in [Location]",
   "Custom Website Development in [Location]",
   "Responsive Website Design in [Location]",
@@ -199,7 +218,15 @@ export const rawKeywords = [
   "Custom Software Development in [Location]",
   "CRM Development in [Location]",
   "ERP Software Development in [Location]",
+  "ERP Software Development for Textile & Industries in [Location]",
+  "Leather & Manufacturing Software Solutions in [Location]",
+  "Inventory & Billing Software Developers in [Location]",
+  "Hospital Management Software Development in [Location]",
+  "Educational Institution Portal Developers in [Location]",
   "AI Chatbot Development in [Location]",
+  "AI Software Development Company in [Location]",
+  "Machine Learning Solutions Provider in [Location]",
+  "Cloud Software Development & AWS Migration in [Location]",
   "Business Automation in [Location]",
   "Website Development for Small Business in [Location]",
   "Ecommerce Website Design Near Me",
@@ -211,10 +238,25 @@ export const rawKeywords = [
   "Web Development Agency in [Location]",
   "Mobile App Development Agency in [Location]",
   "Shopify Developer in [Location]",
+  "Shopify Store Development Services in [Location]",
   "WordPress Developer in [Location]",
   "Next.js Web Developer in [Location]",
-  "Custom Software Development Agency in [Location]"
-]
+  "Custom Software Development Agency in [Location]",
+  "SaaS Product Development Company in [Location]",
+  "API Development & Integration Services in [Location]",
+  "Software Maintenance & Support Services in [Location]"
+]))
+
+// Helper to check if a location belongs to Dindigul region
+export function isDindigulLocation(category: string): boolean {
+  const cat = (category || "").toLowerCase()
+  return cat.includes("dindigul") || cat.includes("kodaikanal") || cat.includes("palani")
+}
+
+// Helper to get formatted region name
+export function getLocationRegionName(category: string): string {
+  return isDindigulLocation(category) ? "Dindigul, Tamil Nadu" : "Chennai, Tamil Nadu"
+}
 
 // Get keywords formatted for a specific location
 export function getKeywordsForLocation(locationName: string): string[] {
@@ -224,7 +266,7 @@ export function getKeywordsForLocation(locationName: string): string[] {
 }
 
 export interface ParsedSeoSlug {
-  serviceType: 'generic' | 'web-development' | 'mobile-app-development' | 'seo-services'
+  serviceType: 'generic' | 'web-development' | 'mobile-app-development' | 'seo-services' | 'custom-software' | 'e-commerce-development' | 'ai-ml-solutions'
   serviceTitle: string
   location: LocationItem
 }
@@ -232,7 +274,10 @@ export interface ParsedSeoSlug {
 export const seoServicesList = [
   { prefix: 'web-development-in-', type: 'web-development' as const, title: 'Web Development Services' },
   { prefix: 'mobile-app-development-in-', type: 'mobile-app-development' as const, title: 'Mobile App Development' },
-  { prefix: 'seo-services-in-', type: 'seo-services' as const, title: 'SEO Agency' },
+  { prefix: 'seo-services-in-', type: 'seo-services' as const, title: 'SEO Agency & Local Search' },
+  { prefix: 'custom-software-development-in-', type: 'custom-software' as const, title: 'Custom Software Development' },
+  { prefix: 'e-commerce-development-in-', type: 'e-commerce-development' as const, title: 'E-Commerce & Shopify Development' },
+  { prefix: 'ai-ml-solutions-in-', type: 'ai-ml-solutions' as const, title: 'AI & ML Software Solutions' },
 ]
 
 export function parseSeoSlug(slug: string): ParsedSeoSlug | null {
