@@ -10,7 +10,7 @@ import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
 import { ServicesSection } from "@/components/sections/services/services-section"
 import { KeywordCloud } from "@/components/pages/seo/keyword-cloud"
-import { locationsList, getKeywordsForLocation, rawKeywords, parseSeoSlug, seoServicesList } from "@/lib/seo-data"
+import { locationsList, getKeywordsForLocation, rawKeywords, parseSeoSlug, seoServicesList, getLocationRegionName } from "@/lib/seo-data"
 
 interface PageProps {
   params: Promise<{
@@ -18,7 +18,7 @@ interface PageProps {
   }>
 }
 
-// Generate metadata for each local service page dynamically (no "company" wording)
+// Generate metadata for each local service page dynamically
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
   const parsed = parseSeoSlug(slug)
@@ -30,20 +30,30 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const name = parsed.location.name
+  const regionName = getLocationRegionName(parsed.location.category)
   const keywords = getKeywordsForLocation(name)
 
-  let title = `${name} Software Development & SEO Agency | Mahix InfoTech`
-  let description = `Leading software development agency in ${name}, Chennai. We specialize in custom web development, mobile apps, SEO, UI/UX design, and digital marketing services in ${name}. Contact us for a free quote.`
+  let title = `${name} Software Development & Digital Agency | Mahix InfoTech`
+  let description = `Leading software development agency in ${name}, ${regionName}. We specialize in custom web development, mobile apps, SEO, UI/UX design, and enterprise software solutions in ${name}. Contact us for a free quote.`
 
   if (parsed.serviceType === "web-development") {
-    title = `Web Development Services in ${name}, Chennai | Mahix InfoTech`
-    description = `Premium web development agency in ${name}, Chennai. We design responsive, fast, and SEO-optimized web apps, Next.js portals, and custom e-commerce solutions in ${name}.`
+    title = `Web Development Services in ${name}, ${regionName} | Mahix InfoTech`
+    description = `Premium web development agency in ${name}, ${regionName}. We design responsive, fast, and SEO-optimized web apps, Next.js portals, and custom e-commerce solutions in ${name}.`
   } else if (parsed.serviceType === "mobile-app-development") {
-    title = `Mobile App Development in ${name}, Chennai | Mahix InfoTech`
-    description = `Professional mobile app developers in ${name}, Chennai. We engineer cross-platform Android and iOS apps using Flutter and React Native in ${name}.`
+    title = `Mobile App Development in ${name}, ${regionName} | Mahix InfoTech`
+    description = `Professional mobile app developers in ${name}, ${regionName}. We engineer cross-platform Android and iOS apps using Flutter and React Native in ${name}.`
   } else if (parsed.serviceType === "seo-services") {
-    title = `SEO Services & Local Search Optimization in ${name} | Mahix InfoTech`
-    description = `Top SEO agency in ${name}, Chennai. Increase search traffic with professional local SEO audits, Google Ads PPC management, and page speed optimization in ${name}.`
+    title = `SEO Services & Local Search Optimization in ${name}, ${regionName} | Mahix InfoTech`
+    description = `Top SEO agency in ${name}, ${regionName}. Increase search traffic with professional local SEO audits, Google Ads PPC management, and page speed optimization in ${name}.`
+  } else if (parsed.serviceType === "custom-software") {
+    title = `Custom Software Development Company in ${name}, ${regionName} | Mahix InfoTech`
+    description = `Leading custom software engineering agency in ${name}, ${regionName}. Enterprise ERPs, CRM software, API integration, and cloud application development in ${name}.`
+  } else if (parsed.serviceType === "e-commerce-development") {
+    title = `E-Commerce & Shopify Store Development in ${name}, ${regionName} | Mahix InfoTech`
+    description = `Expert e-commerce website developers in ${name}, ${regionName}. Custom Shopify stores, WooCommerce platforms, and payment gateway integration in ${name}.`
+  } else if (parsed.serviceType === "ai-ml-solutions") {
+    title = `AI & Machine Learning Solutions in ${name}, ${regionName} | Mahix InfoTech`
+    description = `Cutting-edge AI & Machine Learning software solutions in ${name}, ${regionName}. AI chatbots, predictive analytics, NLP, and automated workflow software in ${name}.`
   }
 
   return {
@@ -62,7 +72,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 }
 
-// Generate static routes for all Chennai locations and their respective services at build time (696 pages)
+// Generate static routes for all locations and their respective services at build time
 export async function generateStaticParams() {
   const params: { slug: string }[] = []
   
@@ -79,6 +89,25 @@ export async function generateStaticParams() {
   return params
 }
 
+function getServiceHeroBgImage(serviceType: string): string {
+  switch (serviceType) {
+    case "web-development":
+      return "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2000"
+    case "mobile-app-development":
+      return "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=2000"
+    case "seo-services":
+      return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2000"
+    case "custom-software":
+      return "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=2000"
+    case "e-commerce-development":
+      return "https://images.unsplash.com/photo-1556742049-0a67414d4554?auto=format&fit=crop&q=80&w=2000"
+    case "ai-ml-solutions":
+      return "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&q=80&w=2000"
+    default:
+      return "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000"
+  }
+}
+
 export default async function LocationPage({ params }: PageProps) {
   const { slug } = await params
   const parsed = parseSeoSlug(slug)
@@ -89,10 +118,11 @@ export default async function LocationPage({ params }: PageProps) {
 
   const name = parsed.location.name
   const category = parsed.location.category
+  const regionName = getLocationRegionName(category)
   const localKeywords = getKeywordsForLocation(name)
   const serviceType = parsed.serviceType
 
-  // Set up service-specific titles and hero text (fully customized, no "company" wording)
+  // Set up service-specific titles and hero text
   let heroTitle = (
     <>
       Software Development & Digital Marketing Services in{" "}
@@ -101,7 +131,7 @@ export default async function LocationPage({ params }: PageProps) {
       </span>
     </>
   )
-  let heroDesc = `Mahix InfoTech delivers high-end web design, native mobile apps, and technical SEO services in ${name}, Chennai. We help local enterprises scale with robust software architectures.`
+  let heroDesc = `Mahix InfoTech delivers high-end web design, native mobile apps, custom ERPs, and technical SEO services in ${name}, ${regionName}. We help local enterprises scale with robust software architectures.`
 
   if (serviceType === "web-development") {
     heroTitle = (
@@ -112,7 +142,7 @@ export default async function LocationPage({ params }: PageProps) {
         </span>
       </>
     )
-    heroDesc = `Custom web developers in ${name}, Chennai. We build high-speed Next.js web applications, Shopify storefronts, WordPress layouts, and secure database integrations.`
+    heroDesc = `Custom web developers in ${name}, ${regionName}. We build high-speed Next.js web applications, Shopify storefronts, WordPress layouts, and secure database integrations.`
   } else if (serviceType === "mobile-app-development") {
     heroTitle = (
       <>
@@ -122,7 +152,7 @@ export default async function LocationPage({ params }: PageProps) {
         </span>
       </>
     )
-    heroDesc = `Professional mobile app developers in ${name}, Chennai. We build beautiful, high-performing iOS and Android apps with secure cloud backends on AWS.`
+    heroDesc = `Professional mobile app developers in ${name}, ${regionName}. We build beautiful, high-performing iOS and Android apps with secure cloud backends on AWS.`
   } else if (serviceType === "seo-services") {
     heroTitle = (
       <>
@@ -132,7 +162,37 @@ export default async function LocationPage({ params }: PageProps) {
         </span>
       </>
     )
-    heroDesc = `Grow your organic search traffic in ${name}, Chennai. We provide SEO audits, on-page optimization, backlink building, and PPC campaign management.`
+    heroDesc = `Grow your organic search traffic in ${name}, ${regionName}. We provide technical SEO audits, on-page optimization, backlink building, and PPC campaign management.`
+  } else if (serviceType === "custom-software") {
+    heroTitle = (
+      <>
+        Custom Software Engineering & Enterprise ERPs in{" "}
+        <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+          {name}
+        </span>
+      </>
+    )
+    heroDesc = `Dedicated custom software developers in ${name}, ${regionName}. Tailored billing systems, textile/leather ERPs, CRM tools, and cloud software integrations.`
+  } else if (serviceType === "e-commerce-development") {
+    heroTitle = (
+      <>
+        E-Commerce & Shopify Store Development in{" "}
+        <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+          {name}
+        </span>
+      </>
+    )
+    heroDesc = `Build high-converting online stores in ${name}, ${regionName}. Custom Shopify themes, WooCommerce portals, payment gateways, and inventory automation.`
+  } else if (serviceType === "ai-ml-solutions") {
+    heroTitle = (
+      <>
+        Artificial Intelligence & Machine Learning Solutions in{" "}
+        <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+          {name}
+        </span>
+      </>
+    )
+    heroDesc = `Transform your business with AI innovation in ${name}, ${regionName}. Intelligent AI chatbots, predictive data models, NLP systems, and business process automation.`
   }
 
   // Sub-services list specifically designed for pSEO
@@ -172,13 +232,20 @@ export default async function LocationPage({ params }: PageProps) {
     "Transparent pricing & dedicated developer support",
   ]
 
+  const heroBgImage = getServiceHeroBgImage(serviceType)
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-900">
       <Navigation />
 
       <main className="pt-20">
         {/* ─── Hero Section ────────────────────────────────────────────────── */}
-        <section className="relative overflow-hidden bg-slate-950 py-24 sm:py-32 text-white">
+        <section 
+          className="relative overflow-hidden bg-cover bg-center py-24 sm:py-32 text-white"
+          style={{
+            backgroundImage: `linear-gradient(to bottom, rgba(10, 15, 30, 0.88), rgba(15, 23, 42, 0.95)), url('${heroBgImage}')`
+          }}
+        >
           {/* Background Grid Pattern Overlay */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
           
