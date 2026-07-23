@@ -18,7 +18,6 @@ export interface EmailServiceResult {
 
 /**
  * Gets production-ready EmailJS environment configuration
- * Includes live fallbacks so emails deliver immediately upon live deployment.
  */
 function getEmailConfig() {
   const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_fwmsdda"
@@ -88,8 +87,7 @@ export async function sendInquiryEmails(data: ContactFormData): Promise<EmailSer
   // Check setup status
   if (!isEmailJSConfigured()) {
     console.warn(
-      "[EmailJS Notice] EmailJS environment keys are missing.\n" +
-        "Submitted Data:",
+      "[EmailJS Notice] EmailJS keys missing.\nSubmitted Data:",
       templateParams
     )
 
@@ -132,7 +130,8 @@ export async function sendInquiryEmails(data: ContactFormData): Promise<EmailSer
     }
 
     // Await email dispatches concurrently
-    await Promise.all(promises)
+    const responses = await Promise.all(promises)
+    console.log("[EmailJS Live Success]", responses)
 
     return {
       success: true,
@@ -140,10 +139,16 @@ export async function sendInquiryEmails(data: ContactFormData): Promise<EmailSer
       isConfigured: true,
     }
   } catch (error: any) {
-    console.error("[EmailJS Error] Failed to send email:", error)
+    console.error("[EmailJS Live Error Details]:", {
+      status: error?.status,
+      text: error?.text,
+      error,
+    })
+    
+    const errText = error?.text || error?.message || "EmailJS server connection failed."
     return {
       success: false,
-      message: error?.text || error?.message || "Failed to send email. Please try again later.",
+      message: error?.status ? `EmailJS Error (${error.status}): ${errText}` : errText,
       isConfigured: true,
     }
   }

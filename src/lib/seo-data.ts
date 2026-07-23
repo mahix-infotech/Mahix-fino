@@ -75,7 +75,9 @@ export const regionsRaw: Record<string, string[]> = {
     "Dindigul", "Clock Tower", "Junction", "Old Bus Stand", "New Bus Stand",
     "Collectorate", "Gandhi Nagar", "Nehru Nagar", "Sivasakthi Nagar",
     "Maharaja Nagar", "Mullai Nagar", "Kanaka Nagar", "Nagal Nagar",
-    "Thirunagar", "Alagapuri", "LMS Junction", "Palani Road", "Kodaikanal Road"
+    "Thirunagar", "Alagapuri", "LMS Junction", "Palani Road", "Kodaikanal Road",
+    "RMTC Nagar", "Round Road", "YMR Patti", "MNS Nagar", "Balakrishnapuram",
+    "Nethaji Nagar", "Spencer Compound", "Trichy Road Dindigul", "Karur Road Dindigul", "Madurai Road Dindigul"
   ],
   "Dindigul City Neighbourhoods": [
     "Begampur", "Chinnalapatti", "Thadikombu", "Reddiarchatram",
@@ -98,7 +100,8 @@ export const regionsRaw: Record<string, string[]> = {
   ],
   "Kodaikanal & Hill Areas": [
     "Kodaikanal Lake", "Kodaikanal Town", "Pillar Rocks", "Berijam",
-    "Poomparai", "Sirumalai", "Pallangi", "Mannavanur"
+    "Poomparai", "Sirumalai", "Pallangi", "Mannavanur",
+    "Thandikudi", "Perumparai", "Adalur", "Pannaikadu", "Kookal", "Vilpatti"
   ],
   "Industrial & Commercial Zones (Dindigul)": [
     "SIDCO Industrial Estate Dindigul", "Dindigul Fort Area",
@@ -106,12 +109,14 @@ export const regionsRaw: Record<string, string[]> = {
     "Textiles Hub Dindigul", "MSME Hub Dindigul",
     "Dindigul Leather Tannery Zone", "Dindigul Textile Mills Cluster",
     "Oddanchatram Wholesale Agro Hub", "Dindigul Bypass Junction",
-    "Dindigul Brass & Lock Works Cluster"
+    "Dindigul Brass & Lock Works Cluster",
+    "Nilakottai SIPCOT", "Chettinaickenpatti Tannery Cluster"
   ],
   "Educational & College Tech Zones (Dindigul)": [
     "Gandhigram Tech Zone", "Muthanampatti PSNA Campus",
     "SSM Tech Zone Dindigul", "Mavoor Road Anna Univ Campus",
-    "Christian College Zone Oddanchatram", "GTN Arts College Area"
+    "Christian College Zone Oddanchatram", "GTN Arts College Area",
+    "NPR College Campus Natham", "RVS Engineering Campus Dindigul", "Gandhigram University Campus"
   ],
   "Growing Suburbs & Small Towns (Dindigul)": [
     "Ambathurai", "Gopalpatti", "Sellur", "Periavadipatti", "Ookadu",
@@ -122,7 +127,8 @@ export const regionsRaw: Record<string, string[]> = {
     "Valayapatti", "Poolankulam", "Orikkai", "Ayikudy",
     "Kallimanthayam", "Chatrapatti", "Markampatti", "Virupachi", "Ambilikai",
     "Sevugampatti", "Mattaparai", "Silukuvarpatti", "Sendurai",
-    "R.Vellodu", "Palayam", "Karikali", "Shenbaganur", "Perumal Malai"
+    "R.Vellodu", "Palayam", "Karikali", "Shenbaganur", "Perumal Malai",
+    "D.Gudalur", "Devarmalai", "Sirugudi", "Pillaiyarnatham"
   ],
 
   // ── Combined High-Value Clusters ──
@@ -240,6 +246,11 @@ export const rawKeywords: string[] = Array.from(new Set([
   "Shopify Developer in [Location]",
   "Shopify Store Development Services in [Location]",
   "WordPress Developer in [Location]",
+  "WordPress & WooCommerce Website Developers in [Location]",
+  "Cloud Migration & AWS Services in [Location]",
+  "AI Chatbot & Business Automation Solutions in [Location]",
+  "Flutter & React Native Mobile App Agency in [Location]",
+  "WhatsApp API Integration & Business Automation in [Location]",
   "Next.js Web Developer in [Location]",
   "Custom Software Development Agency in [Location]",
   "SaaS Product Development Company in [Location]",
