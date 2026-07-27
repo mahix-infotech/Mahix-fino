@@ -77,7 +77,11 @@ export const regionsRaw: Record<string, string[]> = {
     "Maharaja Nagar", "Mullai Nagar", "Kanaka Nagar", "Nagal Nagar",
     "Thirunagar", "Alagapuri", "LMS Junction", "Palani Road", "Kodaikanal Road",
     "RMTC Nagar", "Round Road", "YMR Patti", "MNS Nagar", "Balakrishnapuram",
-    "Nethaji Nagar", "Spencer Compound", "Trichy Road Dindigul", "Karur Road Dindigul", "Madurai Road Dindigul"
+    "Nethaji Nagar", "Spencer Compound", "Trichy Road Dindigul", "Karur Road Dindigul", "Madurai Road Dindigul",
+    "Dindigul West", "Dindigul East", "Dindigul North", "Dindigul South",
+    "MSP School Road", "GTN Road Dindigul", "Solai Hall Road", "Salai Road Dindigul",
+    "Subramaniapuram Dindigul", "Mendonsa Nagar", "RVS Nagar", "VGP Nagar Dindigul",
+    "Vadamadurai Road", "Batlagundu Main Road", "Bharathipuram Dindigul", "Meenakshinayakanpatti", "Adiyanuthu"
   ],
   "Dindigul City Neighbourhoods": [
     "Begampur", "Chinnalapatti", "Thadikombu", "Reddiarchatram",
@@ -86,17 +90,19 @@ export const regionsRaw: Record<string, string[]> = {
     "Melakuyilkudi", "Thottipalayam", "Ayyalur", "Thottanuthu",
     "Neikarapatti", "Sakkimangalam", "Keelamangalam", "Kamarajar Nagar",
     "Ambedkar Nagar", "Thiruvalluvar Nagar", "Pappampalayam",
-    "Kudalnagar", "Anna Nagar Dindigul"
+    "Kudalnagar", "Anna Nagar Dindigul", "Kuzhithurai Dindigul",
+    "Sanarpatti", "Kullalagundu", "Pachamalayankottai", "Mallanampatti"
   ],
   "Dindigul District Major Towns": [
     "Palani", "Kodaikanal", "Oddanchatram", "Vedasandur", "Natham",
     "Nilakottai", "Batlagundu", "Vadamadurai", "Athoor", "Gujiliamparai",
-    "Vembarpatti", "Ayakudi", "Ayyampatti", "Shanarpatti"
+    "Vembarpatti", "Ayakudi", "Ayyampatti", "Shanarpatti", "Usilampatti",
+    "Vadipatti", "Sholavandan"
   ],
   "Palani Taluk Areas": [
     "Palani Hill", "Palani Temple Road", "Thirupuvanam", "Pattiveeranpatti",
     "Ammainaickanur", "Ayyampalayam", "Balasamudram", "Keeranur",
-    "Govindaperi", "Sempatti"
+    "Govindaperi", "Sempatti", "Palani Handloom Cluster"
   ],
   "Kodaikanal & Hill Areas": [
     "Kodaikanal Lake", "Kodaikanal Town", "Pillar Rocks", "Berijam",
@@ -110,7 +116,10 @@ export const regionsRaw: Record<string, string[]> = {
     "Dindigul Leather Tannery Zone", "Dindigul Textile Mills Cluster",
     "Oddanchatram Wholesale Agro Hub", "Dindigul Bypass Junction",
     "Dindigul Brass & Lock Works Cluster",
-    "Nilakottai SIPCOT", "Chettinaickenpatti Tannery Cluster"
+    "Nilakottai SIPCOT", "Chettinaickenpatti Tannery Cluster",
+    "Dindigul SIDCO Phase 2", "Dindigul Coir Products Cluster",
+    "Dindigul Spices & Agro Processing Park", "Chinnalapatti Handloom Saree Cluster",
+    "Vedasandur Spinning & Textile Belt", "Karur Bypass Dindigul", "Trichy-Dindigul Highway Corridor"
   ],
   "Educational & College Tech Zones (Dindigul)": [
     "Gandhigram Tech Zone", "Muthanampatti PSNA Campus",
@@ -128,7 +137,9 @@ export const regionsRaw: Record<string, string[]> = {
     "Kallimanthayam", "Chatrapatti", "Markampatti", "Virupachi", "Ambilikai",
     "Sevugampatti", "Mattaparai", "Silukuvarpatti", "Sendurai",
     "R.Vellodu", "Palayam", "Karikali", "Shenbaganur", "Perumal Malai",
-    "D.Gudalur", "Devarmalai", "Sirugudi", "Pillaiyarnatham"
+    "D.Gudalur", "Devarmalai", "Sirugudi", "Pillaiyarnatham",
+    "Jothampatti", "Kallupatti Dindigul", "Kombai Dindigul", "Kottaipatti",
+    "Singarakottai", "Piranmalai Road", "Natham Road", "Vittalapatti", "Kallathupatti"
   ],
 
   // ── Combined High-Value Clusters ──
@@ -142,7 +153,8 @@ export const regionsRaw: Record<string, string[]> = {
     // Dindigul
     "Dindigul", "Palani", "Kodaikanal", "Batlagundu", "Oddanchatram",
     "Natham", "Nilakottai", "Vedasandur", "Chinnalapatti", "Athoor",
-    "Thadikombu", "Vadamadurai", "Gujiliamparai", "Reddiarchatram"
+    "Thadikombu", "Vadamadurai", "Gujiliamparai", "Reddiarchatram",
+    "Usilampatti", "Vadipatti", "Sanarpatti"
   ]
 }
 
@@ -255,7 +267,13 @@ export const rawKeywords: string[] = Array.from(new Set([
   "Custom Software Development Agency in [Location]",
   "SaaS Product Development Company in [Location]",
   "API Development & Integration Services in [Location]",
-  "Software Maintenance & Support Services in [Location]"
+  "Software Maintenance & Support Services in [Location]",
+  "Coir & Agro Industry ERP Software in [Location]",
+  "Handloom & Textile E-commerce Developers in [Location]",
+  "GST Billing & Inventory Management Software in [Location]",
+  "Hospitality & Hotel Booking Website Developers in [Location]",
+  "Lead Generation & Local SEO Agency in [Location]",
+  "Mobile App & Custom Web App Developers in [Location]"
 ]))
 
 // Helper to check if a location belongs to Dindigul region
