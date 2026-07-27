@@ -1,9 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 import { ArrowRight, Phone, Mail, Sparkles, Zap, BarChart3, Globe } from "lucide-react"
 import ScrollStack, { ScrollStackItem } from "@/components/ui/scroll-stack"
+import businessImg from "@/app/Assets/Images/business-successful-asian-businesswoman-red-blazer-imaging-something-working-laptop-lookin.jpg"
 
 /* ─────────────────────────────────────────────────────────────
    CTA card background images.
@@ -13,12 +14,12 @@ import ScrollStack, { ScrollStackItem } from "@/components/ui/scroll-stack"
 const ctaCards = {
   card1Image: null as string | null,   // e.g. "/cta-transform.jpg"
   card2Image: null as string | null,   // e.g. "/cta-stats.jpg"
-  card3Image: null as string | null,   // e.g. "/cta-services.jpg"
+  card3Image: businessImg as StaticImageData | string | null,
   card4Image: "/images/Startyour1.png" as string | null,   // e.g. "/cta-contact.jpg"
 }
 
 /** Reusable full-bleed image layer — sits behind all card content */
-function CardBgImage({ src, overlay, position = "object-center" }: { src: string; overlay: string; position?: string }) {
+function CardBgImage({ src, overlay, position = "object-center" }: { src: string | StaticImageData; overlay: string; position?: string }) {
   return (
     <>
       <Image
@@ -31,7 +32,9 @@ function CardBgImage({ src, overlay, position = "object-center" }: { src: string
         priority={false}
       />
       {/* Dark/colored overlay for text readability */}
-      <div className="absolute inset-0" style={{ background: overlay }} />
+      {overlay !== "transparent" && (
+        <div className="absolute inset-0" style={{ background: overlay }} />
+      )}
     </>
   )
 }
@@ -138,19 +141,19 @@ export function CTASection() {
         </ScrollStackItem>
 
         {/* ── Card 3 — Services ── */}
-        <ScrollStackItem itemClassName="bg-gradient-to-br from-emerald-500 to-teal-700 text-white flex flex-col justify-center gap-5 overflow-hidden">
+        <ScrollStackItem itemClassName="bg-slate-100 text-slate-950 flex flex-col justify-center gap-5 overflow-hidden border border-slate-200/80 shadow-2xl">
           {ctaCards.card3Image && (
             <CardBgImage
               src={ctaCards.card3Image}
-              overlay="linear-gradient(135deg, rgba(16,185,129,0.82) 0%, rgba(15,118,110,0.85) 100%)"
+              overlay="transparent"
             />
           )}
           <div className="relative z-10 flex flex-col gap-5">
             <div className="flex items-center gap-2">
-              <Globe className="h-5 w-5 text-emerald-200" />
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-100">Our Core Services</span>
+              <Globe className="h-5 w-5 text-emerald-700" />
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-800 font-semibold">Our Core Services</span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-950 leading-snug">
               Everything your business needs — in one place.
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -158,14 +161,14 @@ export function CTASection() {
                 "Web Development", "Mobile Apps", "AI & ML", "Cloud Services",
                 "SEO Optimization", "E-commerce", "Digital Marketing", "CRM Solutions",
               ].map(tag => (
-                <span key={tag} className="px-3 py-1.5 rounded-full bg-white/15 text-sm font-semibold text-white border border-white/20">
+                <span key={tag} className="px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-sm font-bold text-slate-900 border border-slate-300/80 shadow-sm">
                   {tag}
                 </span>
               ))}
             </div>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 mt-2 px-6 py-3 rounded-full bg-white text-emerald-700 font-bold text-sm w-fit hover:scale-105 transition-all duration-300 shadow-lg"
+              className="inline-flex items-center gap-2 mt-2 px-6 py-3 rounded-full bg-emerald-600 text-white font-bold text-sm w-fit hover:bg-emerald-700 hover:scale-105 transition-all duration-300 shadow-lg"
             >
               Explore All Services <ArrowRight className="h-4 w-4" />
             </Link>

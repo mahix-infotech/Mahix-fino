@@ -51,6 +51,32 @@ export function Navigation() {
   const [servicesOpen, setServicesOpen] = React.useState(false)
   const [mobileMenuState, setMobileMenuState] = React.useState<"main" | "services">("main")
   const pathname = usePathname()
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null)
+
+  const handleMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
+    }
+    setServicesOpen(true)
+  }
+
+  const handleMouseLeave = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+    timeoutRef.current = setTimeout(() => {
+      setServicesOpen(false)
+    }, 200)
+  }
+
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -89,8 +115,8 @@ export function Navigation() {
                 <div
                   key={link.label}
                   className="relative py-6"
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <button
                     className={cn(
@@ -128,11 +154,11 @@ export function Navigation() {
         {/* Desktop Mega-Menu Dropdown */}
         <div 
           className={cn(
-            "hidden md:block absolute left-4 right-4 lg:left-8 lg:right-8 top-full bg-background border border-black/[0.05] dark:border-white/[0.08] p-8 rounded-none shadow-xl transition-all duration-200 origin-top z-40",
+            "hidden md:block absolute left-4 right-4 lg:left-8 lg:right-8 top-full bg-background border border-black/[0.05] dark:border-white/[0.08] p-8 rounded-none shadow-xl transition-all duration-200 origin-top z-40 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:content-['']",
             servicesOpen ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
           )}
-          onMouseEnter={() => setServicesOpen(true)}
-          onMouseLeave={() => setServicesOpen(false)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           {/* 4 Columns Mega Menu */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
