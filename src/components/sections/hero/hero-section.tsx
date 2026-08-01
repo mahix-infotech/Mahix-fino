@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 
+import { CostEstimatorModal } from "@/components/cost-estimator-modal"
+
 const slides = [
   {
     title: (
@@ -163,6 +165,17 @@ export function HeroSection() {
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
+
+              <CostEstimatorModal 
+                trigger={
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto text-sm px-8 py-5 rounded-full border border-blue-500/30 bg-blue-600/20 text-blue-300 hover:bg-blue-600/40 hover:text-white hover:scale-105 transition-all duration-300 cursor-pointer shadow-md"
+                  >
+                    Calculate Cost 🧮
+                  </Button>
+                }
+              />
 
               <Button
                 variant="outline"

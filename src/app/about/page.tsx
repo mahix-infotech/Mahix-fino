@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
 import { AboutTimeline } from "@/components/pages/about/about-timeline"
+import { EventsGallery } from "@/components/pages/about/events-gallery"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -101,6 +102,9 @@ export default function AboutPage() {
 
         {/* ══ 3. Our Story Timeline ══════════════════════════════════════════ */}
         <AboutTimeline />
+
+        {/* ══ 4. Events & Chief Guest Recognition Gallery ═════════════════════ */}
+        <EventsGallery />
 
       </main>
 

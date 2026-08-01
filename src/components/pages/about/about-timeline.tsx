@@ -233,7 +233,9 @@ export function AboutTimeline() {
             {milestones.map((m, i) => (
               <div
                 key={m.year}
-                ref={(el) => { refs.current[i] = el }}
+                ref={(el) => {
+                  refs.current[i] = el
+                }}
                 className="w-full"
               >
                 <TimelineCard

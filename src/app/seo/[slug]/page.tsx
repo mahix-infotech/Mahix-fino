@@ -54,6 +54,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   } else if (parsed.serviceType === "ai-ml-solutions") {
     title = `AI & Machine Learning Solutions in ${name}, ${regionName} | Mahix InfoTech`
     description = `Cutting-edge AI & Machine Learning software solutions in ${name}, ${regionName}. AI chatbots, predictive analytics, NLP, and automated workflow software in ${name}.`
+  } else if (parsed.serviceType === "tech-training") {
+    title = `Tech Training & IT Courses in ${name}, ${regionName} | Mahix Academy`
+    description = `Leading IT training institute & software course provider in ${name}, ${regionName}. Live mentorship in Full Stack development, Python, AI/ML, and cloud computing.`
+  } else if (parsed.serviceType === "coding-bootcamp") {
+    title = `Coding Bootcamp & Software Development Training in ${name}, ${regionName} | Mahix Academy`
+    description = `Intensive coding bootcamps & live project mentorship in ${name}, ${regionName}. Learn React, Next.js, Flutter, and AI development with placement support.`
   }
 
   return {
@@ -103,6 +109,9 @@ function getServiceHeroBgImage(serviceType: string): string {
       return "https://images.unsplash.com/photo-1556742049-0a67414d4554?auto=format&fit=crop&q=80&w=2000"
     case "ai-ml-solutions":
       return "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&q=80&w=2000"
+    case "tech-training":
+    case "coding-bootcamp":
+      return "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=2000"
     default:
       return "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000"
   }
