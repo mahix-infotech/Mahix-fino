@@ -62,7 +62,16 @@ const projects = [
   },
 ]
 
+const categories = ["All", "Healthcare", "E-Commerce", "SaaS / CRM", "Mobile App", "AI / ML", "SEO Platform"]
+
 export function ProjectsSection() {
+  const [activeCategory, setActiveCategory] = React.useState("All")
+
+  const filteredProjects = projects.filter((project) => {
+    if (activeCategory === "All") return true
+    return project.category === activeCategory
+  })
+
   return (
     <section className="relative py-24 sm:py-32 bg-slate-950 overflow-hidden">
       {/* Ambient background glows */}
@@ -74,7 +83,7 @@ export function ProjectsSection() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
-        <div className="mb-14 flex flex-col items-center text-center">
+        <div className="mb-10 flex flex-col items-center text-center">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs font-bold uppercase tracking-widest text-slate-400 mb-5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             Live Projects
@@ -88,11 +97,28 @@ export function ProjectsSection() {
           <p className="mt-4 max-w-xl text-slate-400 text-sm sm:text-base leading-relaxed">
             Real-world products we&apos;ve shipped — from SaaS platforms and mobile apps to AI tools.
           </p>
+
+          {/* Interactive Filter Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border transition-all duration-300 cursor-pointer ${
+                  activeCategory === cat
+                    ? "bg-blue-600 text-white border-blue-500 shadow-lg scale-105"
+                    : "bg-white/5 text-slate-400 border-white/10 hover:border-white/25 hover:text-white"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
               className="group relative rounded-2xl overflow-hidden h-64 sm:h-72 cursor-pointer"

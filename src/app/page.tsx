@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/sections/hero/hero-section"
 import { ServicesSection } from "@/components/sections/services/services-section"
 import { AboutSection } from "@/components/sections/about/about-section"
 import { ProjectsSection } from "@/components/sections/projects/projects-section"
+import { LearningSection } from "@/components/sections/learning/learning-section"
 import { TestimonialsSection } from "@/components/sections/testimonials/testimonials-section"
 import { CTASection } from "@/components/sections/cta/cta-section"
 import { Footer } from "@/components/sections/footer/footer"
@@ -16,6 +17,7 @@ export default function Home() {
         <ServicesSection />
         <AboutSection />
         <ProjectsSection />
+        <LearningSection />
         <TestimonialsSection />
         <CTASection />
       </main>

@@ -3,11 +3,13 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, ChevronDown, ArrowRight } from "lucide-react"
+import { Menu, ChevronDown, ArrowRight, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 import { Logo } from "@/components/logo"
+
+const LEARNING_PLATFORM_URL = process.env.NEXT_PUBLIC_LEARNING_URL || "https://learning.mahixinfotech.com"
 
 const serviceCategories = [
   {
@@ -46,41 +48,101 @@ const serviceCategories = [
   }
 ]
 
+const learningCategories = [
+  {
+    category: "DEVELOPMENT COURSES",
+    items: [
+      { title: "Full Stack Web Development", href: `${LEARNING_PLATFORM_URL}/courses/full-stack` },
+      { title: "Mobile App Development", href: `${LEARNING_PLATFORM_URL}/courses/mobile-apps` },
+      { title: "Frontend & UI Engineering", href: `${LEARNING_PLATFORM_URL}/courses/frontend` },
+      { title: "Backend & API Architecture", href: `${LEARNING_PLATFORM_URL}/courses/backend` }
+    ]
+  },
+  {
+    category: "ADVANCED TECH & AI",
+    items: [
+      { title: "AI & Machine Learning", href: `${LEARNING_PLATFORM_URL}/courses/ai-ml` },
+      { title: "Cloud & DevOps Masterclass", href: `${LEARNING_PLATFORM_URL}/courses/cloud-devops` },
+      { title: "Data Science & Analytics", href: `${LEARNING_PLATFORM_URL}/courses/data-science` },
+      { title: "Cybersecurity Fundamentals", href: `${LEARNING_PLATFORM_URL}/courses/cybersecurity` }
+    ]
+  },
+  {
+    category: "LEARNING PORTAL",
+    items: [
+      { title: "Student LMS Portal", href: `${LEARNING_PLATFORM_URL}/portal` },
+      { title: "Live Workshops & Bootcamps", href: `${LEARNING_PLATFORM_URL}/workshops` },
+      { title: "Course Schedule & Catalog", href: `${LEARNING_PLATFORM_URL}/catalog` },
+      { title: "Student Success Stories", href: `${LEARNING_PLATFORM_URL}/stories` }
+    ]
+  },
+  {
+    category: "CERTIFICATIONS & PROGRAMS",
+    items: [
+      { title: "Verify Certificate Online", href: `${LEARNING_PLATFORM_URL}/certifications` },
+      { title: "Internship & Placement Cell", href: `${LEARNING_PLATFORM_URL}/internships` },
+      { title: "Corporate Tech Upskilling", href: `${LEARNING_PLATFORM_URL}/corporate` },
+      { title: "Campus & College Programs", href: `${LEARNING_PLATFORM_URL}/campus` }
+    ]
+  }
+]
+
 export function Navigation() {
   const [isOpen, setIsOpen] = React.useState(false)
   const [servicesOpen, setServicesOpen] = React.useState(false)
-  const [mobileMenuState, setMobileMenuState] = React.useState<"main" | "services">("main")
+  const [learningOpen, setLearningOpen] = React.useState(false)
+  const [mobileMenuState, setMobileMenuState] = React.useState<"main" | "services" | "learning">("main")
   const pathname = usePathname()
-  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null)
+  
+  const servicesTimeoutRef = React.useRef<NodeJS.Timeout | null>(null)
+  const learningTimeoutRef = React.useRef<NodeJS.Timeout | null>(null)
 
-  const handleMouseEnter = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
-      timeoutRef.current = null
+  const handleServicesMouseEnter = () => {
+    if (servicesTimeoutRef.current) {
+      clearTimeout(servicesTimeoutRef.current)
+      servicesTimeoutRef.current = null
     }
+    setLearningOpen(false)
     setServicesOpen(true)
   }
 
-  const handleMouseLeave = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
+  const handleServicesMouseLeave = () => {
+    if (servicesTimeoutRef.current) {
+      clearTimeout(servicesTimeoutRef.current)
     }
-    timeoutRef.current = setTimeout(() => {
+    servicesTimeoutRef.current = setTimeout(() => {
       setServicesOpen(false)
+    }, 200)
+  }
+
+  const handleLearningMouseEnter = () => {
+    if (learningTimeoutRef.current) {
+      clearTimeout(learningTimeoutRef.current)
+      learningTimeoutRef.current = null
+    }
+    setServicesOpen(false)
+    setLearningOpen(true)
+  }
+
+  const handleLearningMouseLeave = () => {
+    if (learningTimeoutRef.current) {
+      clearTimeout(learningTimeoutRef.current)
+    }
+    learningTimeoutRef.current = setTimeout(() => {
+      setLearningOpen(false)
     }, 200)
   }
 
   React.useEffect(() => {
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
+      if (servicesTimeoutRef.current) clearTimeout(servicesTimeoutRef.current)
+      if (learningTimeoutRef.current) clearTimeout(learningTimeoutRef.current)
     }
   }, [])
 
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
+    if (href === "/") return pathname === "/"
+    return pathname.startsWith(href)
   }
 
   const handleOpenChange = (open: boolean) => {
@@ -93,7 +155,8 @@ export function Navigation() {
   const navLinks = [
     { label: "HOME", href: "/" },
     { label: "ABOUT", href: "/about" },
-    { label: "SERVICES", href: "/services", isDropdown: true },
+    { label: "SERVICES", href: "/services", dropdownType: "services" },
+    { label: "LEARNING", href: LEARNING_PLATFORM_URL, dropdownType: "learning", isExternal: true },
     { label: "CAREERS", href: "/careers" },
     { label: "CONTACT", href: "/contact" }
   ]
@@ -110,25 +173,49 @@ export function Navigation() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-5 lg:gap-8">
           {navLinks.map((link) => {
-            if (link.isDropdown) {
+            if (link.dropdownType === "services") {
               return (
                 <div
                   key={link.label}
                   className="relative py-6"
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={handleServicesMouseEnter}
+                  onMouseLeave={handleServicesMouseLeave}
                 >
                   <button
                     className={cn(
                       "flex items-center gap-1 text-[13px] font-bold uppercase tracking-wider transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 relative cursor-pointer",
                       isActive(link.href) || servicesOpen
-                        ? "text-blue-600 dark:text-blue-400 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-blue-600 dark:after:bg-blue-400"
+                        ? "text-blue-600 dark:text-blue-400"
                         : "text-muted-foreground"
                     )}
                   >
                     {link.label}
                     <ChevronDown className={cn("h-4 w-4 transition-transform duration-300 text-blue-600 dark:text-blue-400", servicesOpen && "rotate-180")} />
                   </button>
+                </div>
+              )
+            }
+
+            if (link.dropdownType === "learning") {
+              return (
+                <div
+                  key={link.label}
+                  className="relative py-6"
+                  onMouseEnter={handleLearningMouseEnter}
+                  onMouseLeave={handleLearningMouseLeave}
+                >
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      "flex items-center gap-1 text-[13px] font-bold uppercase tracking-wider transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 relative cursor-pointer",
+                      learningOpen ? "text-blue-600 dark:text-blue-400" : "text-muted-foreground"
+                    )}
+                  >
+                    <span>{link.label}</span>
+                    <ChevronDown className={cn("h-4 w-4 transition-transform duration-300 text-blue-600 dark:text-blue-400", learningOpen && "rotate-180")} />
+                  </a>
                 </div>
               )
             }
@@ -141,7 +228,7 @@ export function Navigation() {
                 className={cn(
                   "py-6 text-[13px] font-bold uppercase tracking-wider transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 relative",
                   isActive(link.href)
-                    ? "text-blue-600 dark:text-blue-400 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-blue-600 dark:after:bg-blue-400"
+                    ? "text-blue-600 dark:text-blue-400"
                     : "text-muted-foreground"
                 )}
               >
@@ -151,14 +238,14 @@ export function Navigation() {
           })}
         </nav>
 
-        {/* Desktop Mega-Menu Dropdown */}
+        {/* Desktop Mega-Menu Dropdown - SERVICES */}
         <div 
           className={cn(
             "hidden md:block absolute left-4 right-4 lg:left-8 lg:right-8 top-full bg-background border border-black/[0.05] dark:border-white/[0.08] p-8 rounded-none shadow-xl transition-all duration-200 origin-top z-40 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:content-['']",
             servicesOpen ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
           )}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleServicesMouseEnter}
+          onMouseLeave={handleServicesMouseLeave}
         >
           {/* 4 Columns Mega Menu */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -224,6 +311,73 @@ export function Navigation() {
           </div>
         </div>
 
+        {/* Desktop Mega-Menu Dropdown - LEARNING */}
+        <div 
+          className={cn(
+            "hidden md:block absolute left-4 right-4 lg:left-8 lg:right-8 top-full bg-background border border-black/[0.05] dark:border-white/[0.08] p-8 rounded-none shadow-xl transition-all duration-200 origin-top z-40 before:absolute before:-top-6 before:left-0 before:right-0 before:h-6 before:content-['']",
+            learningOpen ? "opacity-100 scale-100 translate-y-0 pointer-events-auto" : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
+          )}
+          onMouseEnter={handleLearningMouseEnter}
+          onMouseLeave={handleLearningMouseLeave}
+        >
+          {/* 4 Columns Mega Menu */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {learningCategories.map((category) => (
+              <div key={category.category} className="flex flex-col gap-3">
+                <h4 className="text-[13px] font-bold text-slate-800 dark:text-slate-200 border-l-[3px] border-blue-600 dark:border-blue-500 pl-2.5 tracking-wider uppercase select-none">
+                  {category.category}
+                </h4>
+                <div className="flex flex-col gap-1.5 mt-2">
+                  {category.items.map((item) => (
+                    <a
+                      key={item.title}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setLearningOpen(false)}
+                      className="flex items-center text-[13px] font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1 group"
+                    >
+                      <span className="text-blue-500 dark:text-blue-400 font-semibold mr-2 transition-transform duration-200 group-hover:translate-x-0.5 select-none">
+                        &gt;
+                      </span>
+                      <span>{item.title}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer Bar */}
+          <div className="border-t border-black/[0.05] dark:border-white/[0.08] mt-8 pt-4 flex items-center justify-between">
+            <div className="flex items-center text-xs">
+              <a
+                href={LEARNING_PLATFORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setLearningOpen(false)}
+                className="font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors flex items-center gap-1 group/footer"
+              >
+                Launch Learning Platform
+                <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover/footer:translate-x-0.5" />
+              </a>
+              <span className="mx-3.5 text-slate-300 dark:text-slate-700 select-none">|</span>
+              <a
+                href={`${LEARNING_PLATFORM_URL}/certifications`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setLearningOpen(false)}
+                className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
+              >
+                Verify Certificate
+              </a>
+            </div>
+            <div className="text-xs text-slate-400 dark:text-slate-500 font-bold select-none">
+              Official Mahix Academy
+            </div>
+          </div>
+        </div>
+
         {/* CTA Actions */}
         <div className="hidden md:flex items-center gap-4">
           <Button 
@@ -281,6 +435,14 @@ export function Navigation() {
                       className="text-[15px] font-bold uppercase tracking-wider py-1 text-left text-muted-foreground hover:text-foreground flex items-center justify-between cursor-pointer w-full"
                     >
                       <span>Services</span>
+                      <ArrowRight className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                    </button>
+
+                    <button
+                      onClick={() => setMobileMenuState("learning")}
+                      className="text-[15px] font-bold uppercase tracking-wider py-1 text-left text-muted-foreground hover:text-foreground flex items-center justify-between cursor-pointer w-full"
+                    >
+                      <span>Learning</span>
                       <ArrowRight className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                     </button>
 
@@ -366,6 +528,49 @@ export function Navigation() {
                   </div>
                 </div>
 
+                {/* Learning Panel */}
+                <div 
+                  className={cn(
+                    "transition-all duration-300 flex flex-col gap-4 w-full h-full absolute top-0 left-0 bg-background/95",
+                    mobileMenuState === "learning" ? "translate-x-0 opacity-100 pointer-events-auto" : "translate-x-full opacity-0 pointer-events-none"
+                  )}
+                >
+                  <button
+                    onClick={() => setMobileMenuState("main")}
+                    className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 transition-colors flex items-center gap-1.5 py-2 cursor-pointer uppercase tracking-wider select-none border-b border-black/[0.05] dark:border-white/[0.08] mb-2 w-full text-left"
+                  >
+                    <span className="text-sm font-semibold">&larr;</span> Back to Menu
+                  </button>
+
+                  <div className="flex flex-col gap-4 overflow-y-auto max-h-[70vh] pr-2 pb-10">
+                    {learningCategories.map((category) => (
+                      <div key={category.category} className="flex flex-col gap-2">
+                        <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider border-l-2 border-blue-600 pl-2">
+                          {category.category}
+                        </span>
+                        <div className="flex flex-col gap-2.5 pl-3 border-l border-black/[0.05] dark:border-white/[0.08]">
+                          {category.items.map((item) => (
+                            <a
+                              key={item.title}
+                              href={item.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => setIsOpen(false)}
+                              className="text-[13px] font-medium py-0.5 text-muted-foreground hover:text-foreground transition-colors flex items-center justify-between group"
+                            >
+                              <div className="flex items-center">
+                                <span className="text-blue-500 mr-2 select-none">&gt;</span>
+                                <span>{item.title}</span>
+                              </div>
+                              <ExternalLink className="h-3 w-3 text-slate-400" />
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </div>
             </SheetContent>
           </Sheet>
@@ -375,5 +580,3 @@ export function Navigation() {
     </header>
   )
 }
-
-

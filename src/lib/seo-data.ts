@@ -273,7 +273,40 @@ export const rawKeywords: string[] = Array.from(new Set([
   "GST Billing & Inventory Management Software in [Location]",
   "Hospitality & Hotel Booking Website Developers in [Location]",
   "Lead Generation & Local SEO Agency in [Location]",
-  "Mobile App & Custom Web App Developers in [Location]"
+  "Mobile App & Custom Web App Developers in [Location]",
+
+  // ── Learning & Training Keywords ──
+  "Programming Course in [Location]",
+  "Coding Bootcamp in [Location]",
+  "Online Tech Courses in [Location]",
+  "Web Development Course in [Location]",
+  "Python Course in [Location]",
+  "Full Stack Development Course in [Location]",
+  "AI & ML Course in [Location]",
+  "Flutter Course in [Location]",
+  "React Course in [Location]",
+  "Cloud Computing Course in [Location]",
+  "Software Training Institute in [Location]",
+  "IT Training Center in [Location]",
+  "Corporate Tech Training in [Location]",
+  "Programming Training Near Me",
+  "Coding Classes in [Location]",
+  "Full Stack Bootcamp in [Location]",
+  "Data Science & AI Training in [Location]",
+  "Java & Full Stack Course in [Location]",
+  "Software Development Course in [Location]",
+
+  // ── Advanced Tech Stack & Engineering Keywords ──
+  "DevOps Services in [Location]",
+  "Kubernetes & Docker Services in [Location]",
+  "UI UX Design Agency in [Location]",
+  "Figma Design Services in [Location]",
+  "Progressive Web App Development in [Location]",
+  "MERN Stack Developer in [Location]",
+  "Node.js Developer in [Location]",
+  "Python Web Development in [Location]",
+  "React.js Development Company in [Location]",
+  "Tailwind CSS & Frontend Engineering in [Location]"
 ]))
 
 // Helper to check if a location belongs to Dindigul region
@@ -295,7 +328,7 @@ export function getKeywordsForLocation(locationName: string): string[] {
 }
 
 export interface ParsedSeoSlug {
-  serviceType: 'generic' | 'web-development' | 'mobile-app-development' | 'seo-services' | 'custom-software' | 'e-commerce-development' | 'ai-ml-solutions'
+  serviceType: 'generic' | 'web-development' | 'mobile-app-development' | 'seo-services' | 'custom-software' | 'e-commerce-development' | 'ai-ml-solutions' | 'tech-training' | 'coding-bootcamp'
   serviceTitle: string
   location: LocationItem
 }
@@ -307,6 +340,8 @@ export const seoServicesList = [
   { prefix: 'custom-software-development-in-', type: 'custom-software' as const, title: 'Custom Software Development' },
   { prefix: 'e-commerce-development-in-', type: 'e-commerce-development' as const, title: 'E-Commerce & Shopify Development' },
   { prefix: 'ai-ml-solutions-in-', type: 'ai-ml-solutions' as const, title: 'AI & ML Software Solutions' },
+  { prefix: 'tech-training-in-', type: 'tech-training' as const, title: 'Tech Training & IT Courses' },
+  { prefix: 'coding-bootcamp-in-', type: 'coding-bootcamp' as const, title: 'Coding Bootcamp & Live Mentorship' },
 ]
 
 export function parseSeoSlug(slug: string): ParsedSeoSlug | null {
