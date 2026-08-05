@@ -243,8 +243,30 @@ export default async function LocationPage({ params }: PageProps) {
 
   const heroBgImage = getServiceHeroBgImage(serviceType)
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": `Mahix InfoTech - ${name}`,
+    "url": `https://mahixinfotech.com/seo/${slug}`,
+    "telephone": "+918608610760",
+    "email": "mahixinfotech@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": name,
+      "addressRegion": regionName,
+      "addressCountry": "IN"
+    },
+    "description": `Leading software development agency in ${name}, ${regionName}. Specializing in web development, mobile apps, SEO, and enterprise software solutions.`,
+    "priceRange": "₹₹",
+    "sameAs": ["https://mahixinfotech.com"]
+  }
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navigation />
 
       <main className="pt-20">
