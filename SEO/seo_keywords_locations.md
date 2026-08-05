@@ -197,69 +197,75 @@ Below are all the deduplicated Chennai locations integrated into the system, gro
 - **Gerugambakkam** (`gerugambakkam`)
 - **Mugalivakkam** (`mugalivakkam`)
 - **Manapakkam** (`manapakkam`)
-- **Maraimalai Nagar** (`maraimalai-nagar`)
-- **Mahindra World City** (`mahindra-world-city`)
-
----
-
-## 📈 Part 2: Mapped SEO Keywords
-
-These are the 50 search terms configured for our local landing pages. On the live page, the placeholder `[Location]` is dynamically swapped with the capitalized name of the active neighborhood (e.g., "Velachery"):
-
-1. Website Development in **[Location]**
-2. Website Design in **[Location]**
-3. Website Development Near Me
-4. Website Design Near Me
-5. Mobile App Development in **[Location]**
-6. Mobile App Development Near Me
-7. Android App Development in **[Location]**
-8. iOS App Development in **[Location]**
-9. Flutter App Development in **[Location]**
-10. React Native App Development in **[Location]**
-11. Web Application Development in **[Location]**
-12. Custom Website Development in **[Location]**
-13. Responsive Website Design in **[Location]**
-14. Ecommerce Website Development in **[Location]**
-15. Business Website Development in **[Location]**
-16. Professional Website Design in **[Location]**
-17. Website Redesign in **[Location]**
-18. Landing Page Design in **[Location]**
-19. SEO Services in **[Location]**
-20. Local SEO in **[Location]**
-21. Technical SEO in **[Location]**
-22. On-Page SEO in **[Location]**
-23. Off-Page SEO in **[Location]**
-24. SEO Audit in **[Location]**
-25. Google Ads in **[Location]**
-26. Google Ads Management in **[Location]**
-27. PPC Services in **[Location]**
-28. Search Engine Marketing in **[Location]**
-29. Meta Ads in **[Location]**
-30. Facebook Ads in **[Location]**
-31. Instagram Ads in **[Location]**
-32. Social Media Marketing in **[Location]**
-33. Digital Marketing in **[Location]**
-34. Online Marketing in **[Location]**
-35. Lead Generation in **[Location]**
-36. Website Maintenance in **[Location]**
-37. Website Speed Optimization in **[Location]**
-38. Website Security Services in **[Location]**
-39. UI UX Design in **[Location]**
-40. Custom Software Development in **[Location]**
-41. CRM Development in **[Location]**
-42. ERP Software Development in **[Location]**
-43. AI Chatbot Development in **[Location]**
-44. Business Automation in **[Location]**
-45. Website Development for Small Business in **[Location]**
-46. Ecommerce Website Design Near Me
-47. SEO Expert Near Me in **[Location]**
-48. Mobile App Developer Near Me in **[Location]**
-49. Web Designer Near Me in **[Location]**
-50. Digital Marketing Services Near Me in **[Location]**
-51. Software Development Agency in **[Location]**
-52. Web Development Company in **[Location]**
-53. Mobile App Development Company in **[Location]**
-54. Shopify Developer in **[Location]**
-55. WordPress Developer in **[Location]**
-56. Next.js Web Developer in **[Location]**
-57. Custom Software Development Company in **[Location]**
+200: - **Maraimalai Nagar** (`maraimalai-nagar`)
+201: - **Mahindra World City** (`mahindra-world-city`)
+202: - **Vadapalani** (`vadapalani`)
+203: 
+204: ---
+205: 
+206: ## 📈 Part 2: Mapped SEO Keywords
+207: 
+208: These keywords are configured for our local landing pages. On live pages, the placeholder `[Location]` is dynamically swapped with the active location (e.g., "Velachery", "Vadapalani", "Dindigul", "Chennai"):
+209: 
+210: 1. Software Development Company in **[Location]**
+211: 2. Software Development Services Company in **[Location]**
+212: 3. Software Development Companies in **[Location]**
+213: 4. Software Developer Company in **[Location]**
+214: 5. Software Developer in **[Location]**
+215: 6. Software Development in **[Location]**
+216: 7. Software Testing Company in **[Location]**
+217: 8. Custom Software Development in **[Location]**
+218: 9. Application Development in **[Location]**
+219: 10. Mobile App Development in **[Location]**
+220: 11. Mobile App Development Company in **[Location]**
+221: 12. Mobile App Development Companies in **[Location]**
+222: 13. Mobile Application Development in **[Location]**
+223: 14. Mobile Application Development Company in **[Location]**
+224: 15. Mobile Application Developers in **[Location]**
+225: 16. Mobile App Developers in **[Location]**
+226: 17. Best Mobile App Developers in **[Location]**
+227: 18. Best Mobile Application Development Company in **[Location]**
+228: 19. Best Mobile App Development Company in **[Location]**
+229: 20. Top Mobile App Development Companies in **[Location]**
+230: 21. Top 10 Mobile App Development Companies in **[Location]**
+231: 22. Mobile App (Android & iOS) Development Company in **[Location]**
+232: 23. App Development in **[Location]**
+233: 24. App Development Company in **[Location]**
+234: 25. App Developer in **[Location]**
+235: 26. Android App Development in **[Location]**
+236: 27. Android Application Development in **[Location]**
+237: 28. Android App Development Company in **[Location]**
+238: 29. Android & iOS Application Development Company in **[Location]**
+239: 30. Android App Developer in **[Location]**
+240: 31. iOS App Development in **[Location]**
+241: 32. iOS App Development Company in **[Location]**
+242: 33. iOS Developer in **[Location]**
+243: 34. Flutter App Development in **[Location]**
+244: 35. React Native App Development Company in **[Location]**
+245: 36. Web Development Company in **[Location]**
+246: 37. Web App Development Company in **[Location]**
+247: 38. Web Design Company in **[Location]**
+248: 39. Customized Website Development Company in **[Location]**
+249: 40. Customized Website Designing Company in **[Location]**
+250: 41. Dynamic Website Designing Company in **[Location]**
+251: 42. Dynamic Website Development Company in **[Location]**
+252: 43. Static Website Designing Company in **[Location]**
+253: 44. Static Website Development Company in **[Location]**
+254: 45. Mobile Responsive Website Designing Company in **[Location]**
+255: 46. Responsive Web Designing Company in **[Location]**
+256: 47. Ecommerce Web Development Company in **[Location]**
+257: 48. Ecommerce Website Designing Company in **[Location]**
+258: 49. SEO Company in **[Location]**
+259: 50. SEO Services Company in **[Location]**
+260: 51. Digital Marketing Company in **[Location]**
+261: 52. Digital Marketing Services Company in **[Location]**
+262: 53. Social Media Marketing Company in **[Location]**
+263: 54. Facebook Marketing Company in **[Location]**
+264: 55. Search Engine Marketing Company in **[Location]**
+265: 56. SMS Marketing Services Company in **[Location]**
+266: 57. Internet of Things (IoT) Development in **[Location]**
+267: 58. Offshore Development Company in **[Location]**
+268: 59. PHP Web Development in **[Location]**
+269: 60. Python Web Development Company in **[Location]**
+270: 61. Web Hosting Company in **[Location]**
+271: 62. UI/UX Website Designing in **[Location]**

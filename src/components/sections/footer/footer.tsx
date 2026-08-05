@@ -165,9 +165,35 @@ export function Footer() {
           </div>
 
         </div>
-        
+
+        {/* Local SEO Hub Links for Faster Crawling */}
+        <div className="mt-10 border-t border-zinc-900/80 pt-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-zinc-300 mb-3">Popular Service Locations</p>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-zinc-400">
+            <Link href="/seo/vadapalani" className="hover:text-emerald-400 transition-colors">Software Company in Vadapalani</Link>
+            <span>•</span>
+            <Link href="/seo/velachery" className="hover:text-emerald-400 transition-colors">Web Development in Velachery</Link>
+            <span>•</span>
+            <Link href="/seo/adyar" className="hover:text-emerald-400 transition-colors">Mobile App Developers in Adyar</Link>
+            <span>•</span>
+            <Link href="/seo/t-nagar" className="hover:text-emerald-400 transition-colors">SEO Services in T. Nagar</Link>
+            <span>•</span>
+            <Link href="/seo/porur" className="hover:text-emerald-400 transition-colors">App Development in Porur</Link>
+            <span>•</span>
+            <Link href="/seo/omr" className="hover:text-emerald-400 transition-colors">Software Agency in OMR</Link>
+            <span>•</span>
+            <Link href="/seo/ambattur" className="hover:text-emerald-400 transition-colors">Website Design in Ambattur</Link>
+            <span>•</span>
+            <Link href="/seo/dindigul" className="hover:text-emerald-400 transition-colors">Software Company in Dindigul</Link>
+            <span>•</span>
+            <Link href="/seo/palani" className="hover:text-emerald-400 transition-colors">Web Development in Palani</Link>
+            <span>•</span>
+            <Link href="/seo/kodaikanal" className="hover:text-emerald-400 transition-colors">Digital Marketing in Kodaikanal</Link>
+          </div>
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-12 border-t border-zinc-900 pt-6 flex flex-col items-center justify-between sm:flex-row gap-4">
+        <div className="mt-8 border-t border-zinc-900 pt-6 flex flex-col items-center justify-between sm:flex-row gap-4">
           <p className="text-[10px] sm:text-xs text-zinc-500 text-center sm:text-left order-2 sm:order-1">
             &copy; {new Date().getFullYear()} Mahix InfoTech. All rights reserved.
           </p>
