@@ -6,9 +6,9 @@ import { MessageCircle } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Contact Us - Get in Touch with Mahix InfoTech | Dindigul",
-  description: "Contact Mahix InfoTech for your software development needs. Located in Dindigul, Tamil Nadu. Call +91 8608610760 or email hr@mahixinfotech.com for web development, mobile apps, and AI solutions.",
-  keywords: "contact Mahix InfoTech, software development company Dindigul, Dindigul office, web development contact, mobile app development inquiry",
+  title: "Contact Us - Get in Touch with Mahix InfoTech | Coimbatore & Dindigul",
+  description: "Contact Mahix InfoTech for your software development needs. Headquartered in Coimbatore with a branch in Dindigul, Tamil Nadu. Call +91 8608610760 or email hr@mahixinfotech.com for web development, mobile apps, and AI solutions.",
+  keywords: "contact Mahix InfoTech, software development company Coimbatore, Gandhipuram headquarters, Dindigul branch office, web development contact, mobile app development inquiry",
 }
 
 export default function ContactPage() {
@@ -93,13 +93,28 @@ export default function ContactPage() {
 
                 <div className="relative grid md:grid-cols-2 gap-10 items-center">
                   <div>
-                    <span className="text-xs font-bold uppercase tracking-widest text-red-300 mb-3 block">Our Office</span>
-                    <h2 className="text-3xl md:text-4xl font-black mb-4 leading-tight">Visit us in Dindigul</h2>
-                    <p className="text-white/70 leading-relaxed text-base">
-                      89/4, Scheme Road, Krishna Raja Harini Illam,<br />
-                      Near Head Post Office Road, Dindigul,<br />
-                      Tamil Nadu — 624001, India
-                    </p>
+                    <span className="text-xs font-bold uppercase tracking-widest text-red-300 mb-3 block">Our Locations</span>
+                    <h2 className="text-3xl md:text-4xl font-black mb-6 leading-tight">Visit Our Offices</h2>
+                    
+                    <div className="space-y-4">
+                      <div className="border-l-2 border-red-400/60 pl-3">
+                        <p className="text-xs font-bold uppercase tracking-wider text-red-300">Headquarters (Coimbatore)</p>
+                        <p className="text-white/80 leading-relaxed text-sm mt-0.5">
+                          Near Gandhipuram Bus Stand,<br />
+                          Coimbatore, Tamil Nadu, India
+                        </p>
+                      </div>
+
+                      <div className="border-l-2 border-red-400/60 pl-3">
+                        <p className="text-xs font-bold uppercase tracking-wider text-red-300">Dindigul Branch</p>
+                        <p className="text-white/80 leading-relaxed text-sm mt-0.5">
+                          89/4, Scheme Road, Krishna Raja Harini Illam,<br />
+                          Near Head Post Office Road, Dindigul,<br />
+                          Tamil Nadu — 624001, India
+                        </p>
+                      </div>
+                    </div>
+
                     <div className="mt-8 space-y-3">
                       <div className="flex items-center gap-3 text-white/80 text-sm">
                         <span className="text-red-300">📞</span>

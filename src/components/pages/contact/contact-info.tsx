@@ -32,7 +32,16 @@ const contactItems = [
   },
   {
     icon: MapPin,
-    label: "Headquarters",
+    label: "Headquarters (Coimbatore)",
+    value: "Coimbatore, Tamil Nadu",
+    sub: "Near Gandhipuram Bus Stand, Coimbatore, Tamil Nadu, India",
+    iconBg: "bg-red-50 border-red-100",
+    iconColor: "text-red-800",
+    href: "https://maps.google.com/?q=Gandhipuram+Bus+Stand,Coimbatore,Tamil+Nadu",
+  },
+  {
+    icon: MapPin,
+    label: "Dindigul Branch",
     value: "Dindigul, Tamil Nadu 624001",
     sub: "89/4, Scheme Road, Krishna Raja Harini Illam, Near Head Post Office Road",
     iconBg: "bg-slate-100 border-slate-200",
