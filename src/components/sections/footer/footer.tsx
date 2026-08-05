@@ -136,12 +136,21 @@ export function Footer() {
             </div>
 
             {/* Address & Contact Info (Properly aligned spanning 2 columns) */}
-            <div className="sm:col-span-2 lg:col-span-2">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-200">Contact Us</h3>
-              <p className="mt-4 text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                89/4, Scheme Road, Krishna Raja Harini Illam, Near Head Post Office Road, Dindigul, Tamil Nadu 624001, India.
-              </p>
-              <div className="mt-3.5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-zinc-400">
+            <div className="sm:col-span-2 lg:col-span-2 space-y-4">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-zinc-200">Our Offices</h3>
+              <div>
+                <p className="text-xs font-bold text-emerald-400">Headquarters (Coimbatore):</p>
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mt-0.5">
+                  Near Gandhipuram Bus Stand, Coimbatore, Tamil Nadu, India.
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-bold text-emerald-400">Dindigul Branch:</p>
+                <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mt-0.5">
+                  89/4, Scheme Road, Krishna Raja Harini Illam, Near Head Post Office Road, Dindigul, Tamil Nadu 624001, India.
+                </p>
+              </div>
+              <div className="pt-1 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-zinc-400">
                 <a href="tel:+918608610760" className="flex items-center hover:text-white transition-colors whitespace-nowrap">
                   <Phone className="mr-2 h-4 w-4 text-emerald-500 flex-shrink-0" />
                   <span>+91 8608610760</span>
