@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Careers - Join Our Team | Mahix InfoTech",
   description: "Join Mahix InfoTech. Explore hybrid and remote opportunities for software engineers, fullstack developers, designers, and marketing experts in Dindigul.",
   keywords: "careers Mahix InfoTech, software development jobs Dindigul, remote software developer vacancies, tech jobs Dindigul",
+  alternates: {
+    canonical: "https://mahixinfotech.com/careers",
+  },
 }
 
 export default function CareersPage() {

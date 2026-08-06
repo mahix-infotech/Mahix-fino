@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Contact Us - Get in Touch with Mahix InfoTech | Coimbatore & Dindigul",
   description: "Contact Mahix InfoTech for your software development needs. Headquartered in Coimbatore with a branch in Dindigul, Tamil Nadu. Call +91 8608610760 or email hr@mahixinfotech.com for web development, mobile apps, and AI solutions.",
   keywords: "contact Mahix InfoTech, software development company Coimbatore, Gandhipuram headquarters, Dindigul branch office, web development contact, mobile app development inquiry",
+  alternates: {
+    canonical: "https://mahixinfotech.com/contact",
+  },
 }
 
 export default function ContactPage() {

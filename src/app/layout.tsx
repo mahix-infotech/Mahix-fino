@@ -36,11 +36,20 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Mahix InfoTech",
+    images: [
+      {
+        url: "https://mahixinfotech.com/mahix_logo.png",
+        width: 800,
+        height: 800,
+        alt: "Mahix InfoTech Logo",
+      }
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Mahix InfoTech - Software Development & Digital Solutions",
     description: "Leading software development company in Dindigul specializing in web development, mobile apps, AI/ML solutions, cloud services, and SEO optimization.",
+    images: ["https://mahixinfotech.com/mahix_logo.png"],
   },
 };
 
