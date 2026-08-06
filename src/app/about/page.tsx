@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "About Us - Mahix InfoTech | Software Development Company",
   description: "Learn about Mahix InfoTech, our story, core values, and our mission to transform businesses through cutting-edge web development, mobile apps, and AI/ML solutions.",
   keywords: "about Mahix InfoTech, software development company story, company values, digital transformation mission",
+  alternates: {
+    canonical: "https://mahixinfotech.com/about",
+  },
 }
 
 export default function AboutPage() {

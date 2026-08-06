@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Blog & Insights - Tech Tutorials & Guides | Mahix InfoTech",
   description: "Read the latest technology blogs, development guides, and software engineering insights from the digital innovators at Mahix InfoTech.",
   keywords: "blog Mahix InfoTech, software development tutorial, web engineering insights, AI marketing blogs",
+  alternates: {
+    canonical: "https://mahixinfotech.com/blog",
+  },
 }
 
 export default function BlogPage() {

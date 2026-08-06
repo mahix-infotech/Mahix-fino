@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Our Portfolio - Case Studies & Project Showcases | Mahix InfoTech",
   description: "Explore our recent projects and see how we've helped businesses transform their digital presence with innovative software engineering and custom applications.",
   keywords: "portfolio Mahix InfoTech, custom software showcase, client case studies, web mobile solutions portfolio",
+  alternates: {
+    canonical: "https://mahixinfotech.com/portfolio",
+  },
 }
 
 export default function PortfolioPage() {
