@@ -7,14 +7,12 @@ import {
   ArrowUpRight,
   Code2, Smartphone, ShoppingCart, Megaphone, Search,
   BarChart2, Share2, Cpu, ShoppingBag, Cloud, Brain,
-  Users, Settings, Lightbulb
+  Users, Settings, Lightbulb, Shirt, Flame, Zap, Navigation, Radio, Fingerprint,
+  FileText, Globe
 } from "lucide-react"
 
 /* ─────────────────────────────────────────
-   All 14 services
-   `image`: path in /public — swap with real
-   photos whenever ready. Leave null to show
-   the accent-icon placeholder instead.
+   14 core services
 ───────────────────────────────────────── */
 const services = [
   {
@@ -129,17 +127,116 @@ const services = [
     accent: "#6366f1",
     image: null,
   },
+  {
+    title: "IoT & AI\nSolutions",
+    href: "/services/gas-iot",
+    icon: Cpu,
+    bg: "linear-gradient(160deg,#0f2e20 0%,#081c12 100%)",
+    accent: "#10b981",
+    image: null,
+  },
 ]
 
-// Duplicate for seamless infinite loop
-const loopedServices = [...services, ...services]
+/* ─────────────────────────────────────────
+   IoT Services — 6 cards with image bg, PDF & Demo URLs
+───────────────────────────────────────── */
+const iotServices = [
+  {
+    title: "Garment IOT\nSolution",
+    description: "Real-time textile monitoring & protection systems.",
+    href: "/services/garment-iot",
+    icon: Shirt,
+    bg: "linear-gradient(160deg,#1c2836 0%,#0e1722 100%)",
+    accent: "#38bdf8",
+    image: "/svc-web-dev.png",
+    pdfUrl: "/Assets/PDF/g1.pdf",
+    demoUrl: "http://103.125.154.118:8080/skiot/",
+  },
+  {
+    title: "Gas IOT\nSystem",
+    description: "Automated gas leak detection & solenoid shutoff valves.",
+    href: "/services/gas-iot",
+    icon: Flame,
+    bg: "linear-gradient(160deg,#381c0c 0%,#1e0e06 100%)",
+    accent: "#f97316",
+    image: "/svc-ecommerce.png",
+    pdfUrl: "/Assets/PDF/gas.pdf",
+    demoUrl: "https://iotsvcgpl.com/dakshiyatechnology/",
+  },
+  {
+    title: "Energy Monitoring\nIoT",
+    description: "Sub-metering, 24/7 power analytics & load control.",
+    href: "/services/energy-monitoring-iot",
+    icon: Zap,
+    bg: "linear-gradient(160deg,#2e280c 0%,#1a1606 100%)",
+    accent: "#eab308",
+    image: "/svc-digital-marketing.png",
+    pdfUrl: "/Assets/PDF/eb.pdf",
+    demoUrl: "https://dakshiyatechnology.in/demo/eb.html",
+  },
+  {
+    title: "GPS Vehicle\nTracking",
+    description: "Live GPS location tracking & fleet telematics management.",
+    href: "/services/gps-vehicle-tracking",
+    icon: Navigation,
+    bg: "linear-gradient(160deg,#0f2e20 0%,#081c12 100%)",
+    accent: "#10b981",
+    image: "/svc-mobile-app.png",
+    pdfUrl: "https://dakshiyatechnology.in/demo/#",
+    demoUrl: "https://mahixinfotech.in/gps-tracking/pages/login.php",
+  },
+  {
+    title: "Asset Tracking\nSystem",
+    description: "Indoor & outdoor BLE / LoRaWAN location tracking.",
+    href: "/services/asset-tracking",
+    icon: Radio,
+    bg: "linear-gradient(160deg,#1e0a38 0%,#13062a 100%)",
+    accent: "#a855f7",
+    image: "/svc-seo.png",
+    pdfUrl: "/Assets/PDF/ble.pdf",
+    demoUrl: "https://dakshiyatechnology.in/demo/#",
+  },
+  {
+    title: "HR & eSSL\nAttendance",
+    description: "Biometric eSSL device syncing & cloud HRMS portal.",
+    href: "/services/hr-essl-attendance",
+    icon: Fingerprint,
+    bg: "linear-gradient(160deg,#0e1938 0%,#080f22 100%)",
+    accent: "#6366f1",
+    image: "/svc-web-dev.png",
+    pdfUrl: "/Assets/PDF/hr_page-0001.pdf",
+    demoUrl: "https://dakshiyatechnology.in/demo/#",
+  },
+]
 
-const CARD_W   = 212   // px — card width
-const CARD_GAP = 16    // px — gap between cards
-const CARD_UNIT = CARD_W + CARD_GAP
-const AUTO_SPEED = 0.6 // px per frame
+// Duplicate each list for seamless infinite loop
+const loopedServices    = [...services, ...services]
+const loopedIotServices = [...iotServices, ...iotServices]
 
-export function ServicesSection() {
+const CARD_W     = 212   // px
+const CARD_GAP   = 16    // px
+const CARD_UNIT  = CARD_W + CARD_GAP
+const AUTO_SPEED = 0.6   // px per frame
+
+/* ─────────────────────────────────────────
+   Reusable draggable / auto-scrolling strip
+───────────────────────────────────────── */
+type ServiceItem = {
+  title: string
+  href: string
+  icon: React.ElementType
+  bg: string
+  accent: string
+  image: string | null
+}
+
+function CardStrip({
+  items,
+  totalCount,
+}: {
+  items: ServiceItem[]
+  totalCount: number
+}) {
   const trackRef       = useRef<HTMLDivElement>(null)
   const rafRef         = useRef<number | null>(null)
   const isDragging     = useRef(false)
@@ -152,18 +249,14 @@ export function ServicesSection() {
   useEffect(() => {
     const track = trackRef.current
     if (!track) return
-
-    const midpoint = services.length * CARD_UNIT
+    const midpoint = totalCount * CARD_UNIT
 
     const tick = () => {
       if (!isDragging.current && !isHovered.current) {
         track.scrollLeft += AUTO_SPEED
-        // Seamless loop: jump back when we've scrolled through the first copy
-        if (track.scrollLeft >= midpoint) {
-          track.scrollLeft -= midpoint
-        }
+        // Seamless loop: jump back once we've passed the first copy
+        if (track.scrollLeft >= midpoint) track.scrollLeft -= midpoint
       }
-      // Progress within the first copy
       const maxScroll = midpoint - track.clientWidth
       const p = maxScroll > 0 ? Math.min((track.scrollLeft / maxScroll) * 100, 100) : 0
       setProgress(p)
@@ -172,13 +265,13 @@ export function ServicesSection() {
 
     rafRef.current = requestAnimationFrame(tick)
     return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
-  }, [])
+  }, [totalCount])
 
   /* ── Pointer drag ── */
   const onPointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     const track = trackRef.current
     if (!track) return
-    isDragging.current = true
+    isDragging.current     = true
     dragStartX.current     = e.clientX
     dragScrollLeft.current = track.scrollLeft
     track.setPointerCapture(e.pointerId)
@@ -189,17 +282,122 @@ export function ServicesSection() {
     if (!isDragging.current) return
     const track = trackRef.current
     if (!track) return
-    const delta = dragStartX.current - e.clientX
-    track.scrollLeft = dragScrollLeft.current + delta
+    track.scrollLeft = dragScrollLeft.current + (dragStartX.current - e.clientX)
     e.preventDefault()
   }, [])
 
-  const onPointerUp = useCallback(() => {
-    isDragging.current = false
-  }, [])
+  const onPointerUp = useCallback(() => { isDragging.current = false }, [])
 
   return (
-    <section className="py-16 sm:py-20 overflow-hidden" style={{ background: "#f5f0e8" }}>
+    <>
+      {/* Draggable card strip */}
+      <div
+        ref={trackRef}
+        className="svc-track flex gap-4 pb-1"
+        style={{ scrollBehavior: "auto" }}
+        onMouseEnter={() => { isHovered.current = true }}
+        onMouseLeave={() => { isHovered.current = false; isDragging.current = false }}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+      >
+        {items.map((svc, idx) => {
+          const Icon = svc.icon
+          const isFirst = idx === 0
+          return (
+            <div
+              key={`${svc.href}-${idx}`}
+              className="svc-card relative flex-shrink-0 rounded-2xl overflow-hidden select-none"
+              style={{ width: CARD_W, height: 310, background: svc.bg }}
+            >
+              {/* TOP: Image or icon placeholder */}
+              <div className="relative w-full pointer-events-none" style={{ height: "62%" }}>
+                {svc.image ? (
+                  <>
+                    <Image
+                      src={svc.image}
+                      alt={svc.title.replace("\n", " ")}
+                      fill
+                      sizes="212px"
+                      className="object-cover object-center"
+                      draggable={false}
+                    />
+                    {/* subtle dark vignette */}
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55) 100%)" }}
+                    />
+                  </>
+                ) : (
+                  /* Accent icon placeholder */
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Icon
+                      className="opacity-[0.18]"
+                      style={{ width: 72, height: 72, color: svc.accent }}
+                      strokeWidth={1}
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* BOTTOM: Accent glow + title + arrow */}
+              <div
+                className="absolute bottom-0 left-0 right-0 flex flex-col justify-end"
+                style={{ height: "42%" }}
+              >
+                {/* glow */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ background: `linear-gradient(to top, ${svc.accent}30 0%, transparent 100%)` }}
+                />
+
+                <div className="relative px-4 pb-4 flex items-end justify-between">
+                  <p
+                    className="svc-card-title text-[13px] font-bold leading-snug whitespace-pre-line"
+                    style={{ color: isFirst ? "#e8c234" : "#ffffff" }}
+                  >
+                    {svc.title}
+                  </p>
+
+                  {/* Arrow button */}
+                  <Link
+                    href={svc.href}
+                    className="svc-card-arrow flex-shrink-0 h-9 w-9 rounded-full flex items-center justify-center"
+                    style={{ background: "#1a0f07" }}
+                    onClick={(e) => isDragging.current && e.preventDefault()}
+                    draggable={false}
+                  >
+                    <ArrowUpRight
+                      className="h-4 w-4"
+                      style={{ color: "#e8c234" }}
+                      strokeWidth={2.5}
+                    />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      {/* Scroll progress bar */}
+      <div className="mt-5 h-[2px] rounded-full overflow-hidden" style={{ background: "#d4c4b0" }}>
+        <div
+          className="h-full rounded-full transition-none"
+          style={{ width: `${progress}%`, background: "#1a0f07" }}
+        />
+      </div>
+    </>
+  )
+}
+
+/* ─────────────────────────────────────────
+   Main exported section
+───────────────────────────────────────── */
+export function ServicesSection() {
+  return (
+    <section className="overflow-hidden" style={{ background: "#f5f0e8" }}>
       <style>{`
         .svc-track { overflow-x: auto; cursor: grab; user-select: none; }
         .svc-track::-webkit-scrollbar { display: none; }
@@ -222,15 +420,20 @@ export function ServicesSection() {
         }
       `}</style>
 
-      <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-14">
+      {/* ══════════════════════════════════════
+          BLOCK 1 — Our Services
+      ══════════════════════════════════════ */}
+      <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-14 pt-16 sm:pt-20 pb-14 sm:pb-16">
 
-        {/* ══ Header Row ══ */}
+        {/* Header Row */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
 
           {/* Left — Big title */}
           <div className="flex-shrink-0">
-            <p className="flex items-center gap-1.5 text-[11px] font-semibold tracking-widest uppercase mb-4"
-              style={{ color: "#9a8272" }}>
+            <p
+              className="flex items-center gap-1.5 text-[11px] font-semibold tracking-widest uppercase mb-4"
+              style={{ color: "#9a8272" }}
+            >
               <span style={{ color: "#9a8272" }}>/</span> Services We Offer
             </p>
             <h2
@@ -267,121 +470,159 @@ export function ServicesSection() {
           </div>
         </div>
 
-        {/* ══ Draggable Card Strip ══ */}
+        <CardStrip items={loopedServices} totalCount={services.length} />
+      </div>
+
+      {/* Subtle divider */}
+      <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-14">
         <div
-          ref={trackRef}
-          className="svc-track flex gap-4 pb-1"
-          style={{ scrollBehavior: "auto" }}
-          onMouseEnter={() => { isHovered.current = true }}
-          onMouseLeave={() => { isHovered.current = false; isDragging.current = false }}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={onPointerUp}
-          onPointerCancel={onPointerUp}
-        >
-          {loopedServices.map((svc, idx) => {
-            const Icon = svc.icon
-            const isFirst = idx === 0
-            return (
-              <div
-                key={`${svc.href}-${idx}`}
-                className="svc-card relative flex-shrink-0 rounded-2xl overflow-hidden select-none"
-                style={{
-                  width: CARD_W,
-                  height: 310,
-                  background: svc.bg,
-                }}
-              >
-                {/* ── TOP: Image or icon placeholder ── */}
-                <div
-                  className="relative w-full pointer-events-none"
-                  style={{ height: "62%" }}
+          className="h-px"
+          style={{ background: "linear-gradient(to right, transparent, #c8b8a0, transparent)" }}
+        />
+      </div>
+
+      {/* ══════════════════════════════════════
+          BLOCK 2 — IoT & AI Solutions (Compact 6 Cards Grid with Bright Light Theme)
+      ══════════════════════════════════════ */}
+      <div id="iot-solutions" className="bg-gradient-to-b from-[#edf4ff] via-[#f4f8ff] to-[#f8fafc] text-slate-900 py-14 sm:py-16 border-t border-blue-100/80">
+        <div className="mx-auto max-w-[1400px] px-6 sm:px-10 lg:px-14">
+
+          {/* Header Row */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+
+            {/* Left — Single-line headline */}
+            <div className="flex-shrink-0">
+              <p className="flex items-center gap-1.5 text-[11px] font-bold tracking-widest uppercase mb-3 text-blue-600">
+                <span>/</span> Next-Gen Technology
+              </p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight whitespace-nowrap text-slate-900">
+                IoT &amp; AI Solutions
+              </h2>
+            </div>
+
+            {/* Right — description + CTAs */}
+            <div className="lg:max-w-xs xl:max-w-sm lg:pb-1">
+              <p className="text-xs sm:text-[13px] leading-relaxed mb-4 text-slate-600 font-medium">
+                Harness the power of Internet of Things (IoT) and Artificial Intelligence to automate operations, unlock real-time insights, and build smarter systems.
+              </p>
+              <div className="flex items-center gap-6">
+                <Link
+                  href="/services/gas-iot"
+                  className="flex items-center gap-1 text-[12px] font-bold tracking-wide text-blue-700 hover:text-blue-900 hover:underline underline-offset-4 transition-colors"
                 >
+                  Explore Gas IoT
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="flex items-center gap-1 text-[12px] font-bold tracking-wide text-blue-700 hover:text-blue-900 hover:underline underline-offset-4 transition-colors"
+                >
+                  Get Started
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* 6 CARDS COMPACT GRID WITH FULL IMAGE BG, DEMO & PDF BUTTONS */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            {iotServices.map((svc, idx) => {
+              const Icon = svc.icon
+              return (
+                <div
+                  key={svc.href}
+                  className="group relative rounded-xl sm:rounded-2xl p-4 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl overflow-hidden border border-slate-200 bg-white min-h-[220px]"
+                >
+                  {/* ── Full Background Image (Sharp, Clear, No Blur) ── */}
                   {svc.image ? (
-                    <>
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden">
                       <Image
                         src={svc.image}
                         alt={svc.title.replace("\n", " ")}
                         fill
-                        sizes="212px"
-                        className="object-cover object-center"
-                        draggable={false}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover object-center opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
                       />
-                      {/* subtle dark vignette so bottom text is readable */}
-                      <div
-                        className="absolute inset-0"
-                        style={{
-                          background:
-                            "linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55) 100%)",
-                        }}
-                      />
-                    </>
-                  ) : (
-                    /* Accent icon placeholder for cards without a real image */
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Icon
-                        className="opacity-[0.18]"
-                        style={{ width: 72, height: 72, color: svc.accent }}
-                        strokeWidth={1}
-                      />
+                      {/* Soft gradient overlay to keep text legible over crisp image */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-white/20" />
                     </div>
-                  )}
-                </div>
+                  ) : null}
 
-                {/* ── BOTTOM: Accent glow + title + arrow ── */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 flex flex-col justify-end"
-                  style={{ height: "42%" }}
-                >
-                  {/* glow */}
-                  <div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background: `linear-gradient(to top, ${svc.accent}30 0%, transparent 100%)`,
-                    }}
-                  />
+                  <div className="relative z-10">
+                    {/* Top Badge & Icon */}
+                    <div className="flex items-center justify-between mb-2.5">
+                      <div
+                        className="p-2 rounded-lg flex items-center justify-center shadow-sm border border-slate-200 bg-white"
+                      >
+                        <Icon className="h-4 w-4" style={{ color: svc.accent }} strokeWidth={2.5} />
+                      </div>
+                      <span className="text-[9px] font-extrabold tracking-wider uppercase px-2 py-0.5 rounded-full text-slate-700 bg-white border border-slate-200 shadow-sm">
+                        0{idx + 1}
+                      </span>
+                    </div>
 
-                  <div className="relative px-4 pb-4 flex items-end justify-between">
-                    <p
-                      className="svc-card-title text-[13px] font-bold leading-snug whitespace-pre-line"
-                      style={{ color: isFirst ? "#e8c234" : "#ffffff" }}
-                    >
+                    {/* Title & Description */}
+                    <h3 className="text-base sm:text-lg font-black text-slate-900 leading-tight mb-1 whitespace-pre-line drop-shadow-sm">
                       {svc.title}
+                    </h3>
+                    <p className="text-[11px] text-slate-700 leading-tight font-semibold mb-3 line-clamp-2 drop-shadow-sm">
+                      {svc.description}
                     </p>
+                  </div>
 
-                    {/* Arrow button */}
-                    <Link
-                      href={svc.href}
-                      className="svc-card-arrow flex-shrink-0 h-9 w-9 rounded-full flex items-center justify-center"
-                      style={{ background: "#1a0f07" }}
-                      onClick={(e) => isDragging.current && e.preventDefault()}
-                      draggable={false}
-                    >
-                      <ArrowUpRight
-                        className="h-4 w-4"
-                        style={{ color: "#e8c234" }}
-                        strokeWidth={2.5}
-                      />
-                    </Link>
+                  {/* Bottom Actions: PDF & Demo Buttons + Explore Link */}
+                  <div className="relative z-10 pt-2 border-t border-slate-300/80 flex flex-col gap-2">
+                    {/* Action Buttons: PDF + Demo Online */}
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      {svc.pdfUrl ? (
+                        <a
+                          href={svc.pdfUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="py-1 px-2.5 rounded-full bg-[#0284c7] hover:bg-[#0369a1] active:scale-95 text-white font-black text-[10px] tracking-wide flex items-center gap-1 shadow-sm transition-all duration-200 cursor-pointer"
+                        >
+                          <FileText className="h-3 w-3 stroke-[2.5]" />
+                          <span>PDF</span>
+                        </a>
+                      ) : null}
+
+                      {svc.demoUrl ? (
+                        <a
+                          href={svc.demoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="py-1 px-2.5 rounded-full bg-[#16a34a] hover:bg-[#15803d] active:scale-95 text-white font-extrabold text-[10px] tracking-wide flex items-center gap-1 shadow-sm transition-all duration-200 cursor-pointer"
+                        >
+                          <Globe className="h-3 w-3 stroke-[2.5]" />
+                          <span>Demo Online</span>
+                        </a>
+                      ) : null}
+                    </div>
+
+                    {/* Detail page link */}
+                    <div className="flex items-center justify-between pt-0.5">
+                      <Link
+                        href={svc.href}
+                        className="text-[10px] font-black text-slate-800 hover:text-blue-700 transition-colors flex items-center gap-1 hover:underline drop-shadow-sm"
+                      >
+                        <span>Explore System</span>
+                      </Link>
+                      <Link
+                        href={svc.href}
+                        className="h-6 w-6 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-sm"
+                        style={{ background: "#1a0f07" }}
+                      >
+                        <ArrowUpRight className="h-3 w-3 text-[#e8c234]" strokeWidth={2.5} />
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
-
-        {/* ══ Scroll Progress Bar ══ */}
-        <div className="mt-5 h-[2px] rounded-full overflow-hidden" style={{ background: "#d4c4b0" }}>
-          <div
-            className="h-full rounded-full transition-none"
-            style={{
-              width: `${progress}%`,
-              background: "#1a0f07",
-            }}
-          />
-        </div>
-
       </div>
+
     </section>
   )
 }
