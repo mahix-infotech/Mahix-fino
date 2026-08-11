@@ -32,17 +32,27 @@ const serviceCategories = [
     ]
   },
   {
-    category: "ADVANCED TECHNOLOGIES",
+    category: "IOT & AI SOLUTIONS",
+    items: [
+      { title: "Garment IOT Solution", href: "/services/garment-iot" },
+      { title: "Gas IOT System", href: "/services/gas-iot" },
+      { title: "Energy Monitoring IoT", href: "/services/energy-monitoring-iot" },
+      { title: "GPS Vehicle Tracking", href: "/services/gps-vehicle-tracking" },
+      { title: "Asset Tracking System", href: "/services/asset-tracking" },
+      { title: "HR & eSSL Attendance", href: "/services/hr-essl-attendance" }
+    ]
+  },
+  {
+    category: "CLOUD & IT INFRASTRUCTURE",
     items: [
       { title: "Cloud Services", href: "/services/cloud" },
-      { title: "AI & ML", href: "/services/ai-ml" }
+      { title: "IT Consulting", href: "/services/it-consulting" }
     ]
   },
   {
     category: "BUSINESS SOLUTIONS",
     items: [
       { title: "CRM Solutions", href: "/services/crm-solutions" },
-      { title: "IT Consulting", href: "/services/it-consulting" },
       { title: "Digital Transformation", href: "/services/digital-transformation" }
     ]
   }
@@ -247,23 +257,23 @@ export function Navigation() {
           onMouseEnter={handleServicesMouseEnter}
           onMouseLeave={handleServicesMouseLeave}
         >
-          {/* 4 Columns Mega Menu */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {/* 5 Columns Mega Menu in Single Row */}
+          <div className="grid grid-cols-5 gap-4 xl:gap-6">
             {serviceCategories.map((category) => (
               <div key={category.category} className="flex flex-col gap-3">
-                <h4 className="text-[13px] font-bold text-slate-800 dark:text-slate-200 border-l-[3px] border-blue-600 dark:border-blue-500 pl-2.5 tracking-wider uppercase select-none">
+                <h4 className="text-[11px] xl:text-[12px] font-bold text-slate-800 dark:text-slate-200 border-l-[3px] border-blue-600 dark:border-blue-500 pl-2 tracking-wider uppercase select-none leading-snug">
                   {category.category}
                 </h4>
-                <div className="flex flex-col gap-1.5 mt-2">
+                <div className="flex flex-col gap-1 mt-1">
                   {category.items.map((item) => (
                     <Link
                       key={item.title}
                       href={item.href}
                       prefetch={false}
                       onClick={() => setServicesOpen(false)}
-                      className="flex items-center text-[13px] font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-1 group"
+                      className="flex items-center text-[12px] xl:text-[13px] font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors py-0.5 group"
                     >
-                      <span className="text-blue-500 dark:text-blue-400 font-semibold mr-2 transition-transform duration-200 group-hover:translate-x-0.5 select-none">
+                      <span className="text-blue-500 dark:text-blue-400 font-semibold mr-1.5 transition-transform duration-200 group-hover:translate-x-0.5 select-none">
                         &gt;
                       </span>
                       <span>{item.title}</span>
@@ -306,7 +316,7 @@ export function Navigation() {
               </Link>
             </div>
             <div className="text-xs text-slate-400 dark:text-slate-500 font-bold select-none">
-              14+ Services Available
+              20+ Services Available
             </div>
           </div>
         </div>
