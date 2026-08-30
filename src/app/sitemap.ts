@@ -1,6 +1,9 @@
 import { MetadataRoute } from 'next'
 import { locationsList, seoServicesList } from '@/lib/seo-data'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://mahixinfotech.com'
 
@@ -49,7 +52,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return allRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString().split('T')[0],
+    lastModified: new Date(),
     changeFrequency: route === '' ? 'daily' : 'weekly',
     priority: route === '' ? 1.0 : route.startsWith('/services/') ? 0.8 : route.startsWith('/seo/') ? 0.7 : 0.6,
   }))
