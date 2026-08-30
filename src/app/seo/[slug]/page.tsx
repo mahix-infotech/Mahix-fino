@@ -10,7 +10,7 @@ import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
 import { ServicesSection } from "@/components/sections/services/services-section"
 import { KeywordCloud } from "@/components/pages/seo/keyword-cloud"
-import { locationsList, getKeywordsForLocation, rawKeywords, parseSeoSlug, seoServicesList, getLocationRegionName } from "@/lib/seo-data"
+import { locationsList, getKeywordsForLocation, rawKeywords, parseSeoSlug, seoServicesList, getLocationRegionName, getRegionFromCategory } from "@/lib/seo-data"
 
 interface PageProps {
   params: Promise<{
@@ -367,6 +367,53 @@ export default async function LocationPage({ params }: PageProps) {
 
         {/* ─── Collapsible SEO Keyword Cloud ────────────────────────────── */}
         <KeywordCloud locationName={name} keywords={localKeywords} />
+
+        {/* ─── Crawler-Friendly Internal Interlinking Mesh ────────────────── */}
+        <section className="py-16 bg-slate-900 text-slate-200 border-t border-slate-800">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-12">
+            
+            {/* 1. Other Services in this Location */}
+            <div>
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <span>⚡ Specialized Tech Services in {name}</span>
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+                {seoServicesList.map((s) => (
+                  <Link
+                    key={s.prefix}
+                    href={`/seo/${s.prefix}${parsed.location.slug}`}
+                    className="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/60 hover:border-blue-500 hover:bg-slate-800 text-xs text-slate-300 hover:text-white transition-all duration-200 flex items-center justify-between group"
+                  >
+                    <span>{s.title} in {name}</span>
+                    <ArrowRight className="h-3 w-3 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* 2. Nearby & Regional Location Hubs */}
+            <div>
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <span>📍 Nearby Tech & Business Hubs in {regionName}</span>
+              </h3>
+              <div className="flex flex-wrap gap-2 text-xs">
+                {locationsList
+                  .filter((l) => l.slug !== parsed.location.slug && getRegionFromCategory(l.category) === getRegionFromCategory(parsed.location.category))
+                  .slice(0, 32)
+                  .map((loc) => (
+                    <Link
+                      key={loc.slug}
+                      href={`/seo/${loc.slug}`}
+                      className="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700/60 hover:border-emerald-500 hover:text-white text-slate-300 transition-colors"
+                    >
+                      Software in {loc.name}
+                    </Link>
+                  ))}
+              </div>
+            </div>
+
+          </div>
+        </section>
 
         {/* ─── Localized Call To Action Section ────────────────────────────── */}
         <section className="py-20 bg-white">

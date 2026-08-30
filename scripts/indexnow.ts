@@ -27,6 +27,12 @@ const baseRoutes = [
   "/services/seo",
   "/services/google-ads",
   "/services/meta-ads",
+  "/services/gps-vehicle-tracking",
+  "/services/hr-essl-attendance",
+  "/services/asset-tracking",
+  "/services/energy-monitoring-iot",
+  "/services/garment-iot",
+  "/services/gas-iot",
 ]
 
 async function runIndexNow() {

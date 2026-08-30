@@ -142,19 +142,30 @@ export const regionsRaw: Record<string, string[]> = {
     "Singarakottai", "Piranmalai Road", "Natham Road", "Vittalapatti", "Kallathupatti"
   ],
 
-  // ── Combined High-Value Clusters ──
-  "High-Value SEO Clusters": [
-    // Chennai
-    "Velachery", "Anna Nagar", "Adyar", "T. Nagar", "Nungambakkam", "Porur", 
-    "Guindy", "Tambaram", "Pallavaram", "Chromepet", "Sholinganallur", 
-    "Perungudi", "Medavakkam", "Pallikaranai", "Thoraipakkam", "Karapakkam", 
-    "Navalur", "Siruseri", "Ambattur", "Mogappair", "KK Nagar", "Ashok Nagar", 
-    "Kodambakkam", "Mylapore", "Besant Nagar", "Thiruvanmiyur", "ECR", "OMR", "Kilpauk", "Vadapalani",
-    // Dindigul
-    "Dindigul", "Palani", "Kodaikanal", "Batlagundu", "Oddanchatram",
-    "Natham", "Nilakottai", "Vedasandur", "Chinnalapatti", "Athoor",
-    "Thadikombu", "Vadamadurai", "Gujiliamparai", "Reddiarchatram",
-    "Usilampatti", "Vadipatti", "Sanarpatti"
+  // ── Coimbatore Regions (Headquarters - Top 60 Strategic Locations) ──
+  "Coimbatore City Core & High Street": [
+    "Gandhipuram", "RS Puram", "Peelamedu", "Saibaba Colony", "Ramanathapuram Coimbatore",
+    "Race Course Coimbatore", "Town Hall Coimbatore", "Ukkadam", "Singanallur", "Ganapathy",
+    "Tatabad", "Cross Cut Road", "100 Feet Road Coimbatore", "Gopalapuram Coimbatore",
+    "Sivananda Colony", "Rathinapuri", "Avarampalayam", "Papanaickenpalayam", "Puliakulam",
+    "Sowripalayam", "Ondipudur", "Kuniyamuthur", "Sundarapuram", "Kovaipudur", "Vadavalli"
+  ],
+  "Coimbatore IT Parks & SEZ Hubs": [
+    "Saravanampatti", "TIDEL Park Coimbatore", "CHIL SEZ IT Park", "Keeranatham",
+    "KGISL Tech Park", "Vilankurichi IT SEZ", "Kalapatti", "Hopes College",
+    "Avinashi Road IT Belt", "Rathinam Techzone Eachanari", "PSG Tech Zone Peelamedu",
+    "Kumaraguru Tech Belt", "Neelambur IT Corridor", "Kallapalayam Tech Hub", "Vellakinar IT Hub"
+  ],
+  "Coimbatore Industrial, SME & Agro Belts": [
+    "Kurichi Industrial Estate", "SIDCO Malumichampatti", "Thudiyalur", "Periyanaickenpalayam",
+    "Karamadai", "Mettupalayam", "Annur", "Sulur", "Palladam Road", "Pollachi",
+    "Kinathukadavu", "Eachanari Industrial Belt", "Irugur", "Arasur", "Chinnavedampatti",
+    "Ganapathy Foundry Cluster", "Singanallur Industrial Area", "Othakalmandapam",
+    "Podanur Industrial Belt", "Chettipalayam SEZ"
+  ],
+  "Coimbatore Fast-Growing Suburbs": [
+    "Kavundampalayam", "Idikarai", "Thondamuthur", "Perur", "Madukkarai",
+    "Vedapatti", "Alandurai", "Kaniyur", "Karamadai Road", "Goundampalayam"
   ]
 }
 
@@ -168,14 +179,21 @@ export function slugify(name: string): string {
     .replace(/^-+|-+$/g, "")
 }
 
+// Helper to determine exact region from category
+export function getRegionFromCategory(category: string): "Coimbatore" | "Dindigul" | "Chennai" {
+  const cat = (category || "").toLowerCase()
+  if (cat.includes("coimbatore")) return "Coimbatore"
+  if (cat.includes("dindigul") || cat.includes("kodaikanal") || cat.includes("palani")) return "Dindigul"
+  return "Chennai"
+}
+
 // Generate the unique, deduplicated list of locations
 const uniqueMap = new Map<string, LocationItem>()
 
 Object.entries(regionsRaw).forEach(([category, names]) => {
   names.forEach((name) => {
     const slug = slugify(name)
-    // Keep high-value category classification or first category hit
-    if (!uniqueMap.has(slug) || category === "High-Value SEO Clusters") {
+    if (!uniqueMap.has(slug)) {
       uniqueMap.set(slug, {
         name,
         slug,
@@ -379,15 +397,20 @@ export const rawKeywords: string[] = Array.from(new Set([
   "Tailwind CSS & Frontend Engineering in [Location]"
 ]))
 
+// Helper to check if a location belongs to Coimbatore region (Headquarters)
+export function isCoimbatoreLocation(category: string): boolean {
+  return getRegionFromCategory(category) === "Coimbatore"
+}
+
 // Helper to check if a location belongs to Dindigul region
 export function isDindigulLocation(category: string): boolean {
-  const cat = (category || "").toLowerCase()
-  return cat.includes("dindigul") || cat.includes("kodaikanal") || cat.includes("palani")
+  return getRegionFromCategory(category) === "Dindigul"
 }
 
 // Helper to get formatted region name
 export function getLocationRegionName(category: string): string {
-  return isDindigulLocation(category) ? "Dindigul, Tamil Nadu" : "Chennai, Tamil Nadu"
+  const region = getRegionFromCategory(category)
+  return `${region}, Tamil Nadu`
 }
 
 // Get keywords formatted for a specific location
