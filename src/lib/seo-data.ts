@@ -142,30 +142,40 @@ export const regionsRaw: Record<string, string[]> = {
     "Singarakottai", "Piranmalai Road", "Natham Road", "Vittalapatti", "Kallathupatti"
   ],
 
-  // ── Coimbatore Regions (Headquarters - Top 60 Strategic Locations) ──
-  "Coimbatore City Core & High Street": [
+  // ── Coimbatore Regions (Headquarters - Comprehensive 90+ Locations) ──
+  "Coimbatore City Core & Central Hubs": [
     "Gandhipuram", "RS Puram", "Peelamedu", "Saibaba Colony", "Ramanathapuram Coimbatore",
     "Race Course Coimbatore", "Town Hall Coimbatore", "Ukkadam", "Singanallur", "Ganapathy",
     "Tatabad", "Cross Cut Road", "100 Feet Road Coimbatore", "Gopalapuram Coimbatore",
     "Sivananda Colony", "Rathinapuri", "Avarampalayam", "Papanaickenpalayam", "Puliakulam",
-    "Sowripalayam", "Ondipudur", "Kuniyamuthur", "Sundarapuram", "Kovaipudur", "Vadavalli"
+    "Sowripalayam", "Red Fields Coimbatore", "Sukrawarpet", "R.S. Puram West", "Ram Nagar Coimbatore"
   ],
-  "Coimbatore IT Parks & SEZ Hubs": [
+  "Coimbatore IT Parks, SEZ & Tech Corridors": [
     "Saravanampatti", "TIDEL Park Coimbatore", "CHIL SEZ IT Park", "Keeranatham",
     "KGISL Tech Park", "Vilankurichi IT SEZ", "Kalapatti", "Hopes College",
     "Avinashi Road IT Belt", "Rathinam Techzone Eachanari", "PSG Tech Zone Peelamedu",
-    "Kumaraguru Tech Belt", "Neelambur IT Corridor", "Kallapalayam Tech Hub", "Vellakinar IT Hub"
+    "Kumaraguru Tech Belt", "Neelambur IT Corridor", "Kallapalayam Tech Hub", "Vellakinar IT Hub",
+    "Civil Aerodrome Coimbatore", "SITRA Coimbatore", "Goldwins Coimbatore", "Chinniyampalayam",
+    "Sivanandapuram", "Saravanampatti Road"
   ],
-  "Coimbatore Industrial, SME & Agro Belts": [
+  "Coimbatore Industrial Estates & Manufacturing Belts": [
     "Kurichi Industrial Estate", "SIDCO Malumichampatti", "Thudiyalur", "Periyanaickenpalayam",
     "Karamadai", "Mettupalayam", "Annur", "Sulur", "Palladam Road", "Pollachi",
     "Kinathukadavu", "Eachanari Industrial Belt", "Irugur", "Arasur", "Chinnavedampatti",
     "Ganapathy Foundry Cluster", "Singanallur Industrial Area", "Othakalmandapam",
-    "Podanur Industrial Belt", "Chettipalayam SEZ"
+    "Podanur Industrial Belt", "Chettipalayam SEZ", "Vellalore Industrial Belt",
+    "Kangeyampalayam", "Sirumugai Industrial Area"
   ],
-  "Coimbatore Fast-Growing Suburbs": [
-    "Kavundampalayam", "Idikarai", "Thondamuthur", "Perur", "Madukkarai",
-    "Vedapatti", "Alandurai", "Kaniyur", "Karamadai Road", "Goundampalayam"
+  "Coimbatore West & South Suburbs": [
+    "Kuniyamuthur", "Sundarapuram", "Kovaipudur", "Vadavalli", "Kavundampalayam",
+    "Idikarai", "Thondamuthur", "Perur", "Madukkarai", "Vedapatti",
+    "Alandurai", "Kaniyur", "Goundampalayam", "Telungupalayam", "Selvapuram",
+    "Veerakeralam", "Somayampalayam", "Chinna Thadagam", "Thadagam Road",
+    "Sundakkamuthur", "Karunya Nagar", "Siruvani Road", "Pooluvapatti"
+  ],
+  "Coimbatore North & Greater District Towns": [
+    "Narasimhanaickenpalayam", "Pannimadai", "Urumandampalayam", "Vadamadurai Coimbatore",
+    "Nanjundapuram", "Anaimalai", "Valparai", "Negamam", "Kottur Coimbatore"
   ]
 }
 
@@ -224,6 +234,11 @@ export const rawKeywords: string[] = Array.from(new Set([
   "API Development & Integration Services in [Location]",
   "Software Maintenance & Support Services in [Location]",
   "Application Development in [Location]",
+  "Custom ERP Software Developers in [Location]",
+  "Custom CRM Software Development in [Location]",
+  "Enterprise Automation Solutions in [Location]",
+  "Software Outsourcing Company in [Location]",
+  "Dedicated Software Development Team in [Location]",
 
   // ── Mobile App Development ──
   "Mobile App Development in [Location]",
@@ -260,9 +275,13 @@ export const rawKeywords: string[] = Array.from(new Set([
   "iOS Application Development Company in [Location]",
   "iOS Developer in [Location]",
   "Flutter App Development in [Location]",
+  "Flutter App Development Agency in [Location]",
   "React Native App Development Company in [Location]",
+  "React Native App Developers in [Location]",
   "Mobile App Developer Near Me in [Location]",
   "Mobile App & Custom Web App Developers in [Location]",
+  "Hybrid Mobile App Development in [Location]",
+  "Cross Platform App Developers in [Location]",
 
   // ── Web Design & Web Development ──
   "Web Development Company in [Location]",
@@ -272,8 +291,8 @@ export const rawKeywords: string[] = Array.from(new Set([
   "Web Design Company in [Location]",
   "Website Development in [Location]",
   "Website Design in [Location]",
-  "Website Development Near Me",
-  "Website Design Near Me",
+  "Website Development Near Me in [Location]",
+  "Website Design Near Me in [Location]",
   "Custom Website Development in [Location]",
   "Customized Website Development Company in [Location]",
   "Customized Website Designing Company in [Location]",
@@ -291,14 +310,16 @@ export const rawKeywords: string[] = Array.from(new Set([
   "Ecommerce Website Development in [Location]",
   "Ecommerce Web Development Company in [Location]",
   "Ecommerce Website Designing Company in [Location]",
-  "Ecommerce Website Design Near Me",
+  "Ecommerce Website Design Near Me in [Location]",
   "Web Designer Near Me in [Location]",
   "Website Development for Small Business in [Location]",
   "Shopify Developer in [Location]",
   "Shopify Store Development Services in [Location]",
+  "Shopify Plus Development Agency in [Location]",
   "WordPress Developer in [Location]",
   "WordPress & WooCommerce Website Developers in [Location]",
   "Next.js Web Developer in [Location]",
+  "Next.js Full Stack Web Development in [Location]",
   "PHP Web Development in [Location]",
   "Python Web Development Company in [Location]",
   "Web Hosting Company in [Location]",
@@ -306,8 +327,63 @@ export const rawKeywords: string[] = Array.from(new Set([
   "Website Maintenance in [Location]",
   "Website Speed Optimization in [Location]",
   "Website Security Services in [Location]",
+  "Headless CMS Website Development in [Location]",
+  "Jamstack Web Development Agency in [Location]",
 
-  // ── SEO & Digital Marketing ──
+  // ── GPS Tracking, IoT & Hardware Solutions (50+ New Specialized Additions) ──
+  "GPS Vehicle Tracking System in [Location]",
+  "GPS Fleet Management Software in [Location]",
+  "Truck & Commercial Vehicle GPS Tracker in [Location]",
+  "School Bus GPS Tracking System in [Location]",
+  "Asset Tracking Software & BLE Beacon Solutions in [Location]",
+  "RFID Asset Tracking System in [Location]",
+  "Biometric Attendance Machine & Software in [Location]",
+  "eSSL Attendance Machine Installation & Support in [Location]",
+  "HRMS & Payroll Software in [Location]",
+  "Employee Time Tracking Software in [Location]",
+  "Industrial IoT Solutions Provider in [Location]",
+  "IoT Energy Monitoring System in [Location]",
+  "Smart Factory & Industry 4.0 Solutions in [Location]",
+  "Industrial Power & Electricity Monitoring IoT in [Location]",
+  "Garment Industry IoT & Production Monitoring in [Location]",
+  "Textile Mill IoT & Automation Software in [Location]",
+  "LPG Gas Leak Detection IoT System in [Location]",
+  "Industrial Gas Safety & Flame Sensor IoT in [Location]",
+  "Water Level & Flow Rate Monitoring IoT in [Location]",
+  "Cold Storage Temperature Monitoring IoT in [Location]",
+  "Smart Agriculture IoT & Automated Irrigation in [Location]",
+  "IoT Gateway & Sensor Integration Services in [Location]",
+  "Custom Embedded Hardware & Firmware Developers in [Location]",
+  "MQTT & SCADA IoT Cloud Dashboard in [Location]",
+  "Foundry & Casting Industry ERP Software in [Location]",
+  "Pump & Motor Manufacturing ERP Software in [Location]",
+  "Textile Spinning & Weaving ERP Software in [Location]",
+  "Coir & Agro Processing ERP in [Location]",
+  "Warehouse & Inventory Barcode Management Software in [Location]",
+  "Retail POS Billing Software in [Location]",
+  "Supermarket POS Billing System in [Location]",
+  "Restaurant Billing & QR Menu Ordering Software in [Location]",
+  "Hospital & Clinic Management Software in [Location]",
+  "Pharmacy Billing & Expiry Tracking Software in [Location]",
+  "School & College ERP Management System in [Location]",
+  "Real Estate CRM & Lead Management Portal in [Location]",
+  "Jewellery POS & Billing Software in [Location]",
+  "Automobile Workshop & Service Center Software in [Location]",
+
+  // ── AI, ML & Modern Automation ──
+  "AI Chatbot Development in [Location]",
+  "AI Software Development Company in [Location]",
+  "Machine Learning Solutions Provider in [Location]",
+  "Generative AI & LLM Integration in [Location]",
+  "Custom AI Agent Development in [Location]",
+  "WhatsApp Business API Integration & Automation in [Location]",
+  "WhatsApp Chatbot Developers in [Location]",
+  "Computer Vision & Quality Inspection AI in [Location]",
+  "Natural Language Processing Solutions in [Location]",
+  "Business Process Automation Software in [Location]",
+  "AI Powered CRM & Sales Automation in [Location]",
+
+  // ── SEO, Ads & Digital Marketing ──
   "SEO Company in [Location]",
   "SEO Services Company in [Location]",
   "SEO Services in [Location]",
@@ -320,6 +396,7 @@ export const rawKeywords: string[] = Array.from(new Set([
   "Search Engine Optimization Services Company in [Location]",
   "Search Engine Marketing Company in [Location]",
   "Search Engine Marketing Services Company in [Location]",
+  "Google Business Profile Optimization in [Location]",
   "Digital Marketing Company in [Location]",
   "Digital Marketing Services Company in [Location]",
   "Digital Marketing in [Location]",
@@ -338,32 +415,22 @@ export const rawKeywords: string[] = Array.from(new Set([
   "Lead Generation in [Location]",
   "Lead Generation & Local SEO Agency in [Location]",
 
-  // ── Specialized Tech & Enterprise Solutions ──
-  "Internet of Things (IoT) Development in [Location]",
-  "UI UX Design in [Location]",
-  "UI/UX Website Designing in [Location]",
-  "CRM Development in [Location]",
-  "ERP Software Development in [Location]",
-  "ERP Software Development for Textile & Industries in [Location]",
-  "Leather & Manufacturing Software Solutions in [Location]",
-  "Inventory & Billing Software Developers in [Location]",
-  "Hospital Management Software Development in [Location]",
-  "Educational Institution Portal Developers in [Location]",
-  "AI Chatbot Development in [Location]",
-  "AI Software Development Company in [Location]",
-  "Machine Learning Solutions Provider in [Location]",
+  // ── Cloud, DevOps & Full Stack Engineering ──
   "Cloud Software Development & AWS Migration in [Location]",
-  "Business Automation in [Location]",
   "Cloud Migration & AWS Services in [Location]",
-  "AI Chatbot & Business Automation Solutions in [Location]",
-  "Flutter & React Native Mobile App Agency in [Location]",
-  "WhatsApp API Integration & Business Automation in [Location]",
-  "Coir & Agro Industry ERP Software in [Location]",
-  "Handloom & Textile E-commerce Developers in [Location]",
-  "GST Billing & Inventory Management Software in [Location]",
-  "Hospitality & Hotel Booking Website Developers in [Location]",
+  "DevOps Services in [Location]",
+  "Kubernetes & Docker Services in [Location]",
+  "UI UX Design Agency in [Location]",
+  "UI UX Website Designing in [Location]",
+  "Figma Design Services in [Location]",
+  "Progressive Web App Development in [Location]",
+  "MERN Stack Developer in [Location]",
+  "Node.js Developer in [Location]",
+  "Python Web Development in [Location]",
+  "React.js Development Company in [Location]",
+  "Tailwind CSS & Frontend Engineering in [Location]",
 
-  // ── Learning & Training Keywords ──
+  // ── Learning & IT Training ──
   "Programming Course in [Location]",
   "Coding Bootcamp in [Location]",
   "Online Tech Courses in [Location]",
@@ -377,24 +444,12 @@ export const rawKeywords: string[] = Array.from(new Set([
   "Software Training Institute in [Location]",
   "IT Training Center in [Location]",
   "Corporate Tech Training in [Location]",
-  "Programming Training Near Me",
+  "Programming Training Near Me in [Location]",
   "Coding Classes in [Location]",
   "Full Stack Bootcamp in [Location]",
   "Data Science & AI Training in [Location]",
   "Java & Full Stack Course in [Location]",
-  "Software Development Course in [Location]",
-
-  // ── Advanced Tech Stack & Engineering Keywords ──
-  "DevOps Services in [Location]",
-  "Kubernetes & Docker Services in [Location]",
-  "UI UX Design Agency in [Location]",
-  "Figma Design Services in [Location]",
-  "Progressive Web App Development in [Location]",
-  "MERN Stack Developer in [Location]",
-  "Node.js Developer in [Location]",
-  "Python Web Development in [Location]",
-  "React.js Development Company in [Location]",
-  "Tailwind CSS & Frontend Engineering in [Location]"
+  "Software Development Course in [Location]"
 ]))
 
 // Helper to check if a location belongs to Coimbatore region (Headquarters)

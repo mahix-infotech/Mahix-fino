@@ -2,10 +2,11 @@ import * as React from "react"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { Metadata } from "next"
-import { ArrowRight, CheckCircle, Code, Globe, Smartphone, Megaphone, Terminal, Cpu } from "lucide-react"
+import { ArrowRight, CheckCircle, Code, Globe, Smartphone, Megaphone, Terminal, Cpu, HelpCircle, ShieldCheck, Zap, Award, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Navigation } from "@/components/sections/navigation/navigation"
 import { Footer } from "@/components/sections/footer/footer"
 import { ServicesSection } from "@/components/sections/services/services-section"
@@ -243,22 +244,100 @@ export default async function LocationPage({ params }: PageProps) {
 
   const heroBgImage = getServiceHeroBgImage(serviceType)
 
+  const faqs = [
+    {
+      q: `Why is Mahix InfoTech the top software & IT company in ${name}?`,
+      a: `Mahix InfoTech brings enterprise-grade software engineering, mobile app development (Flutter & React Native), Next.js web portals, and local SEO services to ${name}, ${regionName}. With our regional headquarters and dedicated local engineering teams, we deliver 100% custom architectures with full source code ownership and 24/7 SLA maintenance.`
+    },
+    {
+      q: `How long does it take to develop a custom web or mobile application in ${name}?`,
+      a: `Typical MVP delivery timelines range from 2 to 4 weeks, while complex enterprise ERPs, IoT automation dashboards, and custom SaaS platforms take 6 to 12 weeks. We follow rapid Agile sprints with weekly preview deployments and transparent milestones.`
+    },
+    {
+      q: `Do you build IoT, GPS vehicle tracking, and eSSL biometric attendance systems in ${regionName}?`,
+      a: `Yes. We provide end-to-end industrial IoT solutions including energy monitoring, LPG/gas leak detection, garment factory tracking, eSSL attendance machine integration, and cloud-connected GPS fleet management systems across ${regionName}.`
+    },
+    {
+      q: `How do we get started with a software or digital marketing project in ${name}?`,
+      a: `You can request a free technical consultation and project cost estimate by contacting our engineering team at hr@mahixinfotech.com or calling +91 8608610760. We provide blueprint mockups, architecture roadmaps, and fixed-price proposals within 24 hours.`
+    }
+  ]
+
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": `Mahix InfoTech - ${name}`,
-    "url": `https://mahixinfotech.com/seo/${slug}`,
-    "telephone": "+918608610760",
-    "email": "mahixinfotech@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": name,
-      "addressRegion": regionName,
-      "addressCountry": "IN"
-    },
-    "description": `Leading software development agency in ${name}, ${regionName}. Specializing in web development, mobile apps, SEO, and enterprise software solutions.`,
-    "priceRange": "₹₹",
-    "sameAs": ["https://mahixinfotech.com"]
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": `https://mahixinfotech.com/seo/${slug}#business`,
+        "name": `Mahix InfoTech - ${name}`,
+        "url": `https://mahixinfotech.com/seo/${slug}`,
+        "telephone": "+918608610760",
+        "email": "hr@mahixinfotech.com",
+        "priceRange": "₹₹",
+        "currenciesAccepted": "INR, USD",
+        "paymentAccepted": "Cash, Credit Card, Bank Transfer, UPI",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Near Gandhipuram Bus Stand",
+          "addressLocality": name,
+          "addressRegion": regionName,
+          "addressCountry": "IN"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "bestRating": "5",
+          "ratingCount": "148"
+        },
+        "description": `Top-rated software development company in ${name}, ${regionName}. Specializing in web development, mobile apps, SEO, IoT solutions, and enterprise ERP systems.`,
+        "sameAs": [
+          "https://mahixinfotech.com",
+          "https://facebook.com/mahixinfotech",
+          "https://twitter.com/mahixinfotech",
+          "https://linkedin.com/company/mahixinfotech"
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://mahixinfotech.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://mahixinfotech.com/services"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": regionName,
+            "item": `https://mahixinfotech.com/seo/${slug}`
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": `${name} - ${parsed.serviceTitle}`,
+            "item": `https://mahixinfotech.com/seo/${slug}`
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(faq => ({
+          "@type": "Question",
+          "name": faq.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.a
+          }
+        }))
+      }
+    ]
   }
 
   return (
@@ -270,6 +349,19 @@ export default async function LocationPage({ params }: PageProps) {
       <Navigation />
 
       <main className="pt-20">
+        {/* ─── Breadcrumbs UI ──────────────────────────────────────────────── */}
+        <div className="bg-slate-900/95 border-b border-slate-800 text-slate-400 py-3 text-xs">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center gap-2 flex-wrap">
+            <Link href="/" className="hover:text-white transition-colors">Home</Link>
+            <span>/</span>
+            <Link href="/services" className="hover:text-white transition-colors">Services</Link>
+            <span>/</span>
+            <span className="text-slate-300">{regionName}</span>
+            <span>/</span>
+            <span className="text-emerald-400 font-semibold">{name}</span>
+          </div>
+        </div>
+
         {/* ─── Hero Section ────────────────────────────────────────────────── */}
         <section 
           className="relative overflow-hidden bg-cover bg-center py-24 sm:py-32 text-white"
@@ -412,6 +504,67 @@ export default async function LocationPage({ params }: PageProps) {
               </div>
             </div>
 
+          </div>
+        </section>
+
+        {/* ─── Frequently Asked Questions Section (FAQPage) ──────────────── */}
+        <section className="py-20 bg-slate-50 border-t border-slate-200/80">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 uppercase tracking-wider mb-3">
+                <HelpCircle className="h-3.5 w-3.5" />
+                Frequently Asked Questions
+              </span>
+              <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl">
+                Software & IT Consulting in {name}
+              </h2>
+              <p className="mt-3 text-slate-500 text-sm sm:text-base">
+                Common questions about our software development lifecycle, technology stack, and regional SLA support in {regionName}.
+              </p>
+            </div>
+
+            <Card className="border border-slate-200/80 shadow-sm rounded-3xl p-6 sm:p-8 bg-white">
+              <Accordion type="single" collapsible className="w-full space-y-4">
+                {faqs.map((faq, index) => (
+                  <AccordionItem 
+                    key={index} 
+                    value={`faq-${index}`}
+                    className="border border-slate-100 rounded-2xl px-5 py-2 data-[state=open]:bg-blue-50/40 data-[state=open]:border-blue-200 transition-colors"
+                  >
+                    <AccordionTrigger className="text-left font-bold text-slate-900 text-sm sm:text-base hover:no-underline">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-slate-600 text-xs sm:text-sm leading-relaxed pt-2 pb-4">
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </Card>
+
+            {/* Trust Matrix Badges */}
+            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="p-4 rounded-2xl bg-white border border-slate-100 text-center shadow-sm">
+                <ShieldCheck className="h-6 w-6 text-emerald-500 mx-auto mb-2" />
+                <p className="text-xs font-bold text-slate-900">100% IP Ownership</p>
+                <p className="text-[10px] text-slate-500 mt-0.5">Strict NDA Protected</p>
+              </div>
+              <div className="p-4 rounded-2xl bg-white border border-slate-100 text-center shadow-sm">
+                <Zap className="h-6 w-6 text-blue-500 mx-auto mb-2" />
+                <p className="text-xs font-bold text-slate-900">Rapid Agile Delivery</p>
+                <p className="text-[10px] text-slate-500 mt-0.5">Weekly Sprints & Demos</p>
+              </div>
+              <div className="p-4 rounded-2xl bg-white border border-slate-100 text-center shadow-sm">
+                <Award className="h-6 w-6 text-amber-500 mx-auto mb-2" />
+                <p className="text-xs font-bold text-slate-900">Enterprise Quality</p>
+                <p className="text-[10px] text-slate-500 mt-0.5">ISO Process Compliant</p>
+              </div>
+              <div className="p-4 rounded-2xl bg-white border border-slate-100 text-center shadow-sm">
+                <Star className="h-6 w-6 text-yellow-400 mx-auto mb-2 fill-yellow-400" />
+                <p className="text-xs font-bold text-slate-900">4.9 / 5 Rating</p>
+                <p className="text-[10px] text-slate-500 mt-0.5">140+ Client Reviews</p>
+              </div>
+            </div>
           </div>
         </section>
 
