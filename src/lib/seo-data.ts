@@ -176,6 +176,21 @@ export const regionsRaw: Record<string, string[]> = {
   "Coimbatore North & Greater District Towns": [
     "Narasimhanaickenpalayam", "Pannimadai", "Urumandampalayam", "Vadamadurai Coimbatore",
     "Nanjundapuram", "Anaimalai", "Valparai", "Negamam", "Kottur Coimbatore"
+  ],
+  "Coimbatore Highway Corridors & Growth Hubs": [
+    "Ondipudur", "Karumathampatti", "Pappampatti", "Pappampatti Pirivu",
+    "Kittampalayam", "Mopperipalayam", "Trichy Road Coimbatore", "Pollachi Main Road",
+    "Sathy Road Coimbatore", "Mettupalayam Road Coimbatore", "Palakkad Road Coimbatore"
+  ],
+  "Coimbatore Northern & Western Hubs": [
+    "Edayarpalayam", "GN Mills", "Subramaniapalayam", "Kovilpalayam",
+    "Kurumbapalayam", "Ganeshapuram", "SS Kulam", "Kallipalayam",
+    "Vellanaipatti", "Athipalayam Pirivu", "Kovilmedu", "PN Pudur",
+    "Mullai Nagar Coimbatore", "Dhaliyur", "Kalveerampalayam", "Venkitapuram"
+  ],
+  "Coimbatore Urban Localities & Suburbs": [
+    "Neelikonampalayam", "Maniakarampalayam", "Udayampalayam", "Meena Estate",
+    "Varadharajapuram", "Nallampalayam", "Appanaickenpalayam", "Vellalore Town"
   ]
 }
 
@@ -449,7 +464,121 @@ export const rawKeywords: string[] = Array.from(new Set([
   "Full Stack Bootcamp in [Location]",
   "Data Science & AI Training in [Location]",
   "Java & Full Stack Course in [Location]",
-  "Software Development Course in [Location]"
+  "Software Development Course in [Location]",
+
+  // ── Enterprise ERP, Manufacturing & Industry Software (New High-Value Additions) ──
+  "Custom ERP Software Company in [Location]",
+  "Textile Mills ERP Software in [Location]",
+  "Foundry & Metal Casting ERP in [Location]",
+  "Pump & Valve Manufacturing ERP in [Location]",
+  "Automobile Ancillary ERP Software in [Location]",
+  "Garment Production Tracking Software in [Location]",
+  "Coir & Agro Industry ERP in [Location]",
+  "Warehouse Management Software (WMS) in [Location]",
+  "Cloud CRM Software Development in [Location]",
+  "Sales Force Automation (SFA) App in [Location]",
+  "Multi-Branch Retail POS Software in [Location]",
+  "Supermarket Barcode Billing Software in [Location]",
+  "Hospital Information Management System in [Location]",
+  "Pharmacy Expiry & Billing Software in [Location]",
+  "School & College ERP Software in [Location]",
+  "University Examination & LMS Portal in [Location]",
+  "Real Estate Lead CRM & Property Software in [Location]",
+  "Hotel & Resort Booking Management Software in [Location]",
+  "GST E-Invoicing & Accounting Software in [Location]",
+  "Jewellery Store Billing & Gold Loan Software in [Location]",
+
+  // ── Industrial IoT & Smart Automation ──
+  "Industrial IoT Solutions in [Location]",
+  "Smart Factory Industry 4.0 Solutions in [Location]",
+  "IoT Energy & Power Monitoring System in [Location]",
+  "Industrial Electricity Sub-Metering IoT in [Location]",
+  "LPG & Industrial Gas Leak Detection IoT in [Location]",
+  "Garment Factory IoT Production Counter in [Location]",
+  "Cold Storage Temperature Monitoring IoT in [Location]",
+  "Water Flow & Level Sensor IoT Dashboard in [Location]",
+  "SCADA & PLC Cloud Dashboard in [Location]",
+  "Industrial Automation Software Developers in [Location]",
+  "Smart Agriculture & Automated Irrigation IoT in [Location]",
+  "IoT Gateway & Firmware Developers in [Location]",
+  "Air Quality & Environmental IoT Sensors in [Location]",
+  "Vibration & Predictive Maintenance IoT in [Location]",
+  "Custom Hardware & Embedded Software in [Location]",
+
+  // ── GPS Tracking, Biometrics & HR Tech ──
+  "GPS Fleet Management System in [Location]",
+  "Commercial Truck & Lorry GPS Tracking in [Location]",
+  "School Bus GPS & RFID Child Tracking in [Location]",
+  "Bike & Delivery Fleet GPS Tracker in [Location]",
+  "GPS Asset & Cargo Tracking Software in [Location]",
+  "BLE Beacon Asset Tracking in [Location]",
+  "RFID Warehouse Inventory Tracking in [Location]",
+  "Biometric Fingerprint & Face Recognition Attendance in [Location]",
+  "eSSL Biometric Attendance Machine in [Location]",
+  "Cloud HR & Payroll Software in [Location]",
+  "Employee Mobile Attendance App with Geo-Fencing in [Location]",
+  "Access Control & Door Lock Systems in [Location]",
+  "Visitor Management System Software in [Location]",
+  "Leave & Shift Management Software in [Location]",
+  "Contract Labour Management Software in [Location]",
+
+  // ── Modern Web & Headless E-Commerce ──
+  "Next.js Web Development Agency in [Location]",
+  "React.js Web Application Developers in [Location]",
+  "Headless Shopify Store Development in [Location]",
+  "B2B E-Commerce Wholesale Portal in [Location]",
+  "Multi-Vendor Marketplace Development in [Location]",
+  "WooCommerce Custom Website Development in [Location]",
+  "High-Speed Next.js Landing Page Design in [Location]",
+  "Corporate Website Redesign Agency in [Location]",
+  "PWA (Progressive Web App) Development in [Location]",
+  "Payment Gateway & API Integration Services in [Location]",
+  "MERN Stack Web Developers in [Location]",
+  "Node.js Backend & REST API Development in [Location]",
+  "Python Django & FastAPI Web Development in [Location]",
+  "SaaS Application UI UX Design in [Location]",
+  "Figma to Next.js / Tailwind CSS Conversion in [Location]",
+
+  // ── Mobile App Development ──
+  "Flutter Mobile App Development Agency in [Location]",
+  "React Native App Development Company in [Location]",
+  "iOS App Developers in [Location]",
+  "Android App Development Company in [Location]",
+  "On-Demand Service Booking App in [Location]",
+  "E-Commerce Mobile App Development in [Location]",
+  "Grocery & Food Delivery App Developers in [Location]",
+  "Healthcare & Telemedicine App in [Location]",
+  "Real Estate Property Listing Mobile App in [Location]",
+  "Educational E-Learning Mobile App in [Location]",
+  "Fintech & Microfinance Mobile App in [Location]",
+  "Taxi & Logistics Booking App in [Location]",
+  "Gym & Fitness Tracking App Development in [Location]",
+  "Cross Platform App Maintenance in [Location]",
+  "Enterprise Mobile App Solutions in [Location]",
+
+  // ── AI, Machine Learning & Automation ──
+  "Generative AI Software Solutions in [Location]",
+  "Custom AI Agent Developers in [Location]",
+  "AI Customer Support Chatbot in [Location]",
+  "WhatsApp Business API Automation in [Location]",
+  "WhatsApp Lead Generation Chatbot in [Location]",
+  "Computer Vision Quality Inspection in [Location]",
+  "AI Document OCR & Invoice Automation in [Location]",
+  "Predictive Sales & Analytics AI in [Location]",
+  "LLM Fine-Tuning & Private AI Models in [Location]",
+  "Voice Bot & AI Calling Solutions in [Location]",
+
+  // ── Digital Marketing & Local SEO ──
+  "Google Business Profile (GMB) SEO in [Location]",
+  "Local SEO Agency Near Me in [Location]",
+  "Technical SEO & Core Web Vitals Optimization in [Location]",
+  "B2B Lead Generation Agency in [Location]",
+  "Google Ads PPC Campaign Management in [Location]",
+  "Meta (Facebook & Instagram) Ads Agency in [Location]",
+  "E-Commerce SEO & Performance Marketing in [Location]",
+  "High-DA Backlink Building Services in [Location]",
+  "Conversion Rate Optimization (CRO) in [Location]",
+  "Search Engine Marketing Company in [Location]"
 ]))
 
 // Helper to check if a location belongs to Coimbatore region (Headquarters)
