@@ -19,6 +19,13 @@ interface PageProps {
   }>
 }
 
+// These pages are intentionally rendered when requested instead of being
+// generated for every location during deployment. The location dataset
+// contains thousands of combinations, which otherwise creates a multi-GB
+// deployment for a relatively small marketing site.
+export const dynamic = "force-dynamic"
+export const dynamicParams = true
+
 // Generate metadata for each local service page dynamically
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
@@ -77,23 +84,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "website",
     },
   }
-}
-
-// Generate static routes for all locations and their respective services at build time
-export async function generateStaticParams() {
-  const params: { slug: string }[] = []
-  
-  locationsList.forEach((loc) => {
-    // 1. Generic page
-    params.push({ slug: loc.slug })
-    
-    // 2. Service pages
-    seoServicesList.forEach((svc) => {
-      params.push({ slug: `${svc.prefix}${loc.slug}` })
-    })
-  })
-  
-  return params
 }
 
 function getServiceHeroBgImage(serviceType: string): string {
