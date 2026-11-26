@@ -89,22 +89,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 function getServiceHeroBgImage(serviceType: string): string {
   switch (serviceType) {
     case "web-development":
-      return "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2000"
+      return "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=70&w=800"
     case "mobile-app-development":
-      return "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=2000"
+      return "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=70&w=800"
     case "seo-services":
-      return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2000"
+      return "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=70&w=800"
     case "custom-software":
-      return "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=2000"
+      return "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=70&w=800"
     case "e-commerce-development":
-      return "https://images.unsplash.com/photo-1556742049-0a67414d4554?auto=format&fit=crop&q=80&w=2000"
+      return "https://images.unsplash.com/photo-1556742049-0a67414d4554?auto=format&fit=crop&q=70&w=800"
     case "ai-ml-solutions":
-      return "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&q=80&w=2000"
+      return "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&q=70&w=800"
     case "tech-training":
     case "coding-bootcamp":
-      return "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=2000"
+      return "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=70&w=800"
     default:
-      return "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000"
+      return "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=70&w=800"
   }
 }
 
